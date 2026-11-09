@@ -4,7 +4,11 @@
 
 An interactive planner and blog article that help EASA ATPL(A) students organise the 13 theory subjects into sittings, with hours a day and the 18-month exam window.
 
+![Planner screenshot](assets/img/screenshot.png)
+
 The planner asks five questions (time available, comfort with calculations, hours and days a week, start month, strong subjects) and returns a dated plan of three or four sittings, with a warning when the plan runs close to the 18-month limit.
+
+Students can then make the plan their own: drag subjects between sittings (or tap a subject and tap **Move here** on a phone), add or remove sittings up to the limit of six, and mark each sitting as Preparing, Ready or Completed. Live study-order checks flag anything that breaks the rules below, and the plan is saved in the student's own browser. One author's 5 + 5 + 3 split can be loaded as an example.
 
 ## What's in the repository
 
@@ -12,9 +16,10 @@ The planner asks five questions (time available, comfort with calculations, hour
 | --- | --- |
 | `index.html` | The planner as a standalone page. Open it in a browser or publish it with GitHub Pages. |
 | `embed/atpl-planner-embed.html` | The planner as a block to paste into the Aviationexam blog template. Generated from `index.html`. |
-| `content/blog-article.txt` | The article "ATPL Study Plan" in plain text, with markers for the web team (see below). |
+| `content/blog-article.txt` | The article "ATPL Study Plan" in plain text, with markers for the web team (see below). It merges Eliška's draft with the planner article. |
+| `content/ATPL_Study_Plan_merged.docx` | The same article as a Word file, for review. |
 | `content/ATPL_Sitting_Planner.docx` | A static Word version of the planner, with each plan at its reference pace. |
-| `assets/img/` | Decision flow and subject dependency map, as PNG. |
+| `assets/img/` | Decision flow, subject dependency map and a screenshot of the planner, as PNG. |
 | `assets/brand/` | Aviationexam logos. |
 | `scripts/check-plans.js` | Checks that every plan follows the study-order rules and that the page, the embed and the article agree. |
 | `scripts/build-embed.js` | Rebuilds the embed block from `index.html`. |
@@ -36,7 +41,7 @@ The embed block needs the blog editor to keep an inline `<script>`. If the edito
 
 ## Editing the plans
 
-The plans live in the `PLANS` object in `index.html`. After changing them:
+The plans live in the `PLANS` object in `index.html`; the 5 + 5 + 3 example lives in `EXAMPLES`. The blocks that go into the embed carry a `data-embed` attribute. After changing them:
 
 ```bash
 npm run build:embed   # regenerate the embed block
@@ -57,18 +62,20 @@ Node.js 18 or later; no dependencies. If you change a plan, update `content/blog
 
 | Use | Colour |
 | --- | --- |
-| Primary accent (selected answers, headings) | Red `#BD2026` |
+| Navigation bar, headings | Navy `#213C6F` (from aviationexam.com) |
+| Buttons and selected answers | Blue `#2B78D8` (from aviationexam.com) |
+| KSA100, warnings | Red `#BD2026` |
 | Memory subjects | Orange `#FF7202` |
 | Calculation subjects | Green `#00A650` |
 | Concept subjects, map labels | Blue `#0073BF` |
 | Warnings (18-month limit exceeded) | Extra red `#FF0000` |
 | Secondary text on white | Grey `#58595B` |
 
-Typeface: Open Sans for text, Helvetica for diagrams and figures. Background: white.
+Typeface: Open Sans for text, Helvetica for diagrams and figures. Layout follows aviationexam.com: navy rounded navigation bar and sky-blue header, white body.
 
 ## Regulatory basis
 
-Exam rules follow EASA Part-FCL (Annex I to Regulation (EU) No 1178/2011): FCL.025 (pass mark, attempts, sittings, 18-month period), FCL.515 (ATPL subjects), AMC1 FCL.025(a)(2) (Area 100 KSA) and Appendix 3 (minimum instruction hours).
+Exam rules follow EASA Part-FCL (Annex I to Regulation (EU) No 1178/2011): FCL.025 (pass mark, attempts, sittings, 18-month period, validity of the ATO recommendation), GM1 FCL.025 (definition of a sitting), FCL.515 (ATPL subjects), AMC1 FCL.025(a)(2) (Area 100 KSA) and Appendix 3 (minimum instruction hours). Question counts and exam times follow AMC1 ARA.FCL.300(b).
 
 ## Disclaimer
 

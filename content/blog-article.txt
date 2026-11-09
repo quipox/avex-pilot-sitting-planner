@@ -1,43 +1,58 @@
 =====================================================================
 NOTES FOR THE WEB TEAM / CODEX (delete before publishing)
 - Plain text with light Markdown: "#" = H1, "##" = H2, "###" = H3,
-  "-" = bullet, "1." = numbered list, **bold**, [text](link), "|" = table.
-- [IMAGE: ...]  = insert the named image file, with the alt text given.
-- [INTERACTIVE PLANNER] = paste the whole content of atpl-planner-embed.html
+  "-" = bullet, "1." = numbered list, **bold**, *italic*, [text](link), "|" = table.
+- [IMAGE: ...]  = insert the named image from assets/img/, with the alt text given.
+- [INTERACTIVE PLANNER] = paste the whole content of embed/atpl-planner-embed.html
   there, unchanged. If the editor strips <script>, skip it: the four plans
   are already in the text as static content.
 - [BUTTON: ...] = use the template's standard CTA button.
-- [CHECK LINK] = replace with the correct subject guide URL.
+- Subject guide links are included where the URL is known (7 of 13). Add the
+  others (Air Law, Mass and Balance, Human Performance, Meteorology, Radio
+  Navigation, Communications) if those guides exist.
+- This text merges Eliška's draft "ATPL Study Plan" with the planner article.
 =====================================================================
 
 LABEL: Aviationexam Guide
 
 # ATPL Study Plan
 
-SUBTITLE: How to organise 13 subjects, six sittings and the 18-month window into a plan you can follow.
+SUBTITLE: Real study strategies and practical advice from pilots who have passed their ATPL theory exams.
 
-Most ATPL students know they need to study. Fewer know how to organise it.
+Thirteen subjects, months of studying, and a lot of decisions to make along the way. Preparing for your EASA ATPL theory exams is not just about learning the material. You also need to decide which subjects to study together, how to divide your exam sittings, and when you are ready to take the exams. So, where should you start?
 
-Thirteen subjects, a maximum of six sittings and an 18-month window leave little room for improvisation. The students who pass first time rarely work harder than the rest. They plan better.
+We asked pilots who have successfully completed their ATPL theory exams to share how they approached their preparation, organised their sittings, and studied for each subject. Their experiences revealed several common strategies, along with some interesting differences. While there is no single approach that works for everyone, their advice provides a useful starting point for building your own study plan.
 
-This guide gives you that plan: what each subject demands, which order makes sense, how many hours a day to expect and how to use the time before your first exam. It is built on the EASA rules and on how our own authors, all professional pilots, passed their exams.
+In this guide, we'll look at the rules your plan must fit, what each subject demands, which subjects make sense to study together, four ready-made sitting plans, and how to prepare for each exam.
 
-## Before you plan
+## 1. Plan your ATPL exam sittings before you start
 
-Your plan has to fit inside the rules set by **EASA Part-FCL.025**. In short:
+Before diving into your first subject, it helps to have an idea of how you want to organise your exams.
 
-- **13 subjects**, each examined separately by your competent authority, from 010 Air Law to 090 Communications.
-- **KSA100 (Knowledge, Skills and Attitudes)** is not an exam subject. Your ATO assesses it, together with a mental maths test, and you must pass it before you are recommended for your final exam at first attempt.
-- **75% pass mark** in each paper. There is no negative marking.
-- **Maximum four attempts** per subject.
-- **Maximum six sittings** for the complete set.
-- **18 months** to pass everything, counted from the end of the calendar month of your first attempt.
+EASA ATPL theory examinations are subject to several important limits (EASA Part-FCL.025):
 
-Fail one subject four times, or run out of sittings or time, and you retake the full set of exams. A good plan keeps you well away from those limits.
+- A maximum of **6 sittings** to complete all subjects.
+- A maximum of **4 attempts per subject**, and only one attempt per subject in each sitting.
+- **18 months** to complete all subjects, starting from the end of the calendar month in which you first attempt an examination.
+- A pass mark of **75%** in each subject, with no negative marking.
+
+A sitting is an examination period defined by your competent authority, normally no longer than 10 consecutive days, during which you may take exams in several subjects.
+
+The 18-month clock starts with your first exam, not when you start studying. Everything you prepare before your first sitting is "free" time, and that is worth planning for (see section 4).
+
+Two more rules are worth knowing before you book anything. Your ATO's recommendation to sit the exams is valid for 12 months, so you need to take your first exam within that window. And all your exams must be taken under the same competent authority, so you cannot switch to another country halfway through.
+
+If you exceed any of the limits above, you lose all the subjects you have passed: you will need further training at your ATO and then retake the complete set of exams.
+
+These limits make planning important, especially if you need to repeat an exam. But there is another factor worth considering: fatigue. ATPL preparation can take many months, particularly if you are studying alongside a full-time job. Your concentration and motivation may change throughout that period.
+
+Even subjects you feel confident about should not be underestimated. Stress, fatigue, or a particularly difficult set of questions can affect your performance. **The goal is to create a realistic plan that gives you enough time to prepare, while leaving room to adjust if necessary.**
+
+Besides the 13 exams, your ATO will also assess **Area 100 KSA** (Knowledge, Skills and Attitudes) and give you a mental maths test. These are not exams with the authority and do not count as a sitting, but you must pass them before your ATO recommends you for your last exam.
 
 You can read more in our guides to [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams) and [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/).
 
-## 01 Know what each subject asks of you
+## 2. Know what each subject asks of you
 
 Not every subject is studied the same way. Each one leans towards one of three types of work:
 
@@ -45,44 +60,88 @@ Not every subject is studied the same way. Each one leans towards one of three t
 - **Calculation:** formulas, the flight computer, graphs and tables. Practise with a timer.
 - **Concept:** you need to understand the mechanism to answer reworded questions. Plan longer, uninterrupted sessions and open the theory.
 
-| Subject | Type | Workload | Study time |
-| --- | --- | --- | --- |
-| 010 Air Law | Memory | Medium | ~70 h |
-| 021 Airframe, Systems, Electrics, Power Plant | Concept + memory | Heavy | ~100 h |
-| 022 Instrumentation | Concept | Medium | ~70 h |
-| 031 Mass & Balance | Calculation | Light | ~40 h |
-| 032 Performance | Calculation + concept | Heavy | ~100 h |
-| 033 Flight Planning and Monitoring | Calculation | Heavy | ~100 h |
-| 040 Human Performance & Limitations | Memory + concept | Light | ~40 h |
-| 050 Meteorology | Concept + memory | Heavy | ~100 h |
-| 061 General Navigation | Calculation + concept | Heavy | ~100 h |
-| 062 Radio Navigation | Concept + calculation | Medium | ~70 h |
-| 070 Operational Procedures | Memory | Medium | ~70 h |
-| 081 Principles of Flight | Concept | Heavy | ~100 h |
-| 090 Communications | Memory | Light | ~40 h |
+| Code | Subject | Questions | Time (min) | Main type | Workload | Study time |
+| --- | --- | --- | --- | --- | --- | --- |
+| 010 | Air Law | 44 | 60 | Memory | Medium | ~70 h |
+| 021 | [Airframe, Systems, Electrics, Power Plant](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge) | 80 | 120 | Concept + memory | Heavy | ~100 h |
+| 022 | [Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation) | 60 | 90 | Concept | Medium | ~70 h |
+| 031 | Mass and Balance | 25 | 75 | Calculation | Light | ~40 h |
+| 032 | [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane) | 45 | 120 | Calculation + concept | Heavy | ~100 h |
+| 033 | [Flight Planning and Monitoring](https://www.aviationexam.com/en/l/atpl-flight-planning-and-monitoring/) | 42 | 120 | Calculation | Heavy | ~100 h |
+| 040 | Human Performance and Limitations | 48 | 90 | Memory + concept | Light | ~40 h |
+| 050 | Meteorology | 84 | 120 | Concept + memory | Heavy | ~100 h |
+| 061 | [General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation) | 55 | 135 | Calculation + concept | Heavy | ~100 h |
+| 062 | Radio Navigation | 66 | 90 | Concept + calculation | Medium | ~70 h |
+| 070 | [Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures) | 42 | 75 | Memory | Medium | ~70 h |
+| 081 | [Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane) | 46 | 90 | Concept | Heavy | ~100 h |
+| 090 | Communications | 34 | 60 | Memory | Light | ~40 h |
+| | **Total** | **671** | **1,245** | | | **~1,000 h** |
 
-The study times add up to around 1,000 hours. That is the EASA minimum of 650 hours (modular) or 750 hours (integrated) of theoretical instruction, plus time for question practice. Treat them as a guide. If you come from engineering, Performance may feel light; if you come from law, Air Law will.
+**What do heavy, medium and light mean?**
 
-Each subject has its own guide on our blog, from [010 Air Law](https://www.aviationexam.com/en/l/) [CHECK LINK] to [090 Communications](https://www.aviationexam.com/en/l/) [CHECK LINK].
+- **Heavy (about 100 hours):** a long syllabus, many calculations, or concepts you must understand rather than memorise. 021 AGK, 032 Performance, 033 Flight Planning, 050 Meteorology, 061 General Navigation and 081 Principles of Flight.
+- **Medium (about 70 hours):** a substantial syllabus, but more predictable. 010 Air Law, 022 Instrumentation, 062 Radio Navigation and 070 Operational Procedures.
+- **Light (about 40 hours):** a shorter syllabus and fewer questions. 031 Mass and Balance, 040 Human Performance and 090 Communications. Light does not mean easy.
 
-## 02 Study in the right order
+The study times add up to around 1,000 hours: the EASA minimum of 650 hours (modular) or 750 hours (integrated) of theoretical instruction, plus time for question practice. Treat them as a guide. There is no universal list of easy and difficult subjects: someone with an engineering background may find calculation-based subjects relatively straightforward, while another student may be more comfortable with theoretical subjects.
 
-Several subjects build on others. Study the foundation first and the next subject costs you less time.
+## 3. Which ATPL subjects should you study together?
 
-[IMAGE: atpl-dependency-map.png | alt: "ATPL subject dependency map: six foundation subjects feed six intermediate subjects, and everything feeds Flight Planning and Monitoring"]
+Choosing the number of subjects per sitting is one thing. Deciding which subjects belong together is another. Some ATPL subjects share important concepts, calculations, and practical applications, so studying them during the same preparation period can help you connect the theory and avoid learning related topics separately.
 
-Read the map from top to bottom:
+[IMAGE: dependency-map.png | alt: "ATPL subject dependency map: six foundation subjects feed six intermediate subjects, and everything feeds Flight Planning and Monitoring"]
 
-- **Performance** uses Principles of Flight and the engine chapters of AGK.
-- **Instrumentation** builds on AGK.
-- **Radio Navigation** builds on General Navigation.
-- **Operational Procedures** draws on Air Law, Meteorology and Human Performance.
-- **Communications** is Air Law applied to the radio.
-- **Flight Planning and Monitoring** uses almost everything: Performance, Mass & Balance, both navigation subjects, Meteorology and the fuel rules from Operational Procedures.
+The map reads from top to bottom: study the subjects at the top first, or at least in the same sitting as the ones below them. Here are the most useful connections.
 
-Two rules follow. Take a subject and its foundation in the same sitting when you can, because they share vocabulary, formulas and question styles. And leave Flight Planning for your last sitting.
+### Principles of Flight, Performance, and Operational Procedures
 
-## 03 Use the time before your first exam
+These three subjects make a useful combination because they approach aircraft behaviour from different perspectives.
+
+[Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane) explains the aerodynamic principles behind how an aircraft flies, including lift, drag, stability, and the forces acting on it. [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane) builds on this knowledge to determine what the aircraft can actually achieve under different conditions, such as changes in weight, temperature, altitude, and wind.
+
+For example, understanding how lift and drag affect an aircraft helps when studying climb performance, takeoff distances, and the relationship between airspeed and aircraft performance.
+
+[Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures) then brings these concepts into practical operations, covering situations such as windshear, contaminated runways, rejected takeoffs, and other operational hazards. Because it also draws on Air Law, Meteorology and Human Performance, it works best once those subjects are done or in the same sitting.
+
+The connection is particularly relevant for helicopter candidates, where aerodynamic principles, performance limitations, and helicopter-specific operational procedures overlap significantly.
+
+**Why study them together?** Understanding the underlying aerodynamics can make performance calculations and operational procedures easier to follow, reducing the need to revisit the same concepts separately.
+
+### Aircraft General Knowledge and Instrumentation
+
+[Aircraft General Knowledge](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge) focuses on how aircraft systems work, including electrical systems, hydraulics, engines, pneumatics, and flight controls.
+
+[Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation) explains how information about the aircraft and its environment is measured, processed, and displayed to the pilot.
+
+The connection becomes clear when studying electrical systems, sensors, and cockpit indications. For example, understanding how electrical power is generated and distributed provides useful background when learning how electronic instruments and displays operate. Similarly, knowledge of aircraft systems helps explain what certain cockpit warnings and indications mean.
+
+**Why study them together?** Aircraft General Knowledge helps you understand how the aircraft's systems function, while Instrumentation explains how their operation is monitored and presented in the cockpit.
+
+### General Navigation and Radio Navigation
+
+[General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation) covers the principles of navigation, including position, direction, distance, tracks, headings, and calculations involving wind and groundspeed.
+
+Radio Navigation builds on these foundations by introducing navigation systems and aids used to determine aircraft position and guide the aircraft along its route.
+
+The subjects approach navigation differently, but they share the same fundamental goal: understanding where the aircraft is, where it needs to go, and how to get there.
+
+**Why study them together?** The navigation principles learned in General Navigation provide useful background for understanding and applying the systems covered in Radio Navigation.
+
+### Air Law and Communications
+
+Communications is Air Law applied to the radio: phraseology, procedures and the rules behind them. Taking them in the same sitting, or Air Law first, saves you learning the same rules twice.
+
+### Flight Planning and Monitoring: bringing everything together
+
+Unlike the previous combinations, [Flight Planning and Monitoring](https://www.aviationexam.com/en/l/atpl-flight-planning-and-monitoring/) is a subject worth leaving for your last sitting.
+
+It combines knowledge from several other ATPL subjects, including General Navigation, Radio Navigation, Meteorology, Performance, Mass and Balance, and Operational Procedures.
+
+For example, preparing a flight involves calculating routes and flight times, considering weather conditions, determining fuel requirements, and checking aircraft performance limitations. These are topics you will already have encountered in other subjects, but Flight Planning requires you to apply them together.
+
+**Why leave it until later?** Having already studied the subjects it draws upon makes it easier to understand the complete flight-planning process, rather than learning all the individual concepts at the same time.
+
+## 4. Use the time before your first exam
 
 The 18-month window starts with your first exam attempt, not with your first class. Every month you prepare before that first sitting is outside the clock.
 
@@ -93,15 +152,19 @@ Use it. Do not book your first sitting just because the course has reached a cer
 
 The second condition matters. Without it, your second sitting starts from zero on the day the clock starts running.
 
+This is also why it makes sense to put the heaviest foundation subjects, Principles of Flight and AGK, in your first sitting: the hardest study happens while time is not limited.
+
 If you are in an integrated course, your school sets the exam dates. The same principle still helps you decide what to prioritise inside each block.
 
-## 04 Choose your plan
+## 5. How should you divide your 13 ATPL subjects?
 
-Two questions decide which plan fits you: how much time you have, and how comfortable you are with calculations. Every plan totals around 1,000 hours, uses no more than four sittings and follows the same three rules:
+There are several ways to organise your sittings, and the best approach depends on your circumstances. The experiences shared by pilots who have completed their exams highlight three useful principles:
 
-- **Heavy foundation subjects first.** Principles of Flight and AGK are always in your first sitting. You prepare it before the 18-month clock starts, so the hardest study happens when time is not limited.
-- **Each subject after the ones it builds on**, as shown in the map above.
-- **Light subjects and Flight Planning at the end**, when a year of study has taken its toll.
+- **Heavy foundation subjects first.** Principles of Flight and AGK in your first sitting, prepared before the clock starts.
+- **Group related subjects together**, so that knowledge gained in one subject supports your understanding of another. Each subject goes after, or in the same sitting as, the ones it builds on.
+- **Balance your workload and finish lighter.** Leave light subjects and Flight Planning for the end, when months of study have taken their toll.
+
+Two questions decide which of the following plans fits you: how much time you have, and how comfortable you are with calculations. Every plan totals around 1,000 hours and uses no more than four sittings, which leaves at least two for retakes.
 
 [INTERACTIVE PLANNER]
 
@@ -147,16 +210,105 @@ Concept foundations first. General Navigation, Performance and Flight Planning e
 - **Sitting 3** (month 15): 032 Performance, 062 Radio Navigation, 050 Meteorology
 - **Sitting 4** (month 20): 070 Operational Procedures, 031 Mass & Balance, 090 Communications, 033 Flight Planning
 
+The part-time plans use 13 to 14 of the 18 months. If you can only study 1.5 hours a day, do more of the work before your first sitting, while the clock is not running.
+
+### How our authors did it
+
+Our question explanations are written by professional pilots who passed these same exams. Their sittings show how much room there is to adapt:
+
+- **Five, five and three subjects.** One author grouped related subjects into three sittings: AGK, Instrumentation, Radio Navigation, General Navigation and Human Performance first; then Principles of Flight, Performance, Operational Procedures, Air Law and Communications; and finally Flight Planning, Meteorology and Mass and Balance. This keeps three of the six sittings available for retakes, but preparing five subjects for one sitting is demanding, particularly alongside work. If you follow it, consider taking Meteorology before or with Operational Procedures. You can load this example into the planner above to see how it compares.
+- **Four subjects per round, easier subjects last.** An author studying alongside a full-time job left Mass and Balance and Human Performance for the final round, spent four to six months on each round, and passed every subject at the first attempt with a 95% average.
+- **More sittings with smaller groups.** One author planned three sittings and finished in four, because the ground school required internal exams before each official one. Another spread the subjects over five sittings to maximise grades and averaged 98%.
+
+The plans were different. The method was not: all of them studied by learning objective, retook what they got wrong, went to the theory for what they did not understand, and took timed tests before booking. None relied on memorising answers.
+
+**The idea is not to follow someone else's difficulty ranking, but to consider your own strengths when planning the order of your exams.** And remember: using more sittings for your initial exams leaves fewer sittings available for potential retakes.
+
 Whatever your plan, keep two things in mind:
 
 - **KSA100** must be passed at your ATO before your final exam. Ask your school early when its assessments run.
 - **If you fail a subject**, re-sit it in your next planned sitting and move one planned subject to the end. Do not rebuild the whole plan.
 
-The part-time plans use 13 to 14 of the 18 months. If you can only study 1.5 hours a day, do more of the work before your first sitting, while the clock is not running.
+## 6. How to structure your ATPL studies
 
-## 05 Inside each sitting
+Once you have decided how to organise your sittings, you need a study method you can follow for each subject.
 
-A sitting of four subjects (two heavy, two light) fits into 16 weeks. Stretch it to 20 weeks if you work, or compress it to 12 if you study full time. Study one subject at a time, but never let a finished subject go cold.
+The pilots' experiences showed considerable overlap here. Working systematically through the question bank, reviewing explanations, taking notes, and repeatedly practising difficult questions were common elements. The following routine combines those approaches into a practical study plan.
+
+### Step 1: Study chapter by chapter
+
+Start by working through the questions in each subject, following the Learning Objectives. Rather than practising random questions from across the entire subject, focus on one chapter or topic at a time.
+
+For example, in Aircraft General Knowledge, you might begin with System Design, continue to Airframes, then Hydraulics, and work through the remaining chapters. This approach exposes you to several questions covering related concepts, making it easier to recognise patterns and understand the theory behind them.
+
+Work through the full question bank systematically, reading the explanations as you go.
+
+### Step 2: Focus on understanding, not just memorising
+
+When you encounter a question you do not understand, take the time to investigate the underlying concept. Read the explanation, return to your study materials, and make sure you understand why the answer is correct. Some concepts may require additional reading or a different explanation before they become clear.
+
+This is particularly important in subjects such as Principles of Flight, Aircraft General Knowledge, Performance, and Instrumentation. Memorising answers may help you recognise familiar questions, but it does not necessarily prepare you for unfamiliar wording or different scenarios.
+
+Understanding the theory is also important beyond the examinations, when you need to apply that knowledge in real operations.
+
+### Step 3: Create your own revision notes
+
+Taking notes can help you identify and remember important information. Focus on the things you personally need to revise:
+
+- Formulas and calculations
+- Important keywords and definitions
+- Difficult concepts
+- Small diagrams or sketches
+- Information you repeatedly forget
+
+Try to keep your notes concise. One particularly effective approach shared during our discussion was to reduce each subject to just one or two pages of essential notes, occasionally three for more demanding subjects. These pages were then reviewed repeatedly throughout preparation.
+
+The aim is not to rewrite your textbooks, but to create a useful revision tool.
+
+### Step 4: Repeat your incorrect answers
+
+Once you have completed the questions in a subject, return to those you answered incorrectly. Focus on understanding your mistakes before trying again. Continue practising until you can answer the questions confidently.
+
+You can also take a slightly different approach: answer only the questions you are completely sure about, then return to the remaining ones. As your knowledge improves, the number of uncertain questions should gradually decrease.
+
+Both methods help you concentrate on areas where you need more practice.
+
+### Step 5: Flag difficult questions for later review
+
+Not every correctly answered question is necessarily one you fully understand. If you are uncertain about a concept, flag the question for review, even if you selected the correct answer.
+
+Once you have worked through the incorrect answers, return to your flagged questions. Remove a flag when you feel confident that you understand the question and the underlying concept.
+
+And do not forget subjects you have already completed. A useful method is to create a weekly revision test containing flagged questions from previously studied subjects. This helps you revisit difficult material while continuing with new topics.
+
+### Step 6: Practise under exam conditions
+
+When you feel confident with the material, start completing timed practice exams without notes. This allows you to assess your knowledge without relying on your revision materials.
+
+A target of **consistently scoring above 90%** was used in more than one of the study methods shared with us. However, this is a personal preparation benchmark, not an official requirement (the pass mark is 75%) or a guarantee of passing.
+
+Your results should be accompanied by a genuine understanding of the material. If you are still unsure about certain concepts, return to the explanations and continue practising.
+
+### Studying alongside ground school?
+
+If you are attending classroom lessons, start working with the question bank alongside your classes. The two can complement each other, helping you reinforce what you have learned.
+
+Pay attention during lessons, take your own notes, and make use of discussions with fellow students. Reading other students' comments and sharing your own observations can also help you understand difficult topics.
+
+## 7. Inside each sitting: from first question to exam day
+
+Here is the routine for each subject, and how it fits into one sitting.
+
+| Stage | Your task | Goal |
+| --- | --- | --- |
+| 1. Learn | Work through the question bank chapter by chapter, following the Learning Objectives. | Cover the full subject and understand the explanations. |
+| 2. Take notes | Record important formulas, concepts, and difficult topics. | Create concise material for revision. |
+| 3. Practise mistakes | Repeat incorrectly answered questions. | Understand and correct your mistakes. |
+| 4. Review | Focus on flagged questions and areas where you lack confidence. | Strengthen your understanding of difficult topics. |
+| 5. Test yourself | Complete timed tests without notes. | Check your readiness under exam-like conditions. |
+| 6. Maintain your knowledge | Regularly revisit difficult questions from previously studied subjects. | Retain knowledge while progressing through your preparation. |
+
+A sitting of four subjects (two heavy, two light) fits into about 16 weeks. Stretch it to 20 weeks if you work, or compress it to 12 if you study full time. Study one subject at a time, but never let a finished subject go cold.
 
 | Weeks | Heavy subject 1 | Heavy subject 2 | Light subject 1 | Light subject 2 |
 | --- | --- | --- | --- | --- |
@@ -169,28 +321,19 @@ A sitting of four subjects (two heavy, two light) fits into 16 weeks. Stretch it
 | 14–15 | Timed tests, no notes | Timed tests, no notes | Timed tests, no notes | Timed tests, no notes |
 | 16 | Exam | Exam | Exam | Exam |
 
-Three habits make it work:
+You do not have to follow every step in exactly the same way. For example, some students prefer to repeat the entire question bank, while others focus immediately on incorrect answers after completing their first pass. The important thing is to have a consistent process that helps you identify weaknesses and make progress.
 
-1. **Work the question bank by learning objective**, chapter by chapter, not in random tests. Patterns are easier to see when related questions come together.
-2. **Review finished subjects every week.** Thirty minutes on your flagged questions keeps them exam-ready while you learn the next one.
-3. **Write one summary sheet per subject** as you go. By week 14 you should be revising from your own notes.
+## 8. How much time should you allow for ATPL preparation?
 
-For the step-by-step method inside each subject, read [How to Pass EASA ATPL Exams](https://www.aviationexam.com/en/l/how-to-pass-atpl-exams/).
+There is no single timeline that works for everyone. The experiences shared with us ranged from full-time classroom training to studying independently while working full-time.
 
-## How our authors did it
+One pilot completed approximately 700 hours of classroom instruction before beginning dedicated question-bank preparation. Another attended six months of daily ground-school classes. A pilot working full-time spent approximately four to six months preparing for each round of exams.
 
-Our question explanations are written by professional pilots who passed these same exams. We asked six of them how they organised their sittings.
+As a guide, plan for around 1,000 hours in total. That is about 5 to 6 hours a day, five days a week, if you study full time, or about 2 hours a day, six days a week, around a job.
 
-- **One sitting.** All subjects over three consecutive days, under an older national system. Passed first time.
-- **Three sittings (4 + 4 + 4).** Studied online without classes while working full time. Lighter subjects left for the end, when fatigue set in. All passed first time, 95% average.
-- **Three sittings (5 + 5 + 3).** Overlapping subjects grouped together. Flight Planning last. Four attempts kept available for every subject.
-- **Five sittings (3 + 3 + 3 + 2 + 3).** Load spread deliberately to maximise grades. 98% average.
-- **Three sittings.** Followed the classes available at the time. Would now group overlapping subjects.
-- **Four sittings (3 + 4 + 4 + 3).** Planned three sittings of four and adapted along the way.
+Your available study time, training programme, learning pace, and practical flying commitments all influence how quickly you can progress. When planning your sittings, consider not only how much material you need to cover, but also how much time you can realistically dedicate to studying. And remember that fatigue can become a factor after months of preparation.
 
-The plans were different. The method was not. All six studied by learning objective, retook only what they got wrong, went to the theory for what they did not understand, and took timed tests before booking. None relied on memorising answers.
-
-Some of our authors sat their exams before the current rules, with 14 subjects and no KSA100. The plans in this guide follow today's rules.
+A realistic schedule is more useful than an ambitious one you cannot maintain.
 
 ## Common planning mistakes
 
@@ -201,17 +344,23 @@ Some of our authors sat their exams before the current rules, with 14 subjects a
 - **Planning for six sittings.** Six is the limit, not the target. Plan for three or four and keep the rest in reserve.
 - **Forgetting KSA100.** It is assessed by your school and can delay your final sitting.
 
-## Final thoughts
+## Final thoughts: find a plan that works for you
 
-There is no single correct plan. Our authors passed with one sitting and with five. What they shared was a plan that suited their situation, a consistent method and enough margin for a bad day.
+There is no single perfect strategy for passing your ATPL theory exams. Some students prefer fewer sittings with more subjects. Others find smaller groups easier to manage. Some tackle demanding subjects first, while others leave subjects they consider easier until the end.
 
-Choose the plan closest to your situation, adjust it to your strengths, and review it after each sitting.
+What matters is finding an approach that fits your circumstances and allows you to prepare properly. The experiences shared by pilots who have successfully completed their exams point to a few useful habits: study systematically, understand the explanations, revisit mistakes, and keep reviewing material you have already covered.
 
-## Ready to turn your plan into practice?
+You do not need to follow someone else's timetable exactly. But you can learn from their experience and use it to create a plan of your own. Your first plan does not have to be your final one.
 
-The [ATPL Question Database](https://www.aviationexam.com/en/l/atpl-questions) is organised by subject and learning objective, so you can follow your plan chapter by chapter. Use **ATPL eTextbooks** for the theory behind flagged questions, **ATPL Flashcards** for memory subjects, **Last Seen questions (L200/L300)** in the final weeks before each sitting, and **Mental Math** to prepare for your school's KSA100 assessment.
+**Start with a realistic plan, study consistently, and adjust your approach as you progress.**
 
-[BUTTON: Try Free -> ATPL Question Database]
+## Put your ATPL study plan into practice with Aviationexam
+
+Whether you are preparing for your first subject or revising before your next sitting, Aviationexam gives you the tools to organise your studies.
+
+Work through questions by subject and Learning Objective, read detailed explanations, practise incorrect answers, flag difficult questions, and test your knowledge in exam mode. Use **ATPL eTextbooks** for the theory behind flagged questions, **ATPL Flashcards** for memory subjects, **Last Seen questions (L200/L300)** in the final weeks before each sitting, and **Mental Math** to prepare for your school's KSA100 assessment.
+
+[BUTTON: Explore the Aviationexam ATPL Question Bank -> https://www.aviationexam.com/en/store/atpl-question-bank]
 
 ## ATPL Study Plan – FAQ
 
@@ -222,6 +371,10 @@ Around 5 to 6 hours a day, five days a week, if you study full time. Around 2 ho
 ### How many sittings should I plan?
 
 Three or four. EASA allows a maximum of six, so planning for fewer leaves room for a retake.
+
+### What is a sitting?
+
+An examination period set by your competent authority, normally no longer than 10 consecutive days. You can take several subjects in one sitting, but only one attempt per subject.
 
 ### When does the 18-month period start?
 
