@@ -1,0 +1,249 @@
+=====================================================================
+NOTES FOR THE WEB TEAM / CODEX (delete before publishing)
+- Plain text with light Markdown: "#" = H1, "##" = H2, "###" = H3,
+  "-" = bullet, "1." = numbered list, **bold**, [text](link), "|" = table.
+- [IMAGE: ...]  = insert the named image file, with the alt text given.
+- [INTERACTIVE PLANNER] = paste the whole content of atpl-planner-embed.html
+  there, unchanged. If the editor strips <script>, skip it: the four plans
+  are already in the text as static content.
+- [BUTTON: ...] = use the template's standard CTA button.
+- [CHECK LINK] = replace with the correct subject guide URL.
+=====================================================================
+
+LABEL: Aviationexam Guide
+
+# ATPL Study Plan
+
+SUBTITLE: How to organise 13 subjects, six sittings and the 18-month window into a plan you can follow.
+
+Most ATPL students know they need to study. Fewer know how to organise it.
+
+Thirteen subjects, a maximum of six sittings and an 18-month window leave little room for improvisation. The students who pass first time rarely work harder than the rest. They plan better.
+
+This guide gives you that plan: what each subject demands, which order makes sense, how many hours a day to expect and how to use the time before your first exam. It is built on the EASA rules and on how our own authors, all professional pilots, passed their exams.
+
+## Before you plan
+
+Your plan has to fit inside the rules set by **EASA Part-FCL.025**. In short:
+
+- **13 subjects**, each examined separately by your competent authority, from 010 Air Law to 090 Communications.
+- **KSA100 (Knowledge, Skills and Attitudes)** is not an exam subject. Your ATO assesses it, together with a mental maths test, and you must pass it before you are recommended for your final exam at first attempt.
+- **75% pass mark** in each paper. There is no negative marking.
+- **Maximum four attempts** per subject.
+- **Maximum six sittings** for the complete set.
+- **18 months** to pass everything, counted from the end of the calendar month of your first attempt.
+
+Fail one subject four times, or run out of sittings or time, and you retake the full set of exams. A good plan keeps you well away from those limits.
+
+You can read more in our guides to [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams) and [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/).
+
+## 01 Know what each subject asks of you
+
+Not every subject is studied the same way. Each one leans towards one of three types of work:
+
+- **Memory:** rules, figures and definitions. Short daily sessions work best.
+- **Calculation:** formulas, the flight computer, graphs and tables. Practise with a timer.
+- **Concept:** you need to understand the mechanism to answer reworded questions. Plan longer, uninterrupted sessions and open the theory.
+
+| Subject | Type | Workload | Study time |
+| --- | --- | --- | --- |
+| 010 Air Law | Memory | Medium | ~70 h |
+| 021 Airframe, Systems, Electrics, Power Plant | Concept + memory | Heavy | ~100 h |
+| 022 Instrumentation | Concept | Medium | ~70 h |
+| 031 Mass & Balance | Calculation | Light | ~40 h |
+| 032 Performance | Calculation + concept | Heavy | ~100 h |
+| 033 Flight Planning and Monitoring | Calculation | Heavy | ~100 h |
+| 040 Human Performance & Limitations | Memory + concept | Light | ~40 h |
+| 050 Meteorology | Concept + memory | Heavy | ~100 h |
+| 061 General Navigation | Calculation + concept | Heavy | ~100 h |
+| 062 Radio Navigation | Concept + calculation | Medium | ~70 h |
+| 070 Operational Procedures | Memory | Medium | ~70 h |
+| 081 Principles of Flight | Concept | Heavy | ~100 h |
+| 090 Communications | Memory | Light | ~40 h |
+
+The study times add up to around 1,000 hours. That is the EASA minimum of 650 hours (modular) or 750 hours (integrated) of theoretical instruction, plus time for question practice. Treat them as a guide. If you come from engineering, Performance may feel light; if you come from law, Air Law will.
+
+Each subject has its own guide on our blog, from [010 Air Law](https://www.aviationexam.com/en/l/) [CHECK LINK] to [090 Communications](https://www.aviationexam.com/en/l/) [CHECK LINK].
+
+## 02 Study in the right order
+
+Several subjects build on others. Study the foundation first and the next subject costs you less time.
+
+[IMAGE: atpl-dependency-map.png | alt: "ATPL subject dependency map: six foundation subjects feed six intermediate subjects, and everything feeds Flight Planning and Monitoring"]
+
+Read the map from top to bottom:
+
+- **Performance** uses Principles of Flight and the engine chapters of AGK.
+- **Instrumentation** builds on AGK.
+- **Radio Navigation** builds on General Navigation.
+- **Operational Procedures** draws on Air Law, Meteorology and Human Performance.
+- **Communications** is Air Law applied to the radio.
+- **Flight Planning and Monitoring** uses almost everything: Performance, Mass & Balance, both navigation subjects, Meteorology and the fuel rules from Operational Procedures.
+
+Two rules follow. Take a subject and its foundation in the same sitting when you can, because they share vocabulary, formulas and question styles. And leave Flight Planning for your last sitting.
+
+## 03 Use the time before your first exam
+
+The 18-month window starts with your first exam attempt, not with your first class. Every month you prepare before that first sitting is outside the clock.
+
+Use it. Do not book your first sitting just because the course has reached a certain date. Book it when two conditions are met:
+
+- Every subject in that sitting scores **above 90% in timed practice tests**, without notes.
+- You have **already started the first subject of your second sitting**.
+
+The second condition matters. Without it, your second sitting starts from zero on the day the clock starts running.
+
+If you are in an integrated course, your school sets the exam dates. The same principle still helps you decide what to prioritise inside each block.
+
+## 04 Choose your plan
+
+Two questions decide which plan fits you: how much time you have, and how comfortable you are with calculations. Every plan totals around 1,000 hours, uses no more than four sittings and follows the same three rules:
+
+- **Heavy foundation subjects first.** Principles of Flight and AGK are always in your first sitting. You prepare it before the 18-month clock starts, so the hardest study happens when time is not limited.
+- **Each subject after the ones it builds on**, as shown in the map above.
+- **Light subjects and Flight Planning at the end**, when a year of study has taken its toll.
+
+[INTERACTIVE PLANNER]
+
+| Plan | For | Sittings | Hours a day | Days a week | Exam clock used | Total |
+| --- | --- | --- | --- | --- | --- | --- |
+| A | Full time, comfortable with calculations | 3 | 5.7 | 5 | ~4 of 18 months | ~8 months |
+| B | Full time, less comfortable with calculations | 4 | 4.8 | 5 | ~6 of 18 months | ~10 months |
+| C | Studying around a job, comfortable with calculations | 4 | 2.0 | 6 | ~13 of 18 months | ~19 months |
+| D | Studying around a job, less comfortable with calculations | 4 | 2.0 | 6 | ~14 of 18 months | ~19 months |
+
+### Plan A – Full time, three sittings
+
+The heavy foundation subjects come first, while the 18-month clock is not yet running. Light subjects and Flight Planning close the plan.
+
+- **Sitting 1** (month 4): 081 Principles of Flight, 021 AGK, 061 General Navigation, 022 Instrumentation
+- **Sitting 2** (month 6): 032 Performance, 062 Radio Navigation, 050 Meteorology, 010 Air Law
+- **Sitting 3** (month 9): 070 Operational Procedures, 040 Human Performance, 031 Mass & Balance, 090 Communications, 033 Flight Planning
+
+### Plan B – Full time, four sittings
+
+Heavy foundations first, and never more than one heavy calculation subject per sitting. Start using your flight computer from the first week, ten minutes a day.
+
+- **Sitting 1** (month 4): 081 Principles of Flight, 021 AGK, 022 Instrumentation
+- **Sitting 2** (month 6): 061 General Navigation, 010 Air Law, 050 Meteorology
+- **Sitting 3** (month 8): 032 Performance, 062 Radio Navigation, 040 Human Performance, 070 Operational Procedures
+- **Sitting 4** (month 10): 031 Mass & Balance, 090 Communications, 033 Flight Planning
+
+### Plan C – Around a job, calculation foundations first
+
+Principles of Flight, AGK and General Navigation in the first sitting, while the clock is not running. If calculations come easily, General Navigation fits alongside the two concept foundations.
+
+- **Sitting 1** (month 7): 081 Principles of Flight, 021 AGK, 061 General Navigation
+- **Sitting 2** (month 11): 022 Instrumentation, 062 Radio Navigation, 032 Performance
+- **Sitting 3** (month 16): 050 Meteorology, 010 Air Law, 070 Operational Procedures, 040 Human Performance
+- **Sitting 4** (month 20): 031 Mass & Balance, 090 Communications, 033 Flight Planning
+
+### Plan D – Around a job, calculation subjects spread out
+
+Concept foundations first. General Navigation, Performance and Flight Planning each go in a different sitting, so you never face two heavy calculation subjects together.
+
+- **Sitting 1** (month 6): 081 Principles of Flight, 021 AGK, 040 Human Performance
+- **Sitting 2** (month 10): 061 General Navigation, 022 Instrumentation, 010 Air Law
+- **Sitting 3** (month 15): 032 Performance, 062 Radio Navigation, 050 Meteorology
+- **Sitting 4** (month 20): 070 Operational Procedures, 031 Mass & Balance, 090 Communications, 033 Flight Planning
+
+Whatever your plan, keep two things in mind:
+
+- **KSA100** must be passed at your ATO before your final exam. Ask your school early when its assessments run.
+- **If you fail a subject**, re-sit it in your next planned sitting and move one planned subject to the end. Do not rebuild the whole plan.
+
+The part-time plans use 13 to 14 of the 18 months. If you can only study 1.5 hours a day, do more of the work before your first sitting, while the clock is not running.
+
+## 05 Inside each sitting
+
+A sitting of four subjects (two heavy, two light) fits into 16 weeks. Stretch it to 20 weeks if you work, or compress it to 12 if you study full time. Study one subject at a time, but never let a finished subject go cold.
+
+| Weeks | Heavy subject 1 | Heavy subject 2 | Light subject 1 | Light subject 2 |
+| --- | --- | --- | --- | --- |
+| 1–4 | First pass by learning objective, with notes | – | – | – |
+| 5–6 | Retake wrong answers, read flagged theory | First pass | – | – |
+| 7–8 | Weekly review | First pass | – | – |
+| 9–10 | Weekly review | Retake and flagged theory | First pass | – |
+| 11–12 | Weekly review | Weekly review | Retake and flagged theory | First pass |
+| 13 | Weekly review | Weekly review | Weekly review | Retake and flagged theory |
+| 14–15 | Timed tests, no notes | Timed tests, no notes | Timed tests, no notes | Timed tests, no notes |
+| 16 | Exam | Exam | Exam | Exam |
+
+Three habits make it work:
+
+1. **Work the question bank by learning objective**, chapter by chapter, not in random tests. Patterns are easier to see when related questions come together.
+2. **Review finished subjects every week.** Thirty minutes on your flagged questions keeps them exam-ready while you learn the next one.
+3. **Write one summary sheet per subject** as you go. By week 14 you should be revising from your own notes.
+
+For the step-by-step method inside each subject, read [How to Pass EASA ATPL Exams](https://www.aviationexam.com/en/l/how-to-pass-atpl-exams/).
+
+## How our authors did it
+
+Our question explanations are written by professional pilots who passed these same exams. We asked six of them how they organised their sittings.
+
+- **One sitting.** All subjects over three consecutive days, under an older national system. Passed first time.
+- **Three sittings (4 + 4 + 4).** Studied online without classes while working full time. Lighter subjects left for the end, when fatigue set in. All passed first time, 95% average.
+- **Three sittings (5 + 5 + 3).** Overlapping subjects grouped together. Flight Planning last. Four attempts kept available for every subject.
+- **Five sittings (3 + 3 + 3 + 2 + 3).** Load spread deliberately to maximise grades. 98% average.
+- **Three sittings.** Followed the classes available at the time. Would now group overlapping subjects.
+- **Four sittings (3 + 4 + 4 + 3).** Planned three sittings of four and adapted along the way.
+
+The plans were different. The method was not. All six studied by learning objective, retook only what they got wrong, went to the theory for what they did not understand, and took timed tests before booking. None relied on memorising answers.
+
+Some of our authors sat their exams before the current rules, with 14 subjects and no KSA100. The plans in this guide follow today's rules.
+
+## Common planning mistakes
+
+- **Booking the first sitting too early.** The clock starts on that day. Preparation time before it is free.
+- **Putting two heavy calculation subjects together.** Performance, General Navigation and Flight Planning each need full attention.
+- **Taking Flight Planning before its foundations.** It draws on almost every other subject.
+- **Leaving finished subjects untouched for months.** Without weekly review, you relearn them before the exam.
+- **Planning for six sittings.** Six is the limit, not the target. Plan for three or four and keep the rest in reserve.
+- **Forgetting KSA100.** It is assessed by your school and can delay your final sitting.
+
+## Final thoughts
+
+There is no single correct plan. Our authors passed with one sitting and with five. What they shared was a plan that suited their situation, a consistent method and enough margin for a bad day.
+
+Choose the plan closest to your situation, adjust it to your strengths, and review it after each sitting.
+
+## Ready to turn your plan into practice?
+
+The [ATPL Question Database](https://www.aviationexam.com/en/l/atpl-questions) is organised by subject and learning objective, so you can follow your plan chapter by chapter. Use **ATPL eTextbooks** for the theory behind flagged questions, **ATPL Flashcards** for memory subjects, **Last Seen questions (L200/L300)** in the final weeks before each sitting, and **Mental Math** to prepare for your school's KSA100 assessment.
+
+[BUTTON: Try Free -> ATPL Question Database]
+
+## ATPL Study Plan – FAQ
+
+### How many hours a day should I study for the ATPL?
+
+Around 5 to 6 hours a day, five days a week, if you study full time. Around 2 hours a day, six days a week, if you study around a job. Both add up to roughly 1,000 hours in total.
+
+### How many sittings should I plan?
+
+Three or four. EASA allows a maximum of six, so planning for fewer leaves room for a retake.
+
+### When does the 18-month period start?
+
+At the end of the calendar month of your first exam attempt. Time spent preparing before that does not count.
+
+### Which subjects should I take together?
+
+Subjects that build on each other: Principles of Flight with Performance, AGK with Instrumentation, General Navigation with Radio Navigation, and Air Law with Operational Procedures and Communications. Take Flight Planning last.
+
+### Do I need to pass KSA100 before my exams?
+
+You need to pass your ATO's KSA100 assessments and mental maths test before you are recommended for your final exam at first attempt. It is not an exam with your authority.
+
+### What happens if I fail a subject?
+
+Re-sit it in your next planned sitting. You have four attempts per subject. Move one planned subject to the end rather than changing the whole plan.
+
+## What to read next
+
+- [How to Pass EASA ATPL Exams](https://www.aviationexam.com/en/l/how-to-pass-atpl-exams/)
+- [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams)
+- [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/)
+- [ATPL Questions](https://www.aviationexam.com/en/l/atpl-questions)
+
+DISCLAIMER: Exam rules per EASA Part-FCL as published by Aviationexam. Workload and type labels are the Aviationexam author team's consensus, not an EASA classification. Whether a subject feels easy or hard is personal; move things around once you know yourself.

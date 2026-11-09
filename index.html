@@ -1,0 +1,421 @@
+<title>ATPL Sitting Planner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Build an EASA ATPL theory study plan: sittings, hours a day and the 18-month exam window.">
+<link rel="icon" type="image/png" href="assets/brand/aviationexam-icon-navy.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a flight-plan form. Two tappable questions, the plan drawn as sitting columns; charts below. Aviationexam brand palette: red BD2026, orange FF7202, green 00A650, blue 0073BF, grey 58595B. */
+:root{
+  --bg:#ffffff; --panel:#fafafa; --fg:#1a1a1a; --muted:#58595B; --line:#e2e3e5;
+  --accent:#BD2026; --accent-soft:#f9e6e7;
+  --alert:#FF0000;
+  --memory:#FF7202; --memory-soft:#fff0e3;
+  --calc:#00A650; --calc-soft:#e3f5ea;
+  --concept:#0073BF; --concept-soft:#e3f0fa;
+  --sans:"Open Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:Helvetica,"Helvetica Neue",Arial,sans-serif;
+}
+/* Single light theme by brand choice: always white. */
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:960px;margin:0 auto;display:grid;gap:32px}
+header h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 6px;text-wrap:balance;letter-spacing:-.01em}
+header p{margin:0;color:var(--muted);max-width:60ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h2{font-size:20px;margin:0 0 4px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 16px;max-width:65ch}
+/* questions */
+.steps{display:grid;gap:14px}
+.q{display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.q .n{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:4px;min-width:28px}
+.q .t{font-weight:600;margin:0 0 8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* result */
+.result{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 20px 22px}
+.result-head{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.result-head .name{font-size:20px;font-weight:700;margin:0}
+.result-head .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.why{color:var(--muted);margin:0 0 18px;max-width:70ch}
+.sittings{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.sit{border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.sit h3{margin:0;font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.sit h3 span{color:var(--accent)}
+.chip{border-radius:7px;padding:7px 10px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:8px;border-left:4px solid}
+.chip small{font-family:var(--mono);font-size:11px;opacity:.8}
+.chip.memory{background:var(--memory-soft);border-color:var(--memory)}
+.chip.calc{background:var(--calc-soft);border-color:var(--calc)}
+.chip.concept{background:var(--concept-soft);border-color:var(--concept)}
+.pace{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 16px}
+.pace-big{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.pace-big b{display:block;font-family:var(--mono);font-size:24px;line-height:1.15;color:var(--fg)}
+.pace-big span{font-size:13px;color:var(--muted)}
+.chip small{white-space:nowrap}
+.sit-load{margin:0;font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl{margin-top:18px}
+.tl-bar{position:relative;height:30px;margin:22px 0 8px;border-radius:6px;background:var(--panel);border:1px solid var(--line)}
+.tl-bar>div{position:absolute;top:0;bottom:0}
+.tl-prep{background:var(--concept-soft);border-right:2px solid var(--concept)}
+.tl-window{background:var(--accent-soft)}
+.tl-used{background:var(--accent);opacity:.75}
+.tl-exam{width:2px;background:var(--fg);top:-6px!important;bottom:-6px!important}
+.tl-exam span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:600;color:var(--fg)}
+.tl-key{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
+.tl-key i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.k-prep{background:var(--concept-soft);border:1px solid var(--concept)} .k-used{background:var(--accent);opacity:.75} .k-window{background:var(--accent-soft);border:1px solid var(--line)}
+.chip.ksa{background:transparent;border:1px dashed var(--accent);border-left:4px solid var(--accent);color:var(--accent);font-weight:600}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px}
+.rule{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel);min-width:0}
+.rule b{display:block;font-family:var(--mono);font-size:22px;color:var(--accent);line-height:1.1}
+.rule span{font-size:13px;color:var(--muted)}
+.chip.retake{background:var(--accent-soft);border-color:var(--alert);border-style:dashed}
+.sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;max-width:620px}
+.slider{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;font-size:14px;color:var(--muted)}
+.slider output{font-family:var(--mono);font-weight:600;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums}
+.slider input{grid-column:1/-1;width:100%;accent-color:var(--accent);height:28px;margin:0}
+.slider input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.disclaimer{border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:8px;padding:14px 16px;background:var(--panel)}
+.disclaimer h2{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.disclaimer p{margin:0;font-size:13px;color:var(--muted);max-width:80ch}
+.brand{display:inline-block;margin:0 0 22px}
+.brand img{display:block;height:auto;width:min(240px,60vw)}
+.hint{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+.opt-note{font-weight:400;font-size:13px;color:var(--muted);margin-left:6px}
+.opts.subj .opt{font-size:13px;padding:6px 12px}
+.opt:disabled{opacity:.4;cursor:not-allowed}
+.month input{font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.month input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.alert{margin:0 0 14px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:500}
+.alert.over{background:#ffe5e5;border-left:4px solid var(--alert);color:#7a0000}
+.alert.tight{background:var(--memory-soft);border-left:4px solid var(--memory);color:#7a3600}
+.pace-big.over b{color:var(--alert)} .pace-big.tight b{color:var(--memory)}
+.chip.strong{opacity:.75;border-left-style:dotted}
+.hours-note{margin:10px 0 0;font-size:12.5px;color:var(--muted);max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.note{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14px}
+/* decision tree svg + dependency map */
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--mono)}
+svg .m{font-family:var(--mono)}
+/* gantt */
+.gantt{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;align-items:center;font-size:13px}
+.gantt .lbl{font-weight:500;min-width:0}
+.gantt .track{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;height:26px}
+.gantt .track div{border-radius:3px}
+.gantt .axis{grid-column:2;display:grid;grid-template-columns:repeat(16,1fr);font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center}
+.p1{background:var(--concept)} .p2{background:var(--calc)} .p3{background:var(--line)} .p4{background:var(--accent)} .p5{background:var(--fg)}
+.glegend{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:12px;font-size:13px;color:var(--muted)}
+.glegend i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+@media (max-width:520px){ .q{grid-template-columns:1fr} .q .n{display:none} .gantt{grid-template-columns:110px 1fr} }
+@media (prefers-reduced-motion:no-preference){ .chip{transition:transform .15s} }
+footer{color:var(--muted);font-size:13px;max-width:70ch}
+</style>
+
+<div class="wrap">
+<header>
+  <a class="brand" href="https://www.aviationexam.com/" aria-label="Aviationexam"><img src="assets/brand/aviationexam-logo.png" alt="Aviationexam" width="240" height="33"></a>
+  <p class="eyebrow">EASA ATPL(A) theory</p>
+  <h1>ATPL Sitting Planner</h1>
+  <p>Answer a few questions and get a sitting plan for the 13 subjects, with dates, hours a day and the 18-month clock. It follows the order in which subjects build on each other, keeps sittings in reserve, and ends with Flight Planning.</p>
+  <div class="rules" aria-label="Current EASA exam rules">
+    <div class="rule"><b>13</b><span>subjects examined by the authority (090 Comms is one paper)</span></div>
+    <div class="rule"><b>KSA100</b><span>assessed by your ATO before your final exam, not an exam subject</span></div>
+    <div class="rule"><b>6</b><span>sittings maximum</span></div>
+    <div class="rule"><b>4</b><span>attempts per subject</span></div>
+    <div class="rule"><b>18 mo</b><span>from the end of the month of your first exam</span></div>
+    <div class="rule"><b>75%</b><span>pass mark, no negative marking</span></div>
+  </div>
+</header>
+
+<section>
+  <p class="eyebrow">Step 1 of 2</p>
+  <h2>Who are you?</h2>
+  <p class="sub">The plan below updates as you go.</p>
+  <div class="steps">
+    <div class="q"><div class="n">Q1</div><div><p class="t">How much time can you give it?</p><div class="opts" data-key="time">
+      <button class="opt" data-val="full" aria-pressed="true">Full time</button>
+      <button class="opt" data-val="job" aria-pressed="false">Around a job or other commitments</button></div></div></div>
+    <div class="q"><div class="n">Q2</div><div><p class="t">How do you feel about calculations?</p><div class="opts" data-key="maths">
+      <button class="opt" data-val="easy" aria-pressed="true">They come easily (engineering, science)</button>
+      <button class="opt" data-val="hard" aria-pressed="false">Not my strong side</button></div></div></div>
+    <div class="q"><div class="n">Q3</div><div><p class="t">How much can you study?</p>
+      <div class="sliders">
+        <label class="slider" for="hours"><span>Hours a day</span><output id="hoursOut" for="hours">6 h</output>
+          <input type="range" id="hours" min="1" max="8" step="0.5" value="6"></label>
+        <label class="slider" for="days"><span>Days a week</span><output id="daysOut" for="days">5 days</output>
+          <input type="range" id="days" min="3" max="7" step="1" value="5"></label>
+      </div>
+      <p class="hint" id="hoursHint"></p></div></div>
+    <div class="q"><div class="n">Q4</div><div><p class="t">When do you start studying?</p>
+      <label class="month"><span class="sr">Start month</span><input type="month" id="start"></label></div></div>
+    <div class="q"><div class="n">Q5</div><div><p class="t">Any subjects you already know well? <span class="opt-note">Optional, up to 3</span></p><div class="opts subj" id="strongOpts"></div><p class="hint">Each one you pick gets 30% less study time.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Step 2 of 2</p>
+  <h2>Your plan</h2>
+  <div class="result" id="result"></div>
+</section>
+
+<section>
+  <h2>The decision flow behind it</h2>
+  <p class="sub">The first two answers choose the plan. Hours, start date and strong subjects then set its timing.</p>
+  <div class="chart" id="flow"></div>
+</section>
+
+<section>
+  <h2>Why the order matters</h2>
+  <p class="sub">Arrows mean "study this first". Flight Planning uses almost everything, so it goes last in every plan.</p>
+  <div class="chart" id="deps"></div>
+</section>
+
+<section>
+  <h2>One sitting, week by week</h2>
+  <p class="sub">A 16-week template for a four-subject sitting. Stretch to 20 weeks around a job, compress to 12 full time. The shape stays the same.</p>
+  <div class="chart">
+    <div class="gantt" id="gantt"></div>
+    <div class="glegend">
+      <span><i class="p1"></i>First pass, LO by LO + notes</span>
+      <span><i class="p2"></i>Retake wrong, flag &amp; read</span>
+      <span><i class="p3"></i>Weekly flagged review (30 min)</span>
+      <span><i class="p4"></i>Timed exams, no notes</span>
+      <span><i class="p5"></i>Exam week</span>
+    </div>
+  </div>
+</section>
+
+<aside class="disclaimer" aria-labelledby="disc-h">
+  <h2 id="disc-h">Disclaimer</h2>
+  <p>Exam rules per EASA Part-FCL as published by Aviationexam. Workload and type labels are the Aviationexam author team's consensus, not an EASA classification. Whether a subject feels easy or hard is personal; move things around once you know yourself.</p>
+</aside>
+</div>
+
+<script>
+const S = {
+  pof:  {n:"Principles of Flight", t:"concept", w:"heavy"},
+  agk:  {n:"AGK Systems",          t:"concept", w:"heavy"},
+  ins:  {n:"Instruments",          t:"concept", w:"med"},
+  mb:   {n:"Mass & Balance",       t:"calc",    w:"light"},
+  perf: {n:"Performance",          t:"calc",    w:"heavy"},
+  fp:   {n:"Flight Planning",      t:"calc",    w:"heavy"},
+  hpl:  {n:"Human Performance",    t:"memory",  w:"light"},
+  met:  {n:"Meteorology",          t:"concept", w:"heavy"},
+  gnav: {n:"General Navigation",   t:"calc",    w:"heavy"},
+  rnav: {n:"Radio Navigation",     t:"concept", w:"med"},
+  ops:  {n:"Operational Procedures",t:"memory", w:"med"},
+  law:  {n:"Air Law",              t:"memory",  w:"med"},
+  com:  {n:"Communications",       t:"memory",  w:"light"},
+};
+const HOURS = {heavy:100, med:70, light:40}; // ~1,000 h split by workload
+const OVERLAP_WEEKS = 4; // sitting 2's first subject is started before sitting 1 is booked
+const PACE = {
+  "full-easy": {days:5, target:6},
+  "full-hard": {days:5, target:5},
+  "job-easy":  {days:6, target:2},
+  "job-hard":  {days:6, target:2},
+};
+const PLANS = {
+  "full-easy": {name:"Plan A – Full time, three sittings",
+    why:"The heavy foundation subjects come first, while the 18-month clock is not yet running. Light subjects and Flight Planning close the plan.",
+    sits:[["pof","agk","gnav","ins"],["perf","rnav","met","law"],["ops","hpl","mb","com","fp"]]},
+  "full-hard": {name:"Plan B – Full time, four sittings",
+    why:"Heavy foundations first, and never more than one heavy calculation subject per sitting. Light subjects and Flight Planning close the plan. Start using your flight computer from the first week.",
+    sits:[["pof","agk","ins"],["gnav","law","met"],["perf","rnav","hpl","ops"],["mb","com","fp"]]},
+  "job-easy": {name:"Plan C – Around a job, calculation foundations first",
+    why:"Principles of Flight, AGK and General Navigation in the first sitting, while the clock is not running. Light subjects and Flight Planning close the plan.",
+    sits:[["pof","agk","gnav"],["ins","rnav","perf"],["met","law","ops","hpl"],["mb","com","fp"]]},
+  "job-hard": {name:"Plan D – Around a job, calculation subjects spread out",
+    why:"Concept foundations first. General Navigation, Performance and Flight Planning each go in a different sitting, so you never face two heavy calculation subjects together.",
+    sits:[["pof","agk","hpl"],["gnav","ins","law"],["perf","rnav","met"],["ops","mb","com","fp"]]},
+};
+const STRONG_FACTOR = 0.7, STRONG_MAX = 3;
+const CODES = {law:"010",agk:"021",ins:"022",mb:"031",perf:"032",fp:"033",hpl:"040",met:"050",gnav:"061",rnav:"062",ops:"070",pof:"081",com:"090"};
+const nextMonth = (()=>{ const d=new Date(); const m=new Date(d.getFullYear(), d.getMonth()+1, 1); return `${m.getFullYear()}-${String(m.getMonth()+1).padStart(2,"0")}`; })();
+const state = {time:"full", maths:"easy", hours:6, days:5, start:nextMonth, strong:[]};
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const monthIdx = d => d.getFullYear()*12 + d.getMonth();
+const label = idx => `${MON[idx%12]} ${Math.floor(idx/12)}`;
+const subjHours = k => Math.round(HOURS[S[k].w] * (state.strong.includes(k) ? STRONG_FACTOR : 1));
+
+function renderControls(){
+  document.getElementById("hours").value = state.hours;
+  document.getElementById("days").value = state.days;
+  document.getElementById("hoursOut").textContent = `${state.hours} h`;
+  document.getElementById("daysOut").textContent = `${state.days} days`;
+  document.getElementById("hoursHint").textContent =
+    `${(state.hours*state.days).toFixed(1).replace(".0","")} hours a week. ` + (state.time==="full"
+    ? "Typical full-time pace: 5–6 h a day, 5 days a week. Classes count towards these hours."
+    : "Typical pace around a job: 2 h a day, 6 days a week (weekday evenings plus one weekend day).");
+  const so = document.getElementById("strongOpts");
+  so.innerHTML = Object.keys(CODES).sort((a,b)=>CODES[a].localeCompare(CODES[b])).map(k=>{
+    const on = state.strong.includes(k), full = state.strong.length>=STRONG_MAX && !on;
+    return `<button class="opt" data-k="${k}" aria-pressed="${on}" ${full?"disabled":""}>${CODES[k]} ${S[k].n}</button>`;
+  }).join("");
+}
+
+function render(){
+  const plan = PLANS[state.time+"-"+state.maths];
+  const el = document.getElementById("result");
+  const sits = plan.sits.map(s=>s.slice());
+  const courseNote = "In an integrated course your school sets the exam dates, so use the plan to decide what to prioritise inside each block. In a modular course you choose the dates: book each sitting only when your timed tests sit above 90%.";
+  const clockNote = " The 18-month clock starts at your first exam, not your first class. Months spent preparing before sitting 1 are free, so use them: book sitting 1 only when its subjects pass timed tests above 90% and you have already started the first subject of sitting 2.";
+  const retakeNote = " If you fail a subject, re-sit it in your next planned sitting and move one planned subject to the end.";
+  const days = state.days, hpd = state.hours;
+  const load = sits.map(s=>{
+    const h = s.reduce((a,k)=>a+subjHours(k),0);
+    const weeks = Math.ceil(h/(hpd*days));
+    return {h, weeks, perDay: h/(weeks*days)};
+  });
+  // exam week of each sitting: sitting 1 waits OVERLAP_WEEKS while sitting 2's first subject starts
+  let cum = 0;
+  const examWk = load.map((l,i)=>{ cum += l.weeks; return i===0 ? cum + OVERLAP_WEEKS : cum; });
+  const [sy, sm] = state.start.split("-").map(Number);
+  const startDate = new Date(sy, sm-1, 1);
+  const examIdx = examWk.map(w=>monthIdx(new Date(startDate.getTime() + w*7*864e5)));
+  const startIdx = monthIdx(startDate);
+  const firstIdx = examIdx[0], lastIdx = examIdx[examIdx.length-1];
+  const deadlineIdx = firstIdx + 18;           // end of this calendar month
+  const clockUsed = lastIdx - firstIdx, prepMo = firstIdx - startIdx, totalMo = lastIdx - startIdx;
+  const first = examWk[0], last = examWk[examWk.length-1];
+  const totalH = load.reduce((a,l)=>a+l.h,0);
+  const span = Math.max(last, first + 18*4.345);
+  const pct = w => (w/span*100).toFixed(2)+"%";
+  const dayLabel = `${days} days a week, ${(hpd*days).toFixed(1).replace(".0","")} h a week`;
+  const status = clockUsed > 18 ? "over" : clockUsed > 15 ? "tight" : "ok";
+  const statusMsg = {
+    over:`This plan needs ${clockUsed} months on the exam clock, more than the 18 allowed. Study more hours a day, or do more of the work before your first sitting.`,
+    tight:`This plan uses ${clockUsed} of 18 months, which leaves little room for a retake. Consider more hours a day, or more preparation before your first sitting.`,
+    ok:""}[status];
+  el.innerHTML = `
+    <div class="result-head"><p class="name">${plan.name}</p><span class="meta">${sits.length} sittings · ${totalH} h · ${label(startIdx)} to ${label(lastIdx)}</span></div>
+    <p class="why">${plan.why}</p>
+    ${statusMsg?`<p class="alert ${status}" role="status">${statusMsg}</p>`:""}
+    <div class="pace">
+      <div class="pace-big"><b>${hpd} h</b><span>a day, ${dayLabel}</span></div>
+      <div class="pace-big"><b>${label(firstIdx)}</b><span>first exam, after ${prepMo} months of preparation outside the clock</span></div>
+      <div class="pace-big ${status}"><b>${clockUsed} of 18</b><span>months of the exam clock used. Deadline: end of ${label(deadlineIdx)}</span></div>
+    </div>
+    <div class="sittings">${sits.map((s,i)=>`
+      <div class="sit"><h3>Sitting ${i+1}<span>${label(examIdx[i])}</span></h3>
+        <p class="sit-load">${load[i].h} h · ${load[i].weeks} weeks · ${load[i].perDay.toFixed(1)} h/day</p>
+        ${i===sits.length-1?`<div class="chip ksa">Pass KSA100 first<small>at your ATO</small></div>`:""}
+        ${s.map(k=>`<div class="chip ${S[k].t}${state.strong.includes(k)?" strong":""}">${S[k].n}<small>${subjHours(k)} h</small></div>`).join("")}
+      </div>`).join("")}
+    </div>
+    <div class="tl" role="img" aria-label="Timeline: ${Math.round(prepMo)} months of free preparation, then ${Math.round(clockUsed)} of 18 months on the exam clock">
+      <div class="tl-bar">
+        <div class="tl-prep" style="left:0;width:${pct(first)}"></div>
+        <div class="tl-window" style="left:${pct(first)};width:${pct(18*4.345)}"></div>
+        <div class="tl-used" style="left:${pct(first)};width:${pct(last-first)}"></div>
+        ${examWk.map((w,i)=>`<div class="tl-exam" style="left:${pct(w)}"><span>S${i+1}</span></div>`).join("")}
+      </div>
+      <div class="tl-key">
+        <span><i class="k-prep"></i>Preparation before sitting 1: no clock, take your time</span>
+        <span><i class="k-used"></i>Exam clock in use</span>
+        <span><i class="k-window"></i>Rest of the 18-month window</span>
+      </div>
+    </div>
+    <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span></div>
+    <p class="note">${courseNote}${clockNote}${retakeNote}</p>
+    <p class="hours-note">Hours assume about 1,000 h in total: the EASA minimum of 650 h (modular) or 750 h (integrated) of theory instruction plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p>`;
+}
+document.querySelectorAll(".opts[data-key]").forEach(g=>{
+  g.addEventListener("click",e=>{
+    const b=e.target.closest(".opt"); if(!b) return;
+    g.querySelectorAll(".opt").forEach(o=>o.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    state[g.dataset.key]=b.dataset.val;
+    if(g.dataset.key==="time"){ const p=PACE[state.time+"-"+state.maths]; state.hours=p.target; state.days=p.days; }
+    renderControls(); render();
+  });
+});
+["hours","days"].forEach(id=>document.getElementById(id).addEventListener("input",e=>{
+  state[id]=Number(e.target.value); renderControls(); render();
+}));
+document.getElementById("strongOpts").addEventListener("click",e=>{
+  const b=e.target.closest(".opt"); if(!b||b.disabled) return;
+  const k=b.dataset.k;
+  state.strong = state.strong.includes(k) ? state.strong.filter(x=>x!==k) : [...state.strong, k].slice(0,STRONG_MAX);
+  renderControls(); render();
+});
+const startEl=document.getElementById("start");
+startEl.value=state.start;
+startEl.addEventListener("change",()=>{ if(/^\d{4}-\d{2}$/.test(startEl.value)){ state.start=startEl.value; render(); } });
+renderControls(); render();
+
+/* decision flow SVG */
+(function(){
+  const box=(x,y,w,h,txt,cls="")=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${cls?'var(--accent-soft)':'none'}" stroke="${cls?'var(--accent)':'var(--line)'}" stroke-width="${cls?2:1.25}"/>
+    ${txt.split("|").map((l,i,a)=>`<text x="${x+w/2}" y="${y+h/2+ (i-(a.length-1)/2)*15 +4}" text-anchor="middle" font-size="12.5" font-weight="${cls?600:500}" fill="var(--fg)">${l}</text>`).join("")}`;
+  const dia=(cx,cy,w,h,txt)=>`<polygon points="${cx-w/2},${cy} ${cx},${cy-h/2} ${cx+w/2},${cy} ${cx},${cy+h/2}" fill="none" stroke="var(--fg)" stroke-width="1.25"/>
+    ${txt.split("|").map((l,i,a)=>`<text x="${cx}" y="${cy+(i-(a.length-1)/2)*14+4}" text-anchor="middle" font-size="12" fill="var(--fg)">${l}</text>`).join("")}`;
+  const ar=(d)=>`<path d="${d}" fill="none" stroke="var(--muted)" stroke-width="1.25" marker-end="url(#fa)"/>`;
+  const lab=(x,y,t,a="middle")=>`<text class="m" x="${x}" y="${y}" text-anchor="${a}" font-size="11" fill="var(--muted)">${t}</text>`;
+  document.getElementById("flow").innerHTML=`<svg viewBox="0 0 760 470" role="img" aria-label="Decision flow: time available, then calculations, then adjustments">
+  <defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  ${dia(380,50,220,60,"Time available?")}
+  ${ar("M300 65 L190 110")} ${lab(230,78,"full time","end")}
+  ${ar("M460 65 L570 110")} ${lab(530,78,"around a job","start")}
+  ${dia(190,150,200,60,"Calculations?")}
+  ${dia(570,150,200,60,"Calculations?")}
+  ${ar("M150 170 L90 230")} ${lab(108,198,"easy","end")}
+  ${ar("M230 170 L290 230")} ${lab(272,198,"hard","start")}
+  ${ar("M530 170 L470 230")} ${lab(488,198,"easy","end")}
+  ${ar("M610 170 L670 230")} ${lab(652,198,"hard","start")}
+  ${box(20,232,140,58,"Plan A|3 sittings · 4/4/5",1)}
+  ${box(220,232,140,58,"Plan B|4 sittings · 3/3/4/3",1)}
+  ${box(400,232,140,58,"Plan C|4 sittings · 3/3/4/3",1)}
+  ${box(600,232,140,58,"Plan D|4 sittings · 3/3/3/4",1)}
+  ${ar("M90 290 V340")} ${ar("M290 290 V340")} ${ar("M470 290 V340")} ${ar("M670 290 V340")}
+  ${box(20,342,720,36,"Book each sitting only when timed tests sit above 90%")}
+  ${ar("M380 378 V404")}
+  ${box(20,406,720,36,"Pass KSA100 at your ATO before the last sitting")}
+  </svg>`;
+})();
+
+/* dependency map SVG */
+(function(){
+  const W=104,H=48,rA=70,rB=190,rC=298,c=[76,192,308,424,540,656];
+  const col={concept:"var(--concept)",calc:"var(--calc)",memory:"var(--memory)"};
+  const soft={concept:"var(--concept-soft)",calc:"var(--calc-soft)",memory:"var(--memory-soft)"};
+  const node=(cx,cy,k)=>{const s=S[k];const l=s.n.split(" ");const lines=l.length>1&&s.n.length>12?[l.slice(0,Math.ceil(l.length/2)).join(" "),l.slice(Math.ceil(l.length/2)).join(" ")]:[s.n];
+    return `<rect x="${cx-W/2}" y="${cy-H/2}" width="${W}" height="${H}" rx="8" fill="${soft[s.t]}" stroke="${col[s.t]}" stroke-width="1.25"/>${lines.map((t,i)=>`<text x="${cx}" y="${cy+(i-(lines.length-1)/2)*15+4}" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--fg)">${t}</text>`).join("")}`;};
+  const dn=(x,y1,y2)=>`<path d="M${x} ${y1}V${y2}" fill="none" stroke="var(--muted)" stroke-width="1.25" marker-end="url(#da)"/>`;
+  const sl=(x1,y1,x2,y2)=>`<path d="M${x1} ${y1}L${x2} ${y2}" fill="none" stroke="var(--muted)" stroke-width="1.25" marker-end="url(#da)"/>`;
+  document.getElementById("deps").innerHTML=`<svg viewBox="0 0 760 350" role="img" aria-label="Subject dependency map in three tiers">
+  <defs><marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+  <text class="m" x="24" y="32" font-size="11" fill="var(--muted)">FOUNDATIONS · STUDY FIRST</text>
+  <text class="m" x="250" y="136" text-anchor="middle" font-size="11" fill="var(--muted)">BUILD ON THEM</text>
+  <text class="m" x="192" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">COMBINES EVERYTHING</text>
+  ${dn(c[0],rA+24,rB-24)}${sl(c[1]-40,rA+24,c[0]+40,rB-24)}${dn(c[1],rA+24,rB-24)}${dn(c[2],rA+24,rB-24)}${dn(c[4],rA+24,rB-24)}${sl(c[3]+40,rA+24,c[4]-40,rB-24)}${sl(c[5]-40,rA+24,c[4]+40,rB-24)}${sl(c[4]+40,rA+24,c[5]-40,rB-24)}
+  ${dn(c[0],rB+24,rC-24)}${dn(c[2],rB+24,rC-24)}${dn(c[3],rB+24,rC-24)}${dn(c[4],rB+24,rC-24)}
+  ${node(c[0],rA,"pof")}${node(c[1],rA,"agk")}${node(c[2],rA,"gnav")}${node(c[3],rA,"met")}${node(c[4],rA,"law")}${node(c[5],rA,"hpl")}
+  ${node(c[0],rB,"perf")}${node(c[1],rB,"ins")}${node(c[2],rB,"rnav")}${node(c[3],rB,"mb")}${node(c[4],rB,"ops")}${node(c[5],rB,"com")}
+  <rect x="24" y="${rC-24}" width="684" height="48" rx="8" fill="var(--calc-soft)" stroke="var(--calc)" stroke-width="2"/>
+  <text x="366" y="${rC+4}" text-anchor="middle" font-size="13" font-weight="600" fill="var(--fg)">Flight Planning &amp; Monitoring</text>
+  </svg>`;
+})();
+
+/* gantt */
+(function(){
+  // phases per week (1-16): 1 first pass, 2 retake/flag, 3 weekly review, 4 timed, 5 exam
+  const rows=[
+    ["Heavy subject 1",[1,1,1,1,2,2,3,3,3,3,3,3,3,4,4,5]],
+    ["Heavy subject 2",[0,0,0,0,1,1,1,1,2,2,3,3,3,4,4,5]],
+    ["Light subject 1",[0,0,0,0,0,0,0,0,1,1,2,2,3,4,4,5]],
+    ["Light subject 2",[0,0,0,0,0,0,0,0,0,0,1,1,2,4,4,5]],
+  ];
+  const g=document.getElementById("gantt");
+  g.innerHTML=rows.map(([n,w])=>`<div class="lbl">${n}</div><div class="track" role="img" aria-label="${n} schedule">${w.map(p=>`<div class="${p?'p'+p:''}"></div>`).join("")}</div>`).join("")
+    +`<div></div><div class="axis">${Array.from({length:16},(_,i)=>`<span>${i+1}</span>`).join("")}</div>`;
+})();
+</script>

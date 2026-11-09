@@ -1,0 +1,10 @@
+{
+  "name": "avex-atpl-study-planner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aviationexam ATPL study planner and blog article: EASA ATPL theory sittings, hours a day and the 18-month window.",
+  "scripts": {
+    "build:embed": "node scripts/build-embed.js",
+    "check": "node scripts/check-plans.js"
+  }
+}
