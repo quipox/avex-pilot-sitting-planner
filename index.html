@@ -4,13 +4,14 @@
 <link rel="icon" type="image/png" href="assets/brand/aviationexam-icon-navy.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: aviationexam.com look. Navy rounded nav bar and a sky-blue hero with a live plan card,
-   then the planner on white. Palette: navy 213C6F and UI blue (from the website), concept blue 0073BF,
+/* Layout: aviationexam.com blog-article look. White strip with the navy nav bar, a dark band fading to white,
+   a blue-to-lilac gradient hero card with rainbow edges and a teal rule, then centred navy headings with a
+   teal rule over a white body. Palette: navy 213C6F, card blues 325BA4/3F64AB, teal 51F3C0, concept blue 0073BF,
    green 00A650, orange FF7202, red BD2026 (KSA100, warnings), extra red FF0000 (limit exceeded), grey 58595B. */
 :root{
   --bg:#ffffff; --panel:#f7f9fc; --fg:#1a1a1a; --muted:#58595B; --line:#e2e6ec;
   --navy:#213C6F; --navy-2:#1A3160;
-  --accent:#2B78D8; --accent-soft:#e8f1fc;
+  --accent:#3F64AB; --accent-soft:#E9EEF8; --teal:#51F3C0; --cyan:#4EE8F6;
   --red:#BD2026; --red-soft:#f9e6e7; --alert:#FF0000;
   --memory:#FF7202; --memory-soft:#fff0e3;
   --calc:#00A650; --calc-soft:#e3f5ea;
@@ -25,51 +26,53 @@ body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.
 a{color:var(--accent)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* ---------- hero (aviationexam.com style) ---------- */
-.hero{background:
-  radial-gradient(120% 60% at 70% 115%,#ffffff 0 30%,rgba(255,255,255,0) 60%),
-  radial-gradient(60% 30% at 15% 100%,rgba(255,255,255,.9),rgba(255,255,255,0) 70%),
-  linear-gradient(180deg,#1F55C2 0%,#235CCD 35%,#3F85EB 68%,#BFD8F6 88%,#ffffff 100%);
-  padding-block:16px 72px;color:#fff}
-.topbar{max-width:1280px;margin:0 auto;background:var(--navy);border-radius:10px;display:flex;align-items:center;gap:24px;padding:14px 24px;box-shadow:0 8px 24px rgba(10,30,70,.25)}
-.topbar .logo img{display:block;width:132px;height:auto}
-.topbar nav{display:flex;gap:28px;margin-left:auto;align-items:center}
-.topbar nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+/* ---------- header + hero (aviationexam.com blog article) ---------- */
+.site-top{background:#fff;padding-block:8px 0}
+.topbar{max-width:960px;margin:0 auto;background:var(--navy);border-radius:6px;display:flex;align-items:center;gap:24px;padding:12px 22px;position:relative;z-index:1}
+.topbar .logo img{display:block;width:128px;height:auto}
+.topbar nav{display:flex;gap:26px;margin-left:auto;align-items:center}
+.topbar nav a{color:#fff;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
 .topbar nav a:hover{text-decoration:underline}
-.topbar .cta-sm{background:#fff;color:var(--accent);border-radius:5px;padding:7px 12px}
-.hero-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:40px;align-items:center;padding-top:72px}
-.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.12;font-weight:800;margin:0 0 22px;letter-spacing:-.01em;text-wrap:balance}
-.hero p.lead{font-size:clamp(17px,1.8vw,22px);line-height:1.45;margin:0 0 32px;max-width:34ch;color:#fff}
-.btns{display:flex;flex-wrap:wrap;gap:16px}
-.btn{display:inline-block;border-radius:5px;padding:13px 22px;font:600 17px/1.2 var(--sans);text-decoration:none;border:0;cursor:pointer}
-.btn.primary{background:var(--accent);color:#fff}
-.btn.white{background:#fff;color:var(--accent)}
-.btn:focus-visible,.topbar a:focus-visible{outline:3px solid #fff;outline-offset:2px}
-/* live plan card, echoing the PilotDNA card */
-.hcard{background:rgba(26,49,96,.92);border:1px solid rgba(255,255,255,.35);border-radius:12px;padding:16px 18px;box-shadow:0 12px 30px rgba(10,30,70,.35);min-width:0}
+.topbar .cta-sm{background:#fff;color:var(--accent);border-radius:4px;padding:7px 12px}
+.topbar a:focus-visible,.hero a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.hero{background:linear-gradient(180deg,#06060A 0%,#0A0B11 22%,#121827 42%,#A1A9B6 72%,#E7EAF1 90%,#F8F7F9 100%);padding-block:28px 64px}
+.hero-card{max-width:960px;margin:0 auto;position:relative;border-radius:16px;overflow:hidden;color:#fff;
+  background:linear-gradient(115deg,#325BA4 0%,#4A6BAE 30%,#7F87C2 58%,#B5A8D7 80%,#D8C3E2 100%);
+  box-shadow:0 18px 40px rgba(10,20,50,.22);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:32px;align-items:center;padding:42px 32px 44px}
+.hero-card::before,.hero-card::after{content:"";position:absolute;left:0;right:0;height:4px}
+.hero-card::before{top:0;background:linear-gradient(90deg,#4EE8F6,#51FA9C,#88FF1A,#DACD00,#F5672F,#F54273,#E13CBD,#A37FFF,#7DBBFF)}
+.hero-card::after{bottom:0;background:linear-gradient(90deg,#53FE8A,#50F1C9,#4EE0FF,#709EFF,#BD5EFF,#DB42C8,#F0428B,#DAB327,#D2EC00)}
+.hero h1{font-size:clamp(32px,4.4vw,48px);line-height:1.08;font-weight:700;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.hero .h1-sub{display:block;font-size:clamp(20px,2.2vw,26px);font-weight:400;line-height:1.3;margin-top:8px}
+.rule-teal{display:block;width:68px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));margin:24px 0}
+.hero p.lead{font-size:17px;line-height:1.6;margin:0 0 20px;max-width:46ch;color:#fff}
+.hero p.small{font-size:14px;line-height:1.55;margin:0;max-width:52ch;color:#fff}
+.hero p.small a{color:#fff;font-weight:700}
+/* live exam-clock card, glass on the gradient */
+.hcard{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);border-radius:12px;padding:16px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);min-width:0;color:#fff}
 .hcard-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
-.hcard-top b{font-size:14px;letter-spacing:.14em}
-.hcard-top b span{color:var(--memory)}
-.tag{border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--red)}
-.tag.ok{background:var(--calc)} .tag.warn{background:var(--memory)}
+.hcard-top b{font-size:13px;letter-spacing:.14em}
+.tag{border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--red);color:#fff}
+.tag.ok{background:var(--navy)} .tag.warn{background:var(--memory)}
 .hcard-mid{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
 .ring{position:relative;width:84px;height:84px}
 .ring svg{width:84px;height:84px;transform:rotate(-90deg)}
 .ring div{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}
 .ring div b{font-size:26px}
-.ring div span{font-size:11px;opacity:.8;margin-top:3px}
+.ring div span{font-size:11px;margin-top:3px}
 .hrows{display:grid;gap:8px;font-size:13px;min-width:0}
-.hrows div{display:flex;justify-content:space-between;gap:8px;border-bottom:2px solid rgba(255,255,255,.25);padding-bottom:4px}
+.hrows div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px}
 .hrows div b{font-variant-numeric:tabular-nums;white-space:nowrap}
-.hcard-foot{margin-top:14px;border:1px solid rgba(0,166,80,.6);background:rgba(0,166,80,.18);border-radius:6px;padding:8px 10px;font-size:13px;font-weight:600}
-.hcard-foot.warn{border-color:rgba(255,114,2,.7);background:rgba(255,114,2,.2)}
-.hcard-foot.over{border-color:rgba(255,0,0,.7);background:rgba(255,0,0,.22)}
+.hcard-foot{margin-top:14px;border-radius:6px;padding:8px 10px;font-size:13px;font-weight:600;background:rgba(33,60,111,.55)}
+.hcard-foot.warn{background:rgba(255,114,2,.55)}
+.hcard-foot.over{background:rgba(255,0,0,.55)}
 
 /* ---------- body ---------- */
-.wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px;padding-block:8px 56px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-weight:600}
-h2{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin:0 0 6px;color:var(--navy);text-wrap:balance}
-.sub{color:var(--muted);margin:0 0 18px;max-width:68ch}
+.wrap{max-width:960px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px;padding-block:8px 56px}
+
+h2{font-size:clamp(24px,2.6vw,30px);font-weight:400;margin:0;color:var(--navy);text-align:center;text-wrap:balance}
+h2::after{content:"";display:block;width:40px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));margin:14px auto 0}
+.sub{color:var(--muted);margin:16px auto 24px;max-width:62ch;text-align:center}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 @media (min-width:860px){ .rules{grid-template-columns:repeat(3,1fr)} }
 .rule{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel);min-width:0}
@@ -85,7 +88,7 @@ h2{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin:0 0 6px;color:var(--n
 .opt{max-width:100%;text-align:left;border:1px solid #cfd6e0;background:#fff;color:var(--fg);font:inherit;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer}
 .opt:hover{border-color:var(--accent)}
 .opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.opt[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.opt[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
 .opt:disabled{opacity:.4;cursor:not-allowed}
 .opts.subj .opt{font-size:13px;padding:6px 12px}
 .opt-note{font-weight:400;font-size:13px;color:var(--muted);margin-left:6px}
@@ -93,7 +96,7 @@ h2{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin:0 0 6px;color:var(--n
 .sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px 24px;max-width:620px}
 .slider{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;font-size:14px;color:var(--muted)}
 .slider output{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums}
-.slider input{grid-column:1/-1;width:100%;accent-color:var(--accent);height:28px;margin:0}
+.slider input{grid-column:1/-1;width:100%;accent-color:var(--navy);height:28px;margin:0}
 .month input{font:inherit;font-size:14px;padding:7px 12px;border:1px solid #cfd6e0;border-radius:8px;background:#fff;color:var(--fg)}
 .month input:focus-visible,.slider input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* plan */
@@ -109,7 +112,7 @@ h2{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin:0 0 6px;color:var(--n
 .tbtn:hover{border-color:var(--accent);color:var(--accent)}
 .tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .tbtn:disabled{opacity:.45;cursor:not-allowed}
-.tbtn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.tbtn.solid{background:var(--navy);border-color:var(--accent);color:#fff}
 .pace{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 16px}
 .pace-big{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0;background:#fff}
 .pace-big b{display:block;font-family:var(--mono);font-size:24px;line-height:1.15;color:var(--navy)}
@@ -194,31 +197,35 @@ svg text{font-family:var(--mono)}
 .gnote{margin:12px 0 0;font-size:13px;color:var(--muted)}
 /* disclaimer: full width, even padding */
 .disclaimer{border:1px solid var(--line);border-left:4px solid var(--muted);border-radius:8px;padding:14px 18px;background:var(--panel);display:grid;gap:4px}
-.disclaimer h2{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:700}
+.disclaimer h2{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:700;text-align:left}
+.disclaimer h2::after{display:none}
 .disclaimer p{margin:0;font-size:13px;color:var(--muted)}
 .foot{background:var(--navy);color:#cdd6e6;padding-block:28px}
-.foot-in{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;font-size:13px}
+.foot-in{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;font-size:13px}
 .foot img{display:block;width:150px;height:auto}
 .foot a{color:#fff}
-@media (max-width:820px){ .hero-in{grid-template-columns:1fr;padding-top:44px} .topbar nav a:not(.cta-sm){display:none} }
+@media (max-width:820px){ .hero-card{grid-template-columns:1fr;padding:34px 22px 36px} .topbar nav a:not(.cta-sm){display:none} }
 @media (max-width:520px){ .q{grid-template-columns:minmax(0,1fr)} .q .n{display:none} .topbar{padding:12px 14px} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 
-<div class="hero gutter">
+<div class="site-top gutter">
   <div class="topbar">
-    <a class="logo" href="https://www.aviationexam.com/en/" aria-label="Aviationexam home"><img src="assets/brand/aviationexam-logo-white.png" alt="Aviationexam" width="132" height="18"></a>
+    <a class="logo" href="https://www.aviationexam.com/en/" aria-label="Aviationexam home"><img src="assets/brand/aviationexam-logo-white.png" alt="Aviationexam" width="128" height="18"></a>
     <nav aria-label="Aviationexam">
       <a href="https://www.aviationexam.com/en/l/atpl-questions">ATPL Questions</a>
       <a href="https://www.aviationexam.com/en/l/">Blog</a>
       <a class="cta-sm" href="https://www.aviationexam.com/en/store/atpl-question-bank">Question bank</a>
     </nav>
   </div>
-  <div class="hero-in">
+</div>
+<div class="hero gutter">
+  <div class="hero-card">
     <div>
-      <h1>Plan your ATPL sittings.<br>Pass every exam in time.</h1>
-      <p class="lead">Answer a few questions and get a sitting plan for the 13 subjects, with dates, hours a day and the 18-month clock. Then move the subjects around to make it your own.</p>
-      <div class="btns"><a class="btn primary" href="#planner">Build my plan</a><a class="btn white" href="#rules">Exam rules</a></div>
+      <h1>ATPL Study Planner<span class="h1-sub">for EASA ATPL Theory</span></h1>
+      <span class="rule-teal" aria-hidden="true"></span>
+      <p class="lead">Thirteen subjects. Six sittings. Eighteen months. Answer a few questions, get a dated plan, then move the subjects around to make it your own.</p>
+      <p class="small">If you're not yet familiar with how the EASA ATPL exams are structured, start here → <a href="https://www.aviationexam.com/en/l/easa-atpl-exams">EASA ATPL exams</a></p>
     </div>
     <aside class="hcard" id="heroCard" aria-live="polite" aria-label="Your plan at a glance"></aside>
   </div>
@@ -227,7 +234,6 @@ svg text{font-family:var(--mono)}
 <main class="wrap gutter">
 
 <section id="rules">
-  <p class="eyebrow">Before you plan</p>
   <h2>The rules your plan must fit</h2>
   <p class="sub">EASA Part-FCL.025. Break any of the limits and you lose the subjects you have passed: further training at your ATO, then the complete set of exams again.</p>
   <div class="rules">
@@ -244,7 +250,6 @@ svg text{font-family:var(--mono)}
 </section>
 
 <section id="planner" data-embed>
-  <p class="eyebrow">Step 1 of 2</p>
   <h2>Who are you?</h2>
   <p class="sub">The plan below updates as you go.</p>
   <div class="steps">
@@ -269,14 +274,12 @@ svg text{font-family:var(--mono)}
 </section>
 
 <section data-embed>
-  <p class="eyebrow">Step 2 of 2</p>
   <h2>Your plan</h2>
   <p class="sub">Start from the recommended plan, then move subjects between sittings, add or remove a sitting, and mark your progress. Your plan is saved in this browser.</p>
   <div class="result" id="result"></div>
 </section>
 
 <section id="subjects">
-  <p class="eyebrow">The 13 subjects</p>
   <h2>What each subject asks of you</h2>
   <p class="sub">Question counts and exam times as published by competent authorities under AMC1 ARA.FCL.300(b). Type, workload and study hours are the Aviationexam author team's estimate.</p>
   <div class="tablewrap"><table id="subjTable"></table></div>
@@ -557,9 +560,9 @@ function renderHeroCard(T, status, custom){
   const tag = status==="ok"?["ok","ON TRACK"]:status==="tight"?["warn","TIGHT"]:["","OVER LIMIT"];
   const foot = status==="ok"?["","✓ Fits the 18-month window"]:status==="tight"?["warn","! Little room for a retake"]:["over","! Over the 18-month limit"];
   el.innerHTML = `
-    <div class="hcard-top"><b>EXAM <span>CLOCK</span></b><span class="tag ${tag[0]}">${tag[1]}</span></div>
+    <div class="hcard-top"><b>EXAM CLOCK</b><span class="tag ${tag[0]}">${tag[1]}</span></div>
     <div class="hcard-mid">
-      <div class="ring"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="36" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="6"/><circle cx="42" cy="42" r="36" fill="none" stroke="${status==="ok"?"#3C8CE9":status==="tight"?"#FF7202":"#FF0000"}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(used/18*C).toFixed(1)} ${C.toFixed(1)}"/></svg><div><b>${T.clockUsed}</b><span>of 18 mo</span></div></div>
+      <div class="ring"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="36" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="6"/><circle cx="42" cy="42" r="36" fill="none" stroke="${status==="ok"?"#51F3C0":status==="tight"?"#FF7202":"#FF0000"}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(used/18*C).toFixed(1)} ${C.toFixed(1)}"/></svg><div><b>${T.clockUsed}</b><span>of 18 mo</span></div></div>
       <div class="hrows">
         <div><span>${custom?"Your own plan":planLetter()}</span><b>${T.used} sittings</b></div>
         <div><span>First exam</span><b>${label(T.firstIdx)}</b></div>

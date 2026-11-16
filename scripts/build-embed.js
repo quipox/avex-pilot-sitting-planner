@@ -17,7 +17,6 @@ const blocks = [...src.matchAll(/<(section|aside)([^>]*\bdata-embed\b[^>]*)>([\s
 if (blocks.length < 3) throw new Error("expected 3 data-embed blocks, found " + blocks.length);
 let html = `<div class="wrap">
 <header>
-  <p class="eyebrow">Interactive planner</p>
   <h3 class="h2">Build your own ATPL study plan</h3>
   <p class="sub">Answer a few questions to get a sitting plan with dates, hours a day and the 18-month clock, then move the subjects to make it your own.</p>
 </header>
@@ -31,11 +30,14 @@ css = css.replace(/\.sit h3/g, ".sit h4").replace(/\.checks h3/g, ".checks h4").
 
 // ---- CSS for a shadow root
 css = css.replace(/:root\{/g, ":host{").replace(/--sans:[^;]+;/, "--sans:inherit;");
-css = `:host{display:block;background:#fff;color:var(--fg);font-family:inherit;line-height:1.5;max-width:1080px;margin:32px auto;text-align:left}
+css = `:host{display:block;background:#fff;color:var(--fg);font-family:inherit;line-height:1.5;max-width:960px;margin:32px auto;text-align:left}
 p{margin-top:0}
 button,input{font-family:inherit}
 .wrap{display:grid;gap:28px;padding:0}
-.h2{font-size:clamp(20px,2.4vw,26px);font-weight:800;margin:0 0 6px;color:var(--navy)}
+.h2{font-size:clamp(22px,2.4vw,28px);font-weight:400;margin:0;color:var(--navy);text-align:center}
+.h2::after{content:"";display:block;width:40px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));margin:14px auto 0}
+.disclaimer .h2{font-size:12px;text-align:left}
+.disclaimer .h2::after{display:none}
 ` + css;
 
 // ---- JS: planner logic only, element lookups inside the shadow root

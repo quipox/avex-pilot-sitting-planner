@@ -63,7 +63,9 @@ Node.js 18 or later; no dependencies. If you change a plan, update `content/blog
 | Use | Colour |
 | --- | --- |
 | Navigation bar, headings | Navy `#213C6F` (from aviationexam.com) |
-| Buttons and selected answers | Blue `#2B78D8` (from aviationexam.com) |
+| Selected answers | Navy `#213C6F` |
+| Hero card gradient | `#325BA4` → `#D8C3E2`, with rainbow top and bottom edges |
+| Heading underline | Teal `#51F3C0` → `#4EE8F6` |
 | KSA100, warnings | Red `#BD2026` |
 | Memory subjects | Orange `#FF7202` |
 | Calculation subjects | Green `#00A650` |
@@ -71,7 +73,7 @@ Node.js 18 or later; no dependencies. If you change a plan, update `content/blog
 | Warnings (18-month limit exceeded) | Extra red `#FF0000` |
 | Secondary text on white | Grey `#58595B` |
 
-Typeface: Open Sans for text, Helvetica for diagrams and figures. Layout follows aviationexam.com: navy rounded navigation bar and sky-blue header, white body.
+Typeface: Open Sans for text, Helvetica for diagrams and figures. Layout follows the aviationexam.com blog articles (e.g. "How to Choose a Flight School"): navy navigation bar, dark band fading to white, gradient hero card with rainbow edges, centred navy headings with a teal underline, white body.
 
 ## Regulatory basis
 
