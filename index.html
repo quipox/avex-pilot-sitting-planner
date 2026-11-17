@@ -185,6 +185,18 @@ button.dropzone{cursor:pointer;color:var(--accent);border-color:var(--accent);fo
 .checks li i{font-style:normal;font-weight:800}
 .checks li.ok i{color:var(--calc)} .checks li.warn i{color:var(--memory)} .checks li.info i{color:var(--accent)}
 .tl{margin-top:18px}
+.tl-title{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin:0 0 4px;font-weight:700;font-size:14px;color:var(--navy)}
+.tl-title span{font-weight:400;font-size:13px;color:var(--muted)}
+.tl-bar.has-today{margin-bottom:28px}
+.tl-done{background:var(--calc);opacity:.85;border-radius:6px 0 0 6px}
+.tl-today{width:0;border-left:2px dashed var(--orange,#FF7202);top:-4px!important;bottom:-4px!important}
+.tl-today span{position:absolute;bottom:-18px;left:0;transform:translateX(-50%);font-size:11px;font-weight:700;color:#FF7202;white-space:nowrap}
+.tl-exam.passed{background:var(--calc)} .tl-exam.passed span{color:var(--calc)}
+.tl-exam.book{background:var(--navy)} .tl-exam.book span{color:var(--navy)}
+.k-done{background:var(--calc)}
+.prog-meter{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin:8px 0 2px}
+.prog-meter i{height:8px;border-radius:2px;background:#e6eaf0}
+.prog-meter i.m1{background:#b9cdeb} .prog-meter i.m2{background:var(--navy)} .prog-meter i.m3{background:var(--calc)}
 .tl-bar{position:relative;height:30px;margin:22px 0 8px;border-radius:6px;background:#fff;border:1px solid var(--line)}
 .tl-bar>div{position:absolute;top:0;bottom:0}
 .tl-prep{background:repeating-linear-gradient(45deg,#d6e7fa 0 6px,#f3f8fe 6px 12px);border-right:2px solid var(--concept)}
@@ -559,7 +571,11 @@ function render(){
     tight:`This plan uses ${T.clockUsed} of 18 months, which leaves little room for a retake. Consider more hours a day, or more preparation before your first sitting.`,
     ok:""}[status];
   const checks = runChecks(sits);
-  const span = Math.max(T.last, T.first + 18*4.345), pct = w => (w/span*100).toFixed(2)+"%";
+  const span = Math.max(T.last, T.first + 18*4.345), pct = w => (Math.min(w,span)/span*100).toFixed(2)+"%";
+  // progress on the timeline: green up to the exam of the last sitting passed in order; "Today" when inside the window
+  let doneW = null, doneN = 0;
+  for(let i=0;i<sits.length;i++){ if(!sits[i].length) continue; if(sitState[i]!=="passed") break; doneW = T.realWk[i]; doneN++; }
+  const todayDays = (new Date() - weekDate(0))/864e5, todayW = todayDays>=0 && todayDays/7<=span ? todayDays/7 : null;
   const lastUsed = sits.map((s,i)=>s.length?i:-1).filter(i=>i>=0).at(-1);
   const picked = state.picked;
   const pickedAt = picked ? sits.findIndex(s=>s.includes(picked)) : -1;
@@ -599,21 +615,25 @@ function render(){
       <h3>Study-order checks</h3>
       <ul>${checks.length?checks.map(([c,t])=>`<li class="${c}"><i aria-hidden="true">${c==="warn"?"!":"i"}</i><span>${esc(t)}</span></li>`).join(""):`<li class="ok"><i aria-hidden="true">✓</i><span>Every subject comes after the ones it builds on, your hardest subjects are in the first sitting, and Flight Planning closes the plan with a light subject.</span></li>`}</ul>
     </div>
-    ${trackPanel(sits, T, sitState, passedN, failedN)}
-    <div class="tl" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock">
-      <div class="tl-bar">
+    <div class="tl" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock${doneW!==null?`; sittings passed up to sitting ${doneN}`:""}">
+      <p class="tl-title">Your exam timeline<span>${doneN?`${doneN} of ${T.used} sittings passed`:"Fills in green as you pass each sitting"}</span></p>
+      <div class="tl-bar${todayW!==null?" has-today":""}">
         <div class="tl-prep" style="left:0;width:${pct(T.first)}"></div>
         <div class="tl-window" style="left:${pct(T.first)};width:${pct(18*4.345)}"></div>
         <div class="tl-used" style="left:${pct(T.first)};width:${pct(T.last-T.first)}"></div>
-        ${T.realWk.map((w,i)=>w===null?"":`<div class="tl-exam" style="left:${pct(w)}"><span>S${i+1}</span></div>`).join("")}
+        ${doneW!==null?`<div class="tl-done" style="left:0;width:${pct(doneW)}"></div>`:""}
+        ${todayW!==null?`<div class="tl-today" style="left:${pct(todayW)}"><span>Today</span></div>`:""}
+        ${T.realWk.map((w,i)=>w===null?"":`<div class="tl-exam${sitState[i]==="passed"?" passed":sitState[i]==="book"?" book":""}" style="left:${pct(w)}"><span>S${i+1}${sitState[i]==="passed"?" ✓":""}</span></div>`).join("")}
       </div>
       <div class="tl-key">
         <span><i class="k-prep"></i>Preparation before sitting 1: no clock, take your time</span>
         <span><i class="k-used"></i>Exam clock in use</span>
         <span><i class="k-window"></i>Rest of the 18-month window</span>
+        <span><i class="k-done"></i>Sittings passed</span>
       </div>
     </div>
     <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span><span class="mk"><b class="m1"></b>Studying</span><span class="mk"><b class="m2"></b>Ready: timed tests above 90%</span><span class="mk"><b class="m3">✓</b>Passed</span><span class="mk"><b class="m4">✗1</b>Failed attempts</span></div>
+    ${trackPanel(sits, T, sitState, passedN, failedN)}
     <p class="note">${courseNote}${clockNote}${retakeNote}${ksaNote}</p>
     <p class="hours-note">Hours assume about 1,000 h in total: the EASA minimum of 650 h (modular) or 750 h (integrated) of theory instruction plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p>`;
   if(refocus){ const el=$("result").querySelector(`[data-focus="${refocus}"]`); if(el && !el.disabled) el.focus(); }
@@ -630,6 +650,7 @@ function trackPanel(sits, T, sitState, passedN, failedN){
   const ready = sitState.map((v,i)=>v==="book"?i+1:0).filter(Boolean);
   return `<div class="prog">
     <div class="prog-head"><h3>Track your progress</h3><span class="prog-sum"><b>${passedN}</b> of 13 passed${failedN?` · <b>${failedN}</b> failed attempt${failedN>1?"s":""}`:""}</span></div>
+    <div class="prog-meter" role="img" aria-label="${passedN} of 13 subjects passed">${sits.flat().map(k=>`<i class="m${tr(k).s}" title="${esc(S[k].n)}: ${esc(TRACK[tr(k).s])}"></i>`).join("")}</div>
     <p>Set each subject as you go. A sitting shows <b>Ready to book</b> when all its subjects pass timed tests above 90%. Your progress is saved in this browser and goes on the printed plan.</p>
     ${ready.length?`<p class="trk-warn go">Sitting ${ready.join(" and ")} ${ready.length>1?"are":"is"} ready to book.</p>`:""}
     ${warn.map(w=>`<p class="trk-warn" role="status">${esc(w)}</p>`).join("")}
