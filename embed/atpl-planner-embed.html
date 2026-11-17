@@ -45,14 +45,14 @@ const PLANS = {
     why:"The heavy foundation subjects come first, while the 18-month clock is not yet running. Light subjects and Flight Planning close the plan.",
     sits:[["pof","agk","gnav","ins"],["perf","rnav","met","law"],["ops","hpl","mb","com","fp"]]},
   "full-hard": {name:"Plan B – Full time, four sittings",
-    why:"Heavy foundations first, and never more than one heavy calculation subject per sitting. Light subjects and Flight Planning close the plan. Start using your flight computer from the first week.",
-    sits:[["pof","agk","ins"],["gnav","law","met"],["perf","rnav","hpl","ops"],["mb","com","fp"]]},
-  "job-easy": {name:"Plan C – Around a job, calculation foundations first",
+    why:"Four subjects in the first sitting, prepared before the 18-month clock starts, including General Navigation so you can practise calculations at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week.",
+    sits:[["pof","agk","gnav","hpl"],["ins","law","met"],["perf","rnav","ops"],["mb","com","fp"]]},
+  "job-easy": {name:"Plan C – Around a job, heavy foundations first",
     why:"Principles of Flight, AGK and General Navigation in the first sitting, while the clock is not running. Light subjects and Flight Planning close the plan.",
     sits:[["pof","agk","gnav"],["ins","rnav","perf"],["met","law","ops","hpl"],["mb","com","fp"]]},
-  "job-hard": {name:"Plan D – Around a job, calculation subjects spread out",
-    why:"Concept foundations first. General Navigation, Performance and Flight Planning each go in a different sitting, so you never face two heavy calculation subjects together.",
-    sits:[["pof","agk","hpl"],["gnav","ins","law"],["perf","rnav","met"],["ops","mb","com","fp"]]},
+  "job-hard": {name:"Plan D – Around a job, calculation subjects first",
+    why:"Calculations are not your strong side, so General Navigation and Mass & Balance come first: you prepare them before the 18-month clock starts and can practise at your own pace. Performance and Flight Planning each get a sitting of their own.",
+    sits:[["gnav","mb","law","hpl"],["pof","agk","met"],["perf","rnav","ops"],["fp","ins","com"]]},
 };
 // One of our authors' sittings, shown as an example in the editor (it does not pass every check).
 const EXAMPLES = {
@@ -61,19 +61,19 @@ const EXAMPLES = {
 };
 // Subject table: full name, questions, exam minutes, main type, guide link (AMC1 ARA.FCL.300(b))
 const INFO = {
-  law: ["Air Law",44,60,"Memory",""],
-  agk: ["Airframe, Systems, Electrics, Power Plant",80,120,"Concept + memory","https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge"],
-  ins: ["Instrumentation",60,90,"Concept","https://www.aviationexam.com/en/l/atpl-instrumentation"],
-  mb:  ["Mass and Balance",25,75,"Calculation",""],
-  perf:["Performance",45,120,"Calculation + concept","https://www.aviationexam.com/en/l/atpl-performance-airplane"],
+  law: ["Air Law",44,60,"Memory","https://www.aviationexam.com/en/l/atpl-air-law/"],
+  agk: ["Airframe, Systems, Electrics, Power Plant",80,120,"Concept + memory","https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge/"],
+  ins: ["Instrumentation",60,90,"Concept","https://www.aviationexam.com/en/l/atpl-instrumentation/"],
+  mb:  ["Mass and Balance",25,75,"Calculation","https://www.aviationexam.com/en/l/atpl-mass-and-balance/"],
+  perf:["Performance",45,120,"Calculation + concept","https://www.aviationexam.com/en/l/atpl-performance-airplane/"],
   fp:  ["Flight Planning and Monitoring",42,120,"Calculation","https://www.aviationexam.com/en/l/atpl-flight-planning-and-monitoring/"],
-  hpl: ["Human Performance and Limitations",48,90,"Memory + concept",""],
-  met: ["Meteorology",84,120,"Concept + memory",""],
-  gnav:["General Navigation",55,135,"Calculation + concept","https://www.aviationexam.com/en/l/atpl-general-navigation"],
-  rnav:["Radio Navigation",66,90,"Concept + calculation",""],
-  ops: ["Operational Procedures",42,75,"Memory","https://www.aviationexam.com/en/l/atpl-operational-procedures"],
-  pof: ["Principles of Flight",46,90,"Concept","https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane"],
-  com: ["Communications",34,60,"Memory",""],
+  hpl: ["Human Performance and Limitations",48,90,"Memory + concept","https://www.aviationexam.com/en/l/atpl-human-performance-and-limitations/"],
+  met: ["Meteorology",84,120,"Concept + memory","https://www.aviationexam.com/en/l/atpl-meteorology/"],
+  gnav:["General Navigation",55,135,"Calculation + concept","https://www.aviationexam.com/en/l/atpl-general-navigation/"],
+  rnav:["Radio Navigation",66,90,"Concept + calculation","https://www.aviationexam.com/en/l/atpl-radio-navigation/"],
+  ops: ["Operational Procedures",42,75,"Memory","https://www.aviationexam.com/en/l/atpl-operational-procedures/"],
+  pof: ["Principles of Flight",46,90,"Concept","https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane/"],
+  com: ["Communications",34,60,"Memory","https://www.aviationexam.com/en/l/atpl-communications/"],
 };
 // "X builds on Y": Y should be in the same sitting as X or earlier
 const BUILDS_ON = {perf:["pof","agk"], ins:["agk"], rnav:["gnav"], ops:["law","met","hpl"], com:["law"], fp:["perf","mb","gnav","rnav","met","ops"]};
@@ -121,8 +121,13 @@ function runChecks(sits){
   for(const [x,ys] of Object.entries(BUILDS_ON)) ys.forEach(y=>{
     if(at[y]>at[x]) out.push(["warn",`${S[x].n} (sitting ${at[x]+1}) comes before ${S[y].n} (sitting ${at[y]+1}), which it builds on.`]);
   });
-  const missingFirst=["pof","agk"].filter(k=>at[k]!==first);
-  if(missingFirst.length) out.push(["warn",`${missingFirst.map(k=>S[k].n).join(" and ")} ${missingFirst.length>1?"are":"is"} not in your first sitting. Preparing the heaviest foundations before the clock starts saves exam time.`]);
+  // your hardest subjects first: they are prepared before the 18-month clock starts
+  if(state.maths==="hard"){
+    if(!["gnav","mb"].some(k=>at[k]===first)) out.push(["warn","Calculations are not your strong side, but your first sitting has neither General Navigation nor Mass & Balance. Preparing a calculation subject before the clock starts lets you practise at your own pace."]);
+  } else {
+    const missingFirst=["pof","agk"].filter(k=>at[k]!==first);
+    if(missingFirst.length) out.push(["warn",`${missingFirst.map(k=>S[k].n).join(" and ")} ${missingFirst.length>1?"are":"is"} not in your first sitting. Preparing the heaviest foundations before the clock starts saves exam time.`]);
+  }
   if(at.fp!==last) out.push(["warn","Flight Planning is not in your last sitting. It draws on almost every other subject."]);
   if(!sits[last].some(k=>S[k].w==="light")) out.push(["warn","Your last sitting has no light subject. After months of study, a lighter finish helps."]);
   sits.forEach((s,i)=>{ const c=s.filter(k=>HEAVY_CALC.includes(k)); if(c.length>1) out.push(["info",`Sitting ${i+1} has ${c.map(k=>S[k].n).join(" and ")} together, which is a lot of calculation at once.`]); });
@@ -187,6 +192,7 @@ function render(){
   const courseNote = "In an integrated course your school sets the exam dates, so use the plan to decide what to prioritise inside each block. In a modular course you choose the dates: book each sitting only when your timed tests sit above 90%.";
   const clockNote = " The 18-month clock starts at your first exam, not your first class. Months spent preparing before sitting 1 are free, so use them: book sitting 1 only when its subjects pass timed tests above 90% and you have already started the first subject of sitting 2.";
   const retakeNote = " If you fail a subject, re-sit it in your next planned sitting and move one planned subject to the end.";
+  const ksaNote = " Successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject. This deadline relates to the last subject you attempt for the first time, even if you still have resits remaining.";
   $("result").innerHTML = `
     <div class="result-head"><p class="name">${custom?"Your own plan":esc(plan.name)}</p><span class="meta">${T.used} sittings · ${T.totalH.toLocaleString("en")} h · ${label(T.startIdx)} to ${label(T.lastIdx)}</span></div>
     <p class="why">${custom?"You have changed the recommended plan. The checks below tell you if anything needs a second look.":esc(plan.why)}</p>
@@ -207,7 +213,7 @@ function render(){
         <h4>Sitting ${i+1}<span>${T.examIdx[i]===null?"–":label(T.examIdx[i])}</span></h4>
         ${s.length?`<p class="sit-load">${T.load[i].h} h · ${T.load[i].weeks} weeks · ${T.load[i].perDay.toFixed(1)} h/day</p>`:""}
         ${s.length?`<div class="seg" role="group" aria-label="Sitting ${i+1} progress">${STATUS.map((n,v)=>`<button class="v${v}" data-act="status" data-i="${i}" data-v="${v}" aria-pressed="${state.status[i]===v}">${n}</button>`).join("")}</div>`:""}
-        ${i===lastUsed?`<div class="chip ksa">Pass KSA100 first<small>at your ATO</small></div>`:""}
+        ${i===lastUsed?`<div class="chip ksa" title="Successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject.">Complete KSA100 first<small>+ mental maths</small></div>`:""}
         ${s.map(k=>`<button class="chip ${S[k].t}${state.strong.includes(k)?" strong":""}" draggable="true" data-k="${k}" aria-pressed="${picked===k}" title="Drag to another sitting, or tap and choose Move here">${state.status[i]===2?"✓ ":""}${esc(S[k].n)}<small>${subjHours(k)} h</small></button>`).join("")}
         ${picked && pickedAt!==i?`<button class="dropzone" data-act="drop" data-i="${i}">Move here</button>`:""}
         ${!s.length && !(picked && pickedAt!==i)?`<div class="dropzone">Drop subjects here</div>`:""}
@@ -216,7 +222,7 @@ function render(){
     </div>
     <div class="checks" aria-live="polite">
       <h4>Study-order checks</h4>
-      <ul>${checks.length?checks.map(([c,t])=>`<li class="${c}"><i aria-hidden="true">${c==="warn"?"!":"i"}</i><span>${esc(t)}</span></li>`).join(""):`<li class="ok"><i aria-hidden="true">✓</i><span>Every subject comes after the ones it builds on, the heavy foundations are first, and Flight Planning closes the plan with a light subject.</span></li>`}</ul>
+      <ul>${checks.length?checks.map(([c,t])=>`<li class="${c}"><i aria-hidden="true">${c==="warn"?"!":"i"}</i><span>${esc(t)}</span></li>`).join(""):`<li class="ok"><i aria-hidden="true">✓</i><span>Every subject comes after the ones it builds on, your hardest subjects are in the first sitting, and Flight Planning closes the plan with a light subject.</span></li>`}</ul>
     </div>
     <div class="tl" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock">
       <div class="tl-bar">
@@ -232,7 +238,7 @@ function render(){
       </div>
     </div>
     <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span></div>
-    <p class="note">${courseNote}${clockNote}${retakeNote}</p>
+    <p class="note">${courseNote}${clockNote}${retakeNote}${ksaNote}</p>
     <p class="hours-note">Hours assume about 1,000 h in total: the EASA minimum of 650 h (modular) or 750 h (integrated) of theory instruction plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p>`;
   renderHeroCard(T, status, custom);
   save();
