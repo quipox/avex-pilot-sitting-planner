@@ -360,7 +360,7 @@ Whether you are preparing for your first subject or revising before your next si
 
 Work through questions by subject and Learning Objective, read detailed explanations, practise incorrect answers, flag difficult questions, and test your knowledge in exam mode. Use **ATPL eTextbooks** for the theory behind flagged questions, **ATPL Flashcards** for memory subjects, **Last Seen questions (L200/L300)** in the final weeks before each sitting, and **Mental Math** to prepare for your school's KSA100 assessment.
 
-[BUTTON: Explore the Aviationexam ATPL Question Bank -> https://www.aviationexam.com/en/store/atpl-question-bank]
+[BUTTON: Explore the Aviationexam ATPL Question Bank -> https://www.aviationexam.com/en/question-banks/easa]
 
 ## ATPL Study Plan – FAQ
 

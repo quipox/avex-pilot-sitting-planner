@@ -124,16 +124,47 @@ h2::after{content:"";display:block;width:40px;height:4px;border-radius:2px;backg
 .sittings{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
 .sit{border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0;display:flex;flex-direction:column;gap:8px;background:#fff;transition:border-color .15s,box-shadow .15s}
 .sit.over{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.sit.done{border-color:var(--calc)}
+.sit.done{border-color:var(--calc);box-shadow:inset 0 3px 0 var(--calc)}
+.sit.book{border-color:var(--navy);box-shadow:inset 0 3px 0 var(--navy)}
 .sit h3{margin:0;font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
 .sit h3 span{color:var(--accent)}
 .sit-load{margin:0;font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #cfd6e0;border-radius:6px;overflow:hidden}
-.seg button{border:0;background:#fff;font:600 11.5px/1 var(--sans);padding:7px 2px;cursor:pointer;color:var(--muted)}
-.seg button+button{border-left:1px solid #cfd6e0}
-.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
-.seg button[aria-pressed="true"].v2{background:var(--calc)}
-.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.badge{align-self:flex-start;font:700 11px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;padding:5px 8px;border-radius:4px;background:var(--accent-soft);color:var(--navy)}
+.badge.book{background:var(--navy);color:#fff}
+.badge.passed{background:var(--calc);color:#fff}
+.badge.last{background:var(--red-soft);color:var(--red)}
+.chip>span{min-width:0}
+.chip .gl{display:inline-block;width:1.15em;font-weight:800}
+.chip .gl.g1::before,.chip .gl.g2::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);vertical-align:0}
+.chip .gl.g2::before{background:var(--navy);border-color:var(--navy)}
+.chip .fx{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--red);margin-left:4px}
+.chip.passed{background:#fff;border-style:solid;color:var(--muted)}
+.chip.passed .gl{color:var(--calc)}
+.tbtn.print{margin-left:auto}
+/* progress tracking */
+.prog{margin-top:16px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:12px 14px}
+.prog-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.prog-head h3{margin:0;font-size:14px;color:var(--navy)}
+.prog-sum{font-size:13px;color:var(--muted)}
+.prog-sum b{color:var(--navy);font-variant-numeric:tabular-nums}
+.prog>p{margin:6px 0 10px;font-size:13px;color:var(--muted)}
+.trk-group{margin:10px 0 0}
+.trk-group h4{margin:0 0 4px;font-size:12px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.trk{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px 12px;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:14px}
+.trk-name{min-width:0}
+.trk-name small{display:block;font-size:12px;color:var(--red);font-weight:600}
+.trk select{font:500 13px var(--sans);padding:5px 8px;border:1px solid #cfd6e0;border-radius:6px;background:#fff;color:var(--fg);max-width:100%}
+.trk select.s1{border-color:var(--accent)} .trk select.s2{border-color:var(--navy);background:var(--accent-soft)} .trk select.s3{border-color:var(--calc);background:var(--calc-soft)}
+.trk select:focus-visible,.cnt button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.cnt{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
+.cnt button{width:26px;height:26px;border:1px solid #cfd6e0;border-radius:6px;background:#fff;color:var(--navy);font:700 15px/1 var(--sans);cursor:pointer;padding:0}
+.cnt button:disabled{opacity:.35;cursor:not-allowed}
+.cnt output{min-width:1.6em;text-align:center;font-family:var(--mono);font-weight:700;font-size:14px;color:var(--fg)}
+.cnt output.f{color:var(--red)}
+.trk-warn{margin:10px 0 0;padding:8px 12px;border-radius:8px;font-size:13px;background:var(--red-soft);border-left:4px solid var(--red);color:#6e0f13}
+.trk-warn.go{background:var(--accent-soft);border-color:var(--navy);color:var(--navy);font-weight:600}
+.trk-clear{margin-top:10px}
+@media (max-width:520px){.trk{grid-template-columns:minmax(0,1fr) auto}.trk-name{grid-column:1/-1;font-weight:600}.trk select{width:100%}}
 .chip{width:100%;text-align:left;font:500 14px/1.3 var(--sans);color:var(--fg);border:0;border-left:4px solid;border-radius:7px;padding:7px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:grab}
 .chip small{font-family:var(--mono);font-size:11px;opacity:.8;white-space:nowrap}
 .chip.memory{background:var(--memory-soft);border-color:var(--memory)}
@@ -163,6 +194,10 @@ button.dropzone{cursor:pointer;color:var(--accent);border-color:var(--accent);fo
 .tl-exam span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--fg)}
 .tl-key,.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
 .legend{margin-top:14px;font-size:13px}
+.legend .mk b{display:inline-block;margin-right:6px;font-weight:800}
+.legend .m1,.legend .m2{width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);vertical-align:-1px}
+.legend .m2{background:var(--navy);border-color:var(--navy)}
+.legend .m3{color:var(--calc)} .legend .m4{color:var(--red);font-family:var(--mono);font-size:11px}
 .tl-key i,.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .k-prep{background:repeating-linear-gradient(45deg,#c6dcf6 0 3px,#f3f8fe 3px 6px);border:1px solid var(--concept)} .k-used{background:var(--accent)} .k-window{background:var(--accent-soft);border:1px solid var(--line)}
 .note{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14px}
@@ -213,9 +248,9 @@ svg text{font-family:var(--mono)}
   <div class="topbar">
     <a class="logo" href="https://www.aviationexam.com/en/" aria-label="Aviationexam home"><img src="assets/brand/aviationexam-logo-white.png" alt="Aviationexam" width="128" height="18"></a>
     <nav aria-label="Aviationexam">
-      <a href="https://www.aviationexam.com/en/l/atpl-questions">ATPL Questions</a>
+      <a href="https://www.aviationexam.com/app?free-test">Free test</a>
       <a href="https://www.aviationexam.com/en/l/">Blog</a>
-      <a class="cta-sm" href="https://www.aviationexam.com/en/store/atpl-question-bank">Question bank</a>
+      <a class="cta-sm" href="https://www.aviationexam.com/en/question-banks/easa">Question bank</a>
     </nav>
   </div>
 </div>
@@ -327,7 +362,7 @@ svg text{font-family:var(--mono)}
 <footer class="foot gutter">
   <div class="foot-in">
     <img src="assets/brand/aviationexam-logo-white.png" alt="Aviationexam" width="150" height="21">
-    <span>Practise with the <a href="https://www.aviationexam.com/en/store/atpl-question-bank">Aviationexam ATPL Question Bank</a>.</span>
+    <span>Practise with the <a href="https://www.aviationexam.com/en/question-banks/easa">Aviationexam ATPL Question Bank</a>.</span>
   </div>
 </footer>
 
@@ -396,10 +431,14 @@ const BUILDS_ON = {perf:["pof","agk"], ins:["agk"], rnav:["gnav"], ops:["law","m
 const HEAVY_CALC = ["gnav","perf","fp"];
 const STRONG_FACTOR = 0.7, STRONG_MAX = 3, MAX_SITTINGS = 6;
 const CODES = {law:"010",agk:"021",ins:"022",mb:"031",perf:"032",fp:"033",hpl:"040",met:"050",gnav:"061",rnav:"062",ops:"070",pof:"081",com:"090"};
-const STATUS = ["Preparing","Ready","Completed"];
+// progress per subject: s = status, f = failed attempts (FCL.025(b)(3): 4 attempts per subject)
+const TRACK = ["Not started","Studying","Ready (>90%)","Passed"];
+const GLYPH = ["","","","✓"];
+const MAX_ATTEMPTS = 4;
 const STORE_KEY = "avex-atpl-planner-v1";
 const nextMonth = (()=>{ const d=new Date(); const m=new Date(d.getFullYear(), d.getMonth()+1, 1); return `${m.getFullYear()}-${String(m.getMonth()+1).padStart(2,"0")}`; })();
-const state = {time:"full", maths:"easy", hours:6, days:5, start:nextMonth, strong:[], custom:null, status:[], picked:null};
+const state = {time:"full", maths:"easy", hours:6, days:5, start:nextMonth, strong:[], custom:null, track:{}, picked:null};
+const tr = k => state.track[k] || {s:0, f:0};
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const monthIdx = d => d.getFullYear()*12 + d.getMonth();
 const label = idx => `${MON[idx%12]} ${Math.floor(idx/12)}`;
@@ -411,7 +450,7 @@ const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
 
 /* ---------- saving (per browser, optional) ---------- */
 function save(){
-  try{ localStorage.setItem(STORE_KEY, JSON.stringify({time:state.time,maths:state.maths,hours:state.hours,days:state.days,start:state.start,strong:state.strong,custom:state.custom,status:state.status})); }catch(e){}
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify({time:state.time,maths:state.maths,hours:state.hours,days:state.days,start:state.start,strong:state.strong,custom:state.custom,track:state.track})); }catch(e){}
 }
 function load(){
   let d; try{ d = JSON.parse(localStorage.getItem(STORE_KEY)||"null"); }catch(e){ return; }
@@ -426,7 +465,15 @@ function load(){
     const flat=d.custom.flat();
     if(flat.length===13 && new Set(flat).size===13 && flat.every(k=>k in S)) state.custom=d.custom.map(s=>s.slice());
   }
-  if(Array.isArray(d.status)) state.status=d.status.map(v=>[0,1,2].includes(v)?v:0);
+  if(d.track && typeof d.track==="object") for(const k in d.track){
+    const t=d.track[k]; if(!(k in S) || !t) continue;
+    const s=[0,1,2,3].includes(t.s)?t.s:0, f=Number.isInteger(t.f)&&t.f>=0&&t.f<=MAX_ATTEMPTS?t.f:0;
+    if(s||f) state.track[k]={s,f};
+  }
+}
+function setTrack(k, patch){
+  const t = Object.assign({}, tr(k), patch);
+  if(t.s||t.f) state.track[k]=t; else delete state.track[k];
 }
 
 /* ---------- study-order checks ---------- */
@@ -468,6 +515,8 @@ function renderControls(){
 }
 
 /* ---------- plan ---------- */
+// first day of study week w (week 0 starts on the 1st of the start month); extra = days to add
+function weekDate(w, extra=0){ const [y,m]=state.start.split("-").map(Number); return new Date(y, m-1, 1 + w*7 + extra); }
 function timing(sits){
   const days = state.days, hpd = state.hours;
   const load = sits.map(s=>{ const h=s.reduce((a,k)=>a+subjHours(k),0); const weeks=s.length?Math.ceil(h/(hpd*days)):0; return {h,weeks,perDay:weeks?h/(weeks*days):0}; });
@@ -481,8 +530,8 @@ function timing(sits){
     prev = w; return w;
   });
   const [sy, sm] = state.start.split("-").map(Number);
-  const startDate = new Date(sy, sm-1, 1), startIdx = monthIdx(startDate);
-  const examIdx = realWk.map(w=>w===null?null:monthIdx(new Date(startDate.getTime()+w*7*864e5)));
+  const startIdx = monthIdx(new Date(sy, sm-1, 1));
+  const examIdx = realWk.map(w=>w===null?null:monthIdx(weekDate(w)));
   const valid = realWk.filter(w=>w!==null), validIdx = examIdx.filter(x=>x!==null);
   const first=valid[0], last=valid.at(-1), firstIdx=validIdx[0], lastIdx=validIdx.at(-1);
   return {load, realWk, examIdx, startIdx, first, last, firstIdx, lastIdx,
@@ -492,9 +541,18 @@ function timing(sits){
 
 function render(){
   const plan = PLANS[planKey()], sits = currentSits(), custom = !!state.custom;
-  while(state.status.length<sits.length) state.status.push(0);
-  state.status.length = sits.length;
+  const ae = ROOT.activeElement, refocus = ae && ae.dataset ? ae.dataset.focus : null;
   const T = timing(sits);
+  // sitting progress: passed when every subject is passed; ready to book when every subject left is at >90%
+  const sitState = sits.map(s=>{
+    if(!s.length) return "";
+    const st = s.map(k=>tr(k).s);
+    if(st.every(v=>v===3)) return "passed";
+    if(st.every(v=>v>=2)) return "book";
+    return "";
+  });
+  const passedN = Object.values(state.track).filter(t=>t.s===3).length;
+  const failedN = Object.values(state.track).reduce((a,t)=>a+t.f,0);
   const status = T.clockUsed > 18 ? "over" : T.clockUsed > 15 ? "tight" : "ok";
   const statusMsg = {
     over:`This plan needs ${T.clockUsed} months on the exam clock, more than the 18 allowed. Study more hours a day, or do more of the work before your first sitting.`,
@@ -516,6 +574,7 @@ function render(){
     <div class="toolbar">
       <button class="tbtn" data-act="add" ${sits.length>=MAX_SITTINGS?"disabled":""}>+ Add sitting</button>
       <button class="tbtn" data-act="example">Load an author's 5 + 5 + 3</button>
+      <button class="tbtn solid print" data-act="print" data-focus="print">Print / Save as PDF</button>
       <p class="help">Drag a subject to another sitting, or tap it and then tap <b>Move here</b>. Up to ${MAX_SITTINGS} sittings.</p>
     </div>
     ${statusMsg?`<p class="alert ${status}" role="status">${statusMsg}</p>`:""}
@@ -525,12 +584,12 @@ function render(){
       <div class="pace-big ${status}"><b>${T.clockUsed} of 18</b><span>months of the exam clock used. Deadline: end of ${label(T.deadlineIdx)}</span></div>
     </div>
     <div class="sittings">${sits.map((s,i)=>`
-      <div class="sit${state.status[i]===2?" done":""}" data-sit="${i}">
+      <div class="sit${sitState[i]==="passed"?" done":sitState[i]==="book"?" book":""}" data-sit="${i}">
         <h3>Sitting ${i+1}<span>${T.examIdx[i]===null?"–":label(T.examIdx[i])}</span></h3>
         ${s.length?`<p class="sit-load">${T.load[i].h} h · ${T.load[i].weeks} weeks · ${T.load[i].perDay.toFixed(1)} h/day</p>`:""}
-        ${s.length?`<div class="seg" role="group" aria-label="Sitting ${i+1} progress">${STATUS.map((n,v)=>`<button class="v${v}" data-act="status" data-i="${i}" data-v="${v}" aria-pressed="${state.status[i]===v}">${n}</button>`).join("")}</div>`:""}
+        ${sitState[i]==="passed"?`<span class="badge passed">✓ Passed</span>`:sitState[i]==="book"?`<span class="badge book">Ready to book</span>`:""}
         ${i===lastUsed?`<div class="chip ksa" title="Successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject.">Complete KSA100 first<small>+ mental maths</small></div>`:""}
-        ${s.map(k=>`<button class="chip ${S[k].t}${state.strong.includes(k)?" strong":""}" draggable="true" data-k="${k}" aria-pressed="${picked===k}" title="Drag to another sitting, or tap and choose Move here">${state.status[i]===2?"✓ ":""}${esc(S[k].n)}<small>${subjHours(k)} h</small></button>`).join("")}
+        ${s.map(k=>{ const t=tr(k); return `<button class="chip ${S[k].t}${state.strong.includes(k)?" strong":""}${t.s===3?" passed":""}" draggable="true" data-k="${k}" aria-pressed="${picked===k}" title="${esc(TRACK[t.s])}${t.f?`, ${t.f} failed attempt${t.f>1?"s":""}`:""}. Drag to another sitting, or tap and choose Move here"><span>${t.s?`<span class="gl g${t.s}" aria-hidden="true">${GLYPH[t.s]}</span>`:""}${esc(S[k].n)}${t.f?`<span class="fx" aria-hidden="true">✗${t.f}</span>`:""}</span><small>${subjHours(k)} h</small></button>`; }).join("")}
         ${picked && pickedAt!==i?`<button class="dropzone" data-act="drop" data-i="${i}">Move here</button>`:""}
         ${!s.length && !(picked && pickedAt!==i)?`<div class="dropzone">Drop subjects here</div>`:""}
         ${!s.length?`<button class="rm" data-act="remove" data-i="${i}">Remove sitting</button>`:""}
@@ -540,6 +599,7 @@ function render(){
       <h3>Study-order checks</h3>
       <ul>${checks.length?checks.map(([c,t])=>`<li class="${c}"><i aria-hidden="true">${c==="warn"?"!":"i"}</i><span>${esc(t)}</span></li>`).join(""):`<li class="ok"><i aria-hidden="true">✓</i><span>Every subject comes after the ones it builds on, your hardest subjects are in the first sitting, and Flight Planning closes the plan with a light subject.</span></li>`}</ul>
     </div>
+    ${trackPanel(sits, T, sitState, passedN, failedN)}
     <div class="tl" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock">
       <div class="tl-bar">
         <div class="tl-prep" style="left:0;width:${pct(T.first)}"></div>
@@ -553,14 +613,41 @@ function render(){
         <span><i class="k-window"></i>Rest of the 18-month window</span>
       </div>
     </div>
-    <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span></div>
+    <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span><span class="mk"><b class="m1"></b>Studying</span><span class="mk"><b class="m2"></b>Ready: timed tests above 90%</span><span class="mk"><b class="m3">✓</b>Passed</span><span class="mk"><b class="m4">✗1</b>Failed attempts</span></div>
     <p class="note">${courseNote}${clockNote}${retakeNote}${ksaNote}</p>
     <p class="hours-note">Hours assume about 1,000 h in total: the EASA minimum of 650 h (modular) or 750 h (integrated) of theory instruction plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p>`;
-  renderHeroCard(T, status, custom);
+  if(refocus){ const el=$("result").querySelector(`[data-focus="${refocus}"]`); if(el && !el.disabled) el.focus(); }
+  renderHeroCard(T, status, custom, passedN);
   save();
 }
 
-function renderHeroCard(T, status, custom){
+function trackPanel(sits, T, sitState, passedN, failedN){
+  const warn=[];
+  Object.keys(CODES).forEach(k=>{ const t=tr(k); if(t.s===3) return;
+    if(t.f>=MAX_ATTEMPTS) warn.push(`${S[k].n}: all ${MAX_ATTEMPTS} attempts used. Under FCL.025(b)(3) you must retake the complete set of examinations after further training at your ATO.`);
+    else if(t.f===MAX_ATTEMPTS-1) warn.push(`${S[k].n}: your next attempt is the last of ${MAX_ATTEMPTS}. Book it only when your timed tests sit well above 90%.`);
+  });
+  const ready = sitState.map((v,i)=>v==="book"?i+1:0).filter(Boolean);
+  return `<div class="prog">
+    <div class="prog-head"><h3>Track your progress</h3><span class="prog-sum"><b>${passedN}</b> of 13 passed${failedN?` · <b>${failedN}</b> failed attempt${failedN>1?"s":""}`:""}</span></div>
+    <p>Set each subject as you go. A sitting shows <b>Ready to book</b> when all its subjects pass timed tests above 90%. Your progress is saved in this browser and goes on the printed plan.</p>
+    ${ready.length?`<p class="trk-warn go">Sitting ${ready.join(" and ")} ${ready.length>1?"are":"is"} ready to book.</p>`:""}
+    ${warn.map(w=>`<p class="trk-warn" role="status">${esc(w)}</p>`).join("")}
+    ${sits.map((s,i)=>!s.length?"":`<div class="trk-group"><h4>Sitting ${i+1} · ${label(T.examIdx[i])}</h4>${s.map(k=>{ const t=tr(k), id=`trk-${k}`; return `
+      <div class="trk">
+        <label class="trk-name" for="${id}">${esc(S[k].n)}</label>
+        <select id="${id}" class="s${t.s}" data-trk="${k}" data-focus="sel-${k}">${TRACK.map((n,v)=>`<option value="${v}"${t.s===v?" selected":""}>${n}</option>`).join("")}</select>
+        <span class="cnt" role="group" aria-label="Failed attempts, ${esc(S[k].n)}">Failed
+          <button data-act="fail" data-k="${k}" data-d="-1" data-focus="dec-${k}" aria-label="One fewer failed attempt" ${t.f?"":"disabled"}>−</button>
+          <output class="${t.f?"f":""}" aria-live="polite">${t.f}</output>
+          <button data-act="fail" data-k="${k}" data-d="1" data-focus="inc-${k}" aria-label="Add a failed attempt" ${t.f>=MAX_ATTEMPTS?"disabled":""}>+</button>
+        </span>
+      </div>`; }).join("")}</div>`).join("")}
+    ${passedN||failedN||Object.keys(state.track).length?`<button class="tbtn trk-clear" data-act="clear">Clear progress</button>`:""}
+  </div>`;
+}
+
+function renderHeroCard(T, status, custom, passedN){
   const el = $("heroCard"); if(!el) return;
   const used = Math.min(T.clockUsed,18), C = 2*Math.PI*36;
   const tag = status==="ok"?["ok","ON TRACK"]:status==="tight"?["warn","TIGHT"]:["","OVER LIMIT"];
@@ -573,9 +660,190 @@ function renderHeroCard(T, status, custom){
         <div><span>${custom?"Your own plan":planLetter()}</span><b>${T.used} sittings</b></div>
         <div><span>First exam</span><b>${label(T.firstIdx)}</b></div>
         <div><span>Study pace</span><b>${state.hours} h × ${state.days} d</b></div>
+        <div><span>Subjects passed</span><b>${passedN} / 13</b></div>
       </div>
     </div>
     <div class="hcard-foot ${foot[0]}">${foot[1]}</div>`;
+}
+
+/* ---------- printable plan (Print / Save as PDF) ---------- */
+const LOGO_WHITE = "data:image/png;base64,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";
+const PHASES = [null,["First pass, LO by LO + notes","#0073BF"],["Retake wrong answers, flag & read","#00A650"],["Weekly flagged review","#dfe3e8"],["Timed exams, no notes","#BD2026"],["Exam week","#213C6F"]];
+const dfmt = (d, y) => `${d.getDate()} ${MON[d.getMonth()]}${y?" "+d.getFullYear():""}`;
+// week-by-week schedule of one sitting, same shape as the 16-week template:
+// heaviest subject first (but never before a subject it builds on in the same sitting),
+// each gets weeks in proportion to its hours (about 2/3 first pass, 1/3 retake),
+// then weekly review, about 2 weeks in 16 of timed exams, and the exam week
+function sittingWeeks(T, sits, i){
+  const s = sits[i], L = T.load; if(!s.length) return null;
+  const a = L.slice(0,i).reduce((x,l)=>x+l.weeks,0), e = T.realWk[i], n = e-a+1;
+  const t = Math.max(1, Math.round(L[i].weeks*2/16));
+  const C = Math.max(1, Math.min(L[i].weeks, n-1-t));
+  const order = [], left = s.slice();
+  while(left.length){
+    const ok = left.filter(k=>!(BUILDS_ON[k]||[]).some(y=>left.includes(y)));
+    const k = (ok.length?ok:left).reduce((b,x)=>subjHours(x)>subjHours(b)?x:b);
+    order.push(k); left.splice(left.indexOf(k),1);
+  }
+  const H = order.reduce((x,k)=>x+subjHours(k),0); let cum = 0;
+  const rows = order.map(k=>{
+    let s0 = Math.round(C*cum/H); cum += subjHours(k); let s1 = Math.round(C*cum/H);
+    s0 = Math.min(s0, C-1); s1 = Math.max(s1, s0+1);
+    const len = s1-s0, fp = len>=2 ? len-Math.max(1, Math.round(len/3)) : 1;
+    const cells = Array(n).fill(0);
+    for(let j=s0;j<s1;j++) cells[j] = j<s0+fp ? 1 : 2;
+    for(let j=s1;j<n-1;j++) cells[j] = 3;
+    for(let j=Math.max(C,n-1-t);j<n-1;j++) cells[j] = 4;
+    cells[n-1] = 5;
+    return {k, cells, fpBy:a+s0+fp-1, rtBy:a+s1-1, timedBy:e-1};
+  });
+  return {a, e, n, rows};
+}
+function printDoc(auto){
+  const sits = currentSits(), T = timing(sits), plan = PLANS[planKey()];
+  const used = sits.map((s,i)=>s.length?i:-1).filter(i=>i>=0), lastUsed = used.at(-1);
+  const W = {}; used.forEach(i=>W[i]=sittingWeeks(T, sits, i));
+  const passedN = Object.values(state.track).filter(t=>t.s===3).length;
+  const wd = (w, end) => weekDate(w, end?6:0);
+  const bx = (on, mark) => `<span class="bx${on?(mark==="✗"?" x":" on"):""}">${on?(mark||"✓"):""}</span>`;
+  const band = sub => `<header class="band"><img src="${LOGO_WHITE}" alt="Aviationexam"><div><b>ATPL Study Plan</b><span>${sub}</span></div></header><div class="rb"></div>`;
+  const foot = `<footer class="pf"><span>aviationexam.com</span><span>Dates are estimates. Your authority publishes the actual exam calendar.</span></footer>`;
+  const legend = `<div class="lg">${PHASES.slice(1).map(([n,c])=>`<span><i style="background:${c}"></i>${esc(n)}</span>`).join("")}</div>`;
+  const gantt = w => {
+    const months = [];
+    for(let j=0;j<w.n;j++){ const d=wd(w.a+j), id=d.getFullYear()*12+d.getMonth(); if(months.length && months.at(-1)[0]===id) months.at(-1)[1]++; else months.push([id,1,MON[d.getMonth()]+(d.getMonth()===0||!months.length?" "+d.getFullYear():"")]); }
+    const dense = w.n>26;
+    return `<table class="g"><colgroup><col class="gc">${"<col>".repeat(w.n)}</colgroup>
+      <thead><tr><th></th>${months.map(([,c,m])=>`<th colspan="${c}" class="gm">${c>=2?m:""}</th>`).join("")}</tr>
+      <tr><th class="gk">Week starting</th>${Array.from({length:w.n},(_,j)=>`<th class="gd">${dense&&j%2?"":wd(w.a+j).getDate()}</th>`).join("")}</tr></thead>
+      <tbody>${w.rows.map(r=>`<tr><th>${esc(S[r.k].n)}</th>${r.cells.map(p=>`<td class="q${p}"></td>`).join("")}</tr>`).join("")}
+      <tr class="dn"><th>Week done</th>${Array.from({length:w.n},()=>`<td><span class="bx"></span></td>`).join("")}</tr></tbody></table>`;
+  };
+  const checklist = w => `<table class="cl"><thead><tr><th>Subject</th><th class="c">Hours</th><th>First pass</th><th>Wrong answers retaken</th><th>Timed tests &gt;90%</th><th>Exam date</th><th>Score (%)</th><th class="c">Failed attempts</th><th class="c">Passed</th></tr></thead><tbody>
+    ${w.rows.map(r=>{ const t=tr(r.k), rd=t.s>=2; return `<tr>
+      <td><b>${CODES[r.k]}</b> ${esc(S[r.k].n)}</td><td class="c">${subjHours(r.k)}</td>
+      <td class="nw">${bx(rd)}by ${dfmt(wd(r.fpBy,1))}</td><td class="nw">${bx(rd)}by ${dfmt(wd(r.rtBy,1))}</td><td class="nw">${bx(rd)}by ${dfmt(wd(r.timedBy,1))}</td>
+      <td class="fill"><small>target: week of ${dfmt(wd(w.e))}</small><i></i></td><td class="fill"><small>&nbsp;</small><i></i></td>
+      <td class="c nw">${Array.from({length:MAX_ATTEMPTS},(_,j)=>bx(j<t.f,"✗")).join("")}</td><td class="c">${bx(t.s===3)}</td></tr>`; }).join("")}
+    </tbody></table>`;
+  const lines = n => `<div class="lines">${"<div></div>".repeat(n)}</div>`;
+  const css = `@page{size:A4;margin:12mm}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:#1a1a1a;font-family:Helvetica,"Helvetica Neue",Arial,sans-serif;font-size:9pt;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{break-after:page}.page:last-child{break-after:auto}
+.band{background:#213C6F;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:6mm;padding:4.5mm 6mm;border-radius:2mm 2mm 0 0}
+.band img{height:6.5mm;width:auto;display:block}
+.band div{text-align:right}.band b{display:block;font-size:11.5pt;letter-spacing:.02em}.band span{font-size:8.5pt;opacity:.85}
+.rb{height:1.2mm;background:linear-gradient(90deg,#51F3C0,#4EE8F6);border-radius:0 0 1mm 1mm;margin-bottom:6mm}
+h1{font-size:19pt;font-weight:700;color:#213C6F;margin:0 0 1mm}
+h2{font-size:14pt;font-weight:700;color:#213C6F;margin:0 0 1mm}
+.h3{font-size:10.5pt;font-weight:700;color:#213C6F;margin:6mm 0 2mm}
+.plan{font-size:11pt;color:#3F64AB;font-weight:700;margin:0 0 5mm}
+.meta{color:#58595B;margin:0 0 4mm}
+.fields{display:grid;grid-template-columns:2fr 1.3fr 1.3fr;gap:5mm;margin:0 0 6mm}
+.fields span{display:flex;align-items:flex-end;gap:2mm;color:#58595B;font-size:8.5pt;white-space:nowrap}
+.fields i{flex:1;border-bottom:.3mm solid #58595B;height:5mm}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:0 0 3mm;break-inside:avoid}
+.sum div{border:.3mm solid #e2e6ec;border-radius:2mm;padding:3mm}
+.sum b{display:block;font-size:13pt;color:#213C6F;line-height:1.2}.sum span{font-size:8pt;color:#58595B}
+.sum .over b{color:#FF0000}.sum .tight b{color:#FF7202}
+.small{font-size:7.8pt;color:#58595B;margin:0 0 4mm}
+table{border-collapse:collapse;width:100%;break-inside:avoid}
+.ov th,.cl th{background:#213C6F;color:#fff;font-size:7.8pt;font-weight:700;text-align:left;padding:1.8mm 2mm}
+.ov td,.cl td{border-bottom:.3mm solid #e2e6ec;padding:2mm;vertical-align:top}
+.c{text-align:center}.nw{white-space:nowrap}
+.cl td{font-size:8.2pt}
+.cl td.fill{min-width:18mm}
+.fill small{display:block;color:#8a8c8f;font-size:6.8pt;white-space:nowrap}
+.fill i{display:block;border-bottom:.3mm dotted #58595B;height:4.5mm}
+.bx{display:inline-block;width:3.4mm;height:3.4mm;border:.3mm solid #58595B;border-radius:.6mm;margin-right:1.2mm;vertical-align:-.7mm;text-align:center;font-size:7pt;line-height:3mm;font-weight:700}
+.bx.on{background:#00A650;border-color:#00A650;color:#fff}.bx.x{border-color:#BD2026;color:#BD2026}
+.g{table-layout:fixed;border-collapse:separate;border-spacing:.5mm;margin:0 0 2mm}
+.g col.gc{width:40mm}
+.g th{font-weight:400;text-align:left;font-size:7.8pt;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 1mm 0 0}
+.g tbody th{font-weight:700;color:#1a1a1a}
+.g .gm{font-size:7pt;color:#213C6F;font-weight:700;border-left:.3mm solid #b9c3d1;padding-left:.8mm}
+.g .gd{font-size:6.5pt;color:#58595B;text-align:center;padding:0;overflow:visible}
+.g .gk{font-size:6.8pt;color:#58595B}
+.g td{height:4.6mm;border-radius:.6mm;background:#f2f4f7}
+.q1{background:#0073BF!important}.q2{background:#00A650!important}.q3{background:#dfe3e8!important}.q4{background:#BD2026!important}.q5{background:#213C6F!important}
+.g .dn td{background:none;text-align:center;height:5mm}.g .dn .bx{margin:0;width:3mm;height:3mm}
+.g .dn th{font-weight:400;color:#58595B}
+.lg{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;font-size:7.6pt;color:#58595B;margin:0 0 2mm}
+.lg i{display:inline-block;width:4mm;height:2.6mm;border-radius:.5mm;margin-right:1.4mm;vertical-align:-.3mm}
+.tip{margin:4mm 0 0;padding:2.5mm 3.5mm;border-left:1mm solid #3F64AB;background:#E9EEF8;font-size:8.3pt;break-inside:avoid}
+.ksa{border-left-color:#BD2026;background:#f9e6e7;color:#6e0f13}
+.st{display:inline-block;font-weight:700;font-size:7.5pt;text-transform:uppercase;letter-spacing:.04em;padding:1mm 2mm;border-radius:1mm;margin-left:2mm;vertical-align:2px;color:#fff;background:#213C6F}
+.st.p{background:#00A650}
+ul.how{margin:0;padding-left:4.5mm}ul.how li{margin:0 0 1.2mm}
+.lines div{border-bottom:.3mm solid #cfd6e0;height:7.5mm}
+.pf{display:flex;justify-content:space-between;gap:6mm;margin-top:6mm;padding-top:2mm;border-top:.3mm solid #e2e6ec;font-size:7.2pt;color:#58595B}
+.bar{display:none}
+@media screen{
+  body{background:#eef1f5;padding:12px}
+  .page{background:#fff;max-width:210mm;margin:0 auto 14px;padding:12mm;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+  .bar{display:flex;justify-content:center;gap:10px;margin:0 auto 12px;max-width:210mm}
+  .bar button{font:700 14px Helvetica,Arial,sans-serif;background:#213C6F;color:#fff;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}
+}
+@media print{.bar{display:none!important}}`;
+  const status = T.clockUsed > 18 ? "over" : T.clockUsed > 15 ? "tight" : "";
+  const page1 = `<section class="page">${band(`Generated ${dfmt(new Date(),1)}`)}
+    <h1>My ATPL study plan</h1>
+    <p class="plan">${esc(state.custom?"Your own plan":plan.name)}</p>
+    <div class="fields"><span>Name<i></i></span><span>ATO<i></i></span><span>Authority<i></i></span></div>
+    <div class="sum">
+      <div><b>${dfmt(wd(0),1)}</b><span>Study starts</span></div>
+      <div><b>${state.hours} h × ${state.days} days</b><span>${(state.hours*state.days).toFixed(1).replace(".0","")} h a week, ${T.totalH.toLocaleString("en")} h in total</span></div>
+      <div><b>${T.used} sittings</b><span>${passedN?`${passedN} of 13 subjects passed so far`:"13 subjects"}</span></div>
+      <div><b>${label(T.firstIdx)}</b><span>First exam (target), after ${T.prepMo} months of preparation outside the clock</span></div>
+      <div><b>${label(T.lastIdx)}</b><span>Last exam (target)</span></div>
+      <div class="${status}"><b>${T.clockUsed} of 18 months</b><span>of the exam clock. Deadline: end of ${label(T.deadlineIdx)}</span></div>
+    </div>
+    <p class="small">The 18 months run from the end of the calendar month of your first exam attempt. Once you sit it, write your real deadline here: ____________________</p>
+    <table class="ov"><thead><tr><th>Sitting</th><th>Subjects</th><th class="c">Hours</th><th>Study</th><th>Target exam</th><th>Booked exam date</th><th class="c">Done</th></tr></thead><tbody>
+      ${used.map((i,n)=>`<tr><td><b>${n+1}</b></td><td>${sits[i].map(k=>`${CODES[k]} ${esc(S[k].n)}`).join("<br>")}</td><td class="c">${T.load[i].h}</td><td class="nw">from ${dfmt(wd(W[i].a),1)}<br>${T.load[i].weeks} weeks, ${T.load[i].perDay.toFixed(1)} h a day</td><td class="nw">week of ${dfmt(wd(W[i].e),1)}</td><td class="fill"></td><td class="c">${bx(sits[i].every(k=>tr(k).s===3))}</td></tr>`).join("")}
+    </tbody></table>
+    <p class="h3">How to use this plan</p>
+    <ul class="how">
+      <li>Follow the week-by-week calendar of each sitting and tick every week you complete.</li>
+      <li>Tick each step in the checklist as you finish it. Book a sitting only when every subject in it passes timed tests above 90%.</li>
+      <li>Write your real exam dates and scores as you go. If you fail a subject, re-sit it in your next planned sitting and move one planned subject to the end.</li>
+      <li>If you fall behind, update the plan in the planner and print it again.</li>
+    </ul>
+    ${foot}</section>`;
+  const pages = used.map((i,n)=>{
+    const w = W[i], allP = sits[i].every(k=>tr(k).s===3), book = !allP && sits[i].every(k=>tr(k).s>=2);
+    return `<section class="page">${band(`Sitting ${n+1} of ${used.length}`)}
+    <h2>Sitting ${n+1}: exam in the week of ${dfmt(wd(w.e),1)}${allP?`<span class="st p">Passed</span>`:book?`<span class="st">Ready to book</span>`:""}</h2>
+    <p class="meta">${sits[i].map(k=>esc(S[k].n)).join(" · ")}<br>${T.load[i].h} h of study from ${dfmt(wd(w.a),1)}, ${T.load[i].weeks} weeks at ${T.load[i].perDay.toFixed(1)} h a day</p>
+    <p class="h3">Week by week</p>
+    ${gantt(w)}${legend}
+    ${n===0&&used.length>1?`<p class="tip">Start the first subject of sitting 2 in the week of ${dfmt(wd(W[used[1]].a),1)}, while you take timed tests for this sitting.</p>`:""}
+    <p class="h3">Checklist</p>
+    ${checklist(w)}
+    ${i===lastUsed?`<p class="tip ksa"><b>Before this sitting:</b> successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject.</p>`:""}
+    <p class="h3">Notes</p>
+    ${lines(i===lastUsed?4:6)}
+    ${foot}</section>`;
+  }).join("");
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATPL Study Plan</title><style>${css}</style></head><body>
+    <div class="bar"><button onclick="print()">Print / Save as PDF</button></div>
+    ${page1}${pages}${auto?`<script>addEventListener("load",function(){setTimeout(function(){print()},400)})<\/script>`:""}</body></html>`;
+}
+function printPlan(){
+  const coarse = window.matchMedia && window.matchMedia("(pointer:coarse)").matches;
+  if(coarse){ const w = window.open("", "_blank"); if(w){ w.document.open(); w.document.write(printDoc(true)); w.document.close(); return; } }
+  const html = printDoc(false);
+  const old = document.getElementById("avex-print-frame"); if(old) old.remove();
+  const f = document.createElement("iframe");
+  f.id = "avex-print-frame"; f.title = "ATPL study plan for printing"; f.setAttribute("aria-hidden","true"); f.tabIndex = -1;
+  f.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+  f.onload = () => setTimeout(()=>{
+    try{ f.contentWindow.focus(); f.contentWindow.print(); }
+    catch(e){ const w = window.open("", "_blank"); if(w){ w.document.write(printDoc(true)); w.document.close(); } }
+  }, 300);
+  f.srcdoc = html;
+  document.body.appendChild(f);
 }
 
 /* ---------- editing ---------- */
@@ -592,11 +860,17 @@ $("result").addEventListener("click", e=>{
   const b = e.target.closest("[data-act]"); if(!b || b.disabled) return;
   const act=b.dataset.act, i=Number(b.dataset.i);
   if(act==="drop" && state.picked) return moveTo(state.picked, i);
-  if(act==="status"){ state.status[i]=Number(b.dataset.v); render(); return; }
-  if(act==="add"){ const s=editable(); if(s.length<MAX_SITTINGS){ s.push([]); state.status.push(0); } render(); return; }
-  if(act==="remove"){ const s=editable(); if(!s[i].length && s.length>1){ s.splice(i,1); state.status.splice(i,1); } state.picked=null; render(); return; }
-  if(act==="example"){ state.custom = EXAMPLES.author553.sits.map(s=>s.slice()); state.status=[]; state.picked=null; render(); return; }
-  if(act==="reset"){ state.custom=null; state.status=[]; state.picked=null; render(); return; }
+  if(act==="fail"){ const k=b.dataset.k, f=Math.max(0, Math.min(MAX_ATTEMPTS, tr(k).f+Number(b.dataset.d))); setTrack(k,{f}); render(); return; }
+  if(act==="clear"){ state.track={}; render(); return; }
+  if(act==="print") return printPlan();
+  if(act==="add"){ const s=editable(); if(s.length<MAX_SITTINGS) s.push([]); render(); return; }
+  if(act==="remove"){ const s=editable(); if(!s[i].length && s.length>1) s.splice(i,1); state.picked=null; render(); return; }
+  if(act==="example"){ state.custom = EXAMPLES.author553.sits.map(s=>s.slice()); state.picked=null; render(); return; }
+  if(act==="reset"){ state.custom=null; state.picked=null; render(); return; }
+});
+$("result").addEventListener("change", e=>{
+  const sel = e.target.closest("select[data-trk]"); if(!sel) return;
+  setTrack(sel.dataset.trk, {s:Number(sel.value)}); render();
 });
 let dragK = null;
 $("result").addEventListener("dragstart", e=>{

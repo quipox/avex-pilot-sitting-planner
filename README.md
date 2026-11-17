@@ -8,7 +8,13 @@ An interactive planner and blog article that help EASA ATPL(A) students organise
 
 The planner asks five questions (time available, comfort with calculations, hours and days a week, start month, strong subjects) and returns a dated plan of three or four sittings, with a warning when the plan runs close to the 18-month limit.
 
-Students can then make the plan their own: drag subjects between sittings (or tap a subject and tap **Move here** on a phone), add or remove sittings up to the limit of six, and mark each sitting as Preparing, Ready or Completed. Live study-order checks flag anything that breaks the rules below, and the plan is saved in the student's own browser. One author's 5 + 5 + 3 split can be loaded as an example.
+Students can then make the plan their own: drag subjects between sittings (or tap a subject and tap **Move here** on a phone), add or remove sittings up to the limit of six. Live study-order checks flag anything that breaks the rules below, and the plan is saved in the student's own browser. One author's 5 + 5 + 3 split can be loaded as an example.
+
+**Track your progress.** Each subject can be set to Not started, Studying, Ready (timed tests above 90%) or Passed, with a counter of failed attempts. A sitting shows *Ready to book* when all its subjects are Ready or Passed, and *Passed* when all are passed. At three failed attempts the planner warns that the next one is the last; at four it reminds the student that FCL.025(b)(3) requires retaking the complete set of examinations after further training at the ATO.
+
+**Print / Save as PDF.** The button builds an A4 printable plan with the Aviationexam header: a cover page (student details, start date, pace, target exam months, 18-month deadline, overview of the sittings with a space for the booked exam dates) and one page per sitting with a week-by-week calendar in real dates, a checklist per subject (first pass, wrong answers retaken and timed tests above 90%, each with a target date; exam date, score, failed attempts, passed) and space for notes. The progress already entered is ticked on the sheet. It uses the browser's print dialog (choose *Save as PDF* to get a file), so it needs no library and also works in the blog embed. On phones and tablets it opens the sheet in a new tab first.
+
+The calendar of each sitting follows the 16-week template on the page: subjects heaviest first, but never before a subject they build on within the same sitting; weeks in proportion to hours (about two thirds first pass, one third retaking wrong answers), then weekly review, about two weeks in sixteen of timed exams, and the exam week.
 
 ## What's in the repository
 
