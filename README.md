@@ -53,7 +53,7 @@ Node.js 18 or later; no dependencies. If you change a plan, update `content/blog
 ### Rules every plan must follow
 
 1. Each subject is in the same sitting as, or after, the subjects it builds on (Performance after Principles of Flight and AGK, Instrumentation after AGK, Radio Navigation after General Navigation, Operational Procedures after Air Law, Meteorology and Human Performance, Communications after Air Law, Flight Planning after almost everything).
-2. Principles of Flight and AGK are in the first sitting, prepared before the 18-month clock starts.
+2. The student's hardest subjects are in the first sitting, prepared before the 18-month clock starts: Principles of Flight and AGK for Plans A and C (comfortable with calculations), General Navigation or Mass & Balance for Plans B and D (calculations not their strong side).
 3. Flight Planning is in the last sitting, with at least one light subject.
 4. Plans B and D never put two of General Navigation, Performance and Flight Planning in the same sitting.
 5. No plan uses more than four sittings.

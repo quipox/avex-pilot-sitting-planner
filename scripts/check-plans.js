@@ -22,7 +22,9 @@ function rules(id, sits) {
   Object.keys(WORKLOAD).forEach(k => { if (!(k in at)) errs.push(`${k} missing`); });
   for (const [x, ys] of Object.entries(BUILDS_ON))
     ys.forEach(y => { if (at[y] > at[x]) errs.push(`${x} (sitting ${at[x] + 1}) comes before ${y} (sitting ${at[y] + 1})`); });
-  if (!["pof", "agk"].every(k => at[k] === 0)) errs.push("Principles of Flight and AGK must be in sitting 1");
+  // hardest subjects first: concept foundations for A and C, a calculation foundation for B and D
+  if (SPREAD_CALC.includes(id)) { if (!["gnav", "mb"].some(k => at[k] === 0)) errs.push("sitting 1 needs General Navigation or Mass & Balance"); }
+  else if (!["pof", "agk"].every(k => at[k] === 0)) errs.push("Principles of Flight and AGK must be in sitting 1");
   if (at.fp !== sits.length - 1) errs.push("Flight Planning must be in the last sitting");
   if (!sits.at(-1).some(k => WORKLOAD[k] === "light")) errs.push("last sitting needs a light subject");
   if (sits.length > 4) errs.push("more than 4 sittings");

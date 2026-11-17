@@ -7,9 +7,7 @@ NOTES FOR THE WEB TEAM / CODEX (delete before publishing)
   there, unchanged. If the editor strips <script>, skip it: the four plans
   are already in the text as static content.
 - [BUTTON: ...] = use the template's standard CTA button.
-- Subject guide links are included where the URL is known (7 of 13). Add the
-  others (Air Law, Mass and Balance, Human Performance, Meteorology, Radio
-  Navigation, Communications) if those guides exist.
+- All 13 subject guide links point to the existing guides on the blog.
 - This text merges Eliška's draft "ATPL Study Plan" with the planner article.
 =====================================================================
 
@@ -48,9 +46,11 @@ These limits make planning important, especially if you need to repeat an exam. 
 
 Even subjects you feel confident about should not be underestimated. Stress, fatigue, or a particularly difficult set of questions can affect your performance. **The goal is to create a realistic plan that gives you enough time to prepare, while leaving room to adjust if necessary.**
 
-Besides the 13 exams, your ATO will also assess **Area 100 KSA** (Knowledge, Skills and Attitudes) and give you a mental maths test. These are not exams with the authority and do not count as a sitting, but you must pass them before your ATO recommends you for your last exam.
+Besides the 13 exams, your ATO will also assess **Area 100 KSA** (Knowledge, Skills and Attitudes) and give you a mental maths test. These are not exams with the authority and do not count as a sitting. You must successfully complete the applicable Area 100 KSA assessments and the mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject.
 
-You can read more in our guides to [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams) and [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/).
+This deadline relates to the last subject you attempt for the first time, even if you still have resits remaining. For example, if you attempt all 13 subjects across sittings 1 to 3 and use sitting 4 only for resits, KSA must be complete before your ATO recommends you for your last new subject in sitting 3.
+
+You can read more in our guides to [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams/) and [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/).
 
 ## 2. Know what each subject asks of you
 
@@ -62,19 +62,19 @@ Not every subject is studied the same way. Each one leans towards one of three t
 
 | Code | Subject | Questions | Time (min) | Main type | Workload | Study time |
 | --- | --- | --- | --- | --- | --- | --- |
-| 010 | Air Law | 44 | 60 | Memory | Medium | ~70 h |
-| 021 | [Airframe, Systems, Electrics, Power Plant](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge) | 80 | 120 | Concept + memory | Heavy | ~100 h |
-| 022 | [Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation) | 60 | 90 | Concept | Medium | ~70 h |
-| 031 | Mass and Balance | 25 | 75 | Calculation | Light | ~40 h |
-| 032 | [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane) | 45 | 120 | Calculation + concept | Heavy | ~100 h |
+| 010 | [Air Law](https://www.aviationexam.com/en/l/atpl-air-law/) | 44 | 60 | Memory | Medium | ~70 h |
+| 021 | [Airframe, Systems, Electrics, Power Plant](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge/) | 80 | 120 | Concept + memory | Heavy | ~100 h |
+| 022 | [Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation/) | 60 | 90 | Concept | Medium | ~70 h |
+| 031 | [Mass and Balance](https://www.aviationexam.com/en/l/atpl-mass-and-balance/) | 25 | 75 | Calculation | Light | ~40 h |
+| 032 | [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane/) | 45 | 120 | Calculation + concept | Heavy | ~100 h |
 | 033 | [Flight Planning and Monitoring](https://www.aviationexam.com/en/l/atpl-flight-planning-and-monitoring/) | 42 | 120 | Calculation | Heavy | ~100 h |
-| 040 | Human Performance and Limitations | 48 | 90 | Memory + concept | Light | ~40 h |
-| 050 | Meteorology | 84 | 120 | Concept + memory | Heavy | ~100 h |
-| 061 | [General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation) | 55 | 135 | Calculation + concept | Heavy | ~100 h |
-| 062 | Radio Navigation | 66 | 90 | Concept + calculation | Medium | ~70 h |
-| 070 | [Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures) | 42 | 75 | Memory | Medium | ~70 h |
-| 081 | [Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane) | 46 | 90 | Concept | Heavy | ~100 h |
-| 090 | Communications | 34 | 60 | Memory | Light | ~40 h |
+| 040 | [Human Performance and Limitations](https://www.aviationexam.com/en/l/atpl-human-performance-and-limitations/) | 48 | 90 | Memory + concept | Light | ~40 h |
+| 050 | [Meteorology](https://www.aviationexam.com/en/l/atpl-meteorology/) | 84 | 120 | Concept + memory | Heavy | ~100 h |
+| 061 | [General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation/) | 55 | 135 | Calculation + concept | Heavy | ~100 h |
+| 062 | [Radio Navigation](https://www.aviationexam.com/en/l/atpl-radio-navigation/) | 66 | 90 | Concept + calculation | Medium | ~70 h |
+| 070 | [Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures/) | 42 | 75 | Memory | Medium | ~70 h |
+| 081 | [Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane/) | 46 | 90 | Concept | Heavy | ~100 h |
+| 090 | [Communications](https://www.aviationexam.com/en/l/atpl-communications/) | 34 | 60 | Memory | Light | ~40 h |
 | | **Total** | **671** | **1,245** | | | **~1,000 h** |
 
 **What do heavy, medium and light mean?**
@@ -97,11 +97,11 @@ The map reads from top to bottom: study the subjects at the top first, or at lea
 
 These three subjects make a useful combination because they approach aircraft behaviour from different perspectives.
 
-[Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane) explains the aerodynamic principles behind how an aircraft flies, including lift, drag, stability, and the forces acting on it. [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane) builds on this knowledge to determine what the aircraft can actually achieve under different conditions, such as changes in weight, temperature, altitude, and wind.
+[Principles of Flight](https://www.aviationexam.com/en/l/atpl-principles-of-flight-airplane/) explains the aerodynamic principles behind how an aircraft flies, including lift, drag, stability, and the forces acting on it. [Performance](https://www.aviationexam.com/en/l/atpl-performance-airplane/) builds on this knowledge to determine what the aircraft can actually achieve under different conditions, such as changes in weight, temperature, altitude, and wind.
 
 For example, understanding how lift and drag affect an aircraft helps when studying climb performance, takeoff distances, and the relationship between airspeed and aircraft performance.
 
-[Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures) then brings these concepts into practical operations, covering situations such as windshear, contaminated runways, rejected takeoffs, and other operational hazards. Because it also draws on Air Law, Meteorology and Human Performance, it works best once those subjects are done or in the same sitting.
+[Operational Procedures](https://www.aviationexam.com/en/l/atpl-operational-procedures/) then brings these concepts into practical operations, covering situations such as windshear, contaminated runways, rejected takeoffs, and other operational hazards. Because it also draws on Air Law, Meteorology and Human Performance, it works best once those subjects are done or in the same sitting.
 
 The connection is particularly relevant for helicopter candidates, where aerodynamic principles, performance limitations, and helicopter-specific operational procedures overlap significantly.
 
@@ -109,9 +109,9 @@ The connection is particularly relevant for helicopter candidates, where aerodyn
 
 ### Aircraft General Knowledge and Instrumentation
 
-[Aircraft General Knowledge](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge) focuses on how aircraft systems work, including electrical systems, hydraulics, engines, pneumatics, and flight controls.
+[Aircraft General Knowledge](https://www.aviationexam.com/en/l/atpl-aircraft-general-knowledge/) focuses on how aircraft systems work, including electrical systems, hydraulics, engines, pneumatics, and flight controls.
 
-[Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation) explains how information about the aircraft and its environment is measured, processed, and displayed to the pilot.
+[Instrumentation](https://www.aviationexam.com/en/l/atpl-instrumentation/) explains how information about the aircraft and its environment is measured, processed, and displayed to the pilot.
 
 The connection becomes clear when studying electrical systems, sensors, and cockpit indications. For example, understanding how electrical power is generated and distributed provides useful background when learning how electronic instruments and displays operate. Similarly, knowledge of aircraft systems helps explain what certain cockpit warnings and indications mean.
 
@@ -119,9 +119,9 @@ The connection becomes clear when studying electrical systems, sensors, and cock
 
 ### General Navigation and Radio Navigation
 
-[General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation) covers the principles of navigation, including position, direction, distance, tracks, headings, and calculations involving wind and groundspeed.
+[General Navigation](https://www.aviationexam.com/en/l/atpl-general-navigation/) covers the principles of navigation, including position, direction, distance, tracks, headings, and calculations involving wind and groundspeed.
 
-Radio Navigation builds on these foundations by introducing navigation systems and aids used to determine aircraft position and guide the aircraft along its route.
+[Radio Navigation](https://www.aviationexam.com/en/l/atpl-radio-navigation/) builds on these foundations by introducing navigation systems and aids used to determine aircraft position and guide the aircraft along its route.
 
 The subjects approach navigation differently, but they share the same fundamental goal: understanding where the aircraft is, where it needs to go, and how to get there.
 
@@ -129,7 +129,7 @@ The subjects approach navigation differently, but they share the same fundamenta
 
 ### Air Law and Communications
 
-Communications is Air Law applied to the radio: phraseology, procedures and the rules behind them. Taking them in the same sitting, or Air Law first, saves you learning the same rules twice.
+[Communications](https://www.aviationexam.com/en/l/atpl-communications/) is [Air Law](https://www.aviationexam.com/en/l/atpl-air-law/) applied to the radio: phraseology, procedures and the rules behind them. Taking them in the same sitting, or Air Law first, saves you learning the same rules twice.
 
 ### Flight Planning and Monitoring: bringing everything together
 
@@ -152,7 +152,7 @@ Use it. Do not book your first sitting just because the course has reached a cer
 
 The second condition matters. Without it, your second sitting starts from zero on the day the clock starts running.
 
-This is also why it makes sense to put the heaviest foundation subjects, Principles of Flight and AGK, in your first sitting: the hardest study happens while time is not limited.
+This is also why it makes sense to put your hardest subjects in your first sitting: the hardest study happens while time is not limited. If calculations come easily, that usually means the heavy foundations, Principles of Flight and AGK. If they are not your strong side, it can mean starting with General Navigation and Mass and Balance, so you can practise at your own pace before the clock starts.
 
 If you are in an integrated course, your school sets the exam dates. The same principle still helps you decide what to prioritise inside each block.
 
@@ -160,7 +160,7 @@ If you are in an integrated course, your school sets the exam dates. The same pr
 
 There are several ways to organise your sittings, and the best approach depends on your circumstances. The experiences shared by pilots who have completed their exams highlight three useful principles:
 
-- **Heavy foundation subjects first.** Principles of Flight and AGK in your first sitting, prepared before the clock starts.
+- **Your hardest subjects first.** Put them in your first sitting, prepared before the clock starts: the heavy foundations (Principles of Flight and AGK) if calculations come easily, a calculation subject (General Navigation, Mass and Balance) if they do not.
 - **Group related subjects together**, so that knowledge gained in one subject supports your understanding of another. Each subject goes after, or in the same sitting as, the ones it builds on.
 - **Balance your workload and finish lighter.** Leave light subjects and Flight Planning for the end, when months of study have taken their toll.
 
@@ -185,14 +185,14 @@ The heavy foundation subjects come first, while the 18-month clock is not yet ru
 
 ### Plan B – Full time, four sittings
 
-Heavy foundations first, and never more than one heavy calculation subject per sitting. Start using your flight computer from the first week, ten minutes a day.
+Four subjects in the first sitting, prepared before the 18-month clock starts, including General Navigation so you can practise calculations at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week, ten minutes a day.
 
-- **Sitting 1** (month 4): 081 Principles of Flight, 021 AGK, 022 Instrumentation
-- **Sitting 2** (month 6): 061 General Navigation, 010 Air Law, 050 Meteorology
-- **Sitting 3** (month 8): 032 Performance, 062 Radio Navigation, 040 Human Performance, 070 Operational Procedures
+- **Sitting 1** (month 5): 081 Principles of Flight, 021 AGK, 061 General Navigation, 040 Human Performance
+- **Sitting 2** (month 6): 022 Instrumentation, 010 Air Law, 050 Meteorology
+- **Sitting 3** (month 8): 032 Performance, 062 Radio Navigation, 070 Operational Procedures
 - **Sitting 4** (month 10): 031 Mass & Balance, 090 Communications, 033 Flight Planning
 
-### Plan C – Around a job, calculation foundations first
+### Plan C – Around a job, heavy foundations first
 
 Principles of Flight, AGK and General Navigation in the first sitting, while the clock is not running. If calculations come easily, General Navigation fits alongside the two concept foundations.
 
@@ -201,14 +201,14 @@ Principles of Flight, AGK and General Navigation in the first sitting, while the
 - **Sitting 3** (month 16): 050 Meteorology, 010 Air Law, 070 Operational Procedures, 040 Human Performance
 - **Sitting 4** (month 20): 031 Mass & Balance, 090 Communications, 033 Flight Planning
 
-### Plan D – Around a job, calculation subjects spread out
+### Plan D – Around a job, calculation subjects first
 
-Concept foundations first. General Navigation, Performance and Flight Planning each go in a different sitting, so you never face two heavy calculation subjects together.
+Calculations are not your strong side, so General Navigation and Mass & Balance come first: you prepare them before the 18-month clock starts and can practise at your own pace. Performance and Flight Planning each get a sitting of their own.
 
-- **Sitting 1** (month 6): 081 Principles of Flight, 021 AGK, 040 Human Performance
-- **Sitting 2** (month 10): 061 General Navigation, 022 Instrumentation, 010 Air Law
-- **Sitting 3** (month 15): 032 Performance, 062 Radio Navigation, 050 Meteorology
-- **Sitting 4** (month 20): 070 Operational Procedures, 031 Mass & Balance, 090 Communications, 033 Flight Planning
+- **Sitting 1** (month 6): 061 General Navigation, 031 Mass & Balance, 010 Air Law, 040 Human Performance
+- **Sitting 2** (month 11): 081 Principles of Flight, 021 AGK, 050 Meteorology
+- **Sitting 3** (month 16): 032 Performance, 062 Radio Navigation, 070 Operational Procedures
+- **Sitting 4** (month 20): 033 Flight Planning, 022 Instrumentation, 090 Communications
 
 The part-time plans use 13 to 14 of the 18 months. If you can only study 1.5 hours a day, do more of the work before your first sitting, while the clock is not running.
 
@@ -226,7 +226,7 @@ The plans were different. The method was not: all of them studied by learning ob
 
 Whatever your plan, keep two things in mind:
 
-- **KSA100** must be passed at your ATO before your final exam. Ask your school early when its assessments run.
+- **KSA100** and the mental maths test must be complete before your ATO recommends you for the last subject you attempt for the first time, even if resits remain after it. Ask your school early when its assessments run.
 - **If you fail a subject**, re-sit it in your next planned sitting and move one planned subject to the end. Do not rebuild the whole plan.
 
 ## 6. How to structure your ATPL studies
@@ -342,7 +342,7 @@ A realistic schedule is more useful than an ambitious one you cannot maintain.
 - **Taking Flight Planning before its foundations.** It draws on almost every other subject.
 - **Leaving finished subjects untouched for months.** Without weekly review, you relearn them before the exam.
 - **Planning for six sittings.** Six is the limit, not the target. Plan for three or four and keep the rest in reserve.
-- **Forgetting KSA100.** It is assessed by your school and can delay your final sitting.
+- **Forgetting KSA100.** It is assessed by your school and can delay the sitting with your last new subject.
 
 ## Final thoughts: find a plan that works for you
 
@@ -386,7 +386,7 @@ Subjects that build on each other: Principles of Flight with Performance, AGK wi
 
 ### Do I need to pass KSA100 before my exams?
 
-You need to pass your ATO's KSA100 assessments and mental maths test before you are recommended for your final exam at first attempt. It is not an exam with your authority.
+You need to successfully complete the applicable Area 100 KSA assessments and the mental maths test at your ATO before it recommends you for your first attempt at your final unattempted subject. This applies to the last subject you attempt for the first time, even if you still have resits remaining. KSA100 is not an exam with your authority.
 
 ### What happens if I fail a subject?
 
@@ -395,8 +395,8 @@ Re-sit it in your next planned sitting. You have four attempts per subject. Move
 ## What to read next
 
 - [How to Pass EASA ATPL Exams](https://www.aviationexam.com/en/l/how-to-pass-atpl-exams/)
-- [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams)
+- [EASA ATPL Exams](https://www.aviationexam.com/en/l/easa-atpl-exams/)
 - [Knowledge, Skills & Attitudes](https://www.aviationexam.com/en/l/atpl-ksa/)
-- [ATPL Questions](https://www.aviationexam.com/en/l/atpl-questions)
+- [ATPL Questions](https://www.aviationexam.com/en/l/atpl-questions/)
 
 DISCLAIMER: Exam rules per EASA Part-FCL as published by Aviationexam. Workload and type labels are the Aviationexam author team's consensus, not an EASA classification. Whether a subject feels easy or hard is personal; move things around once you know yourself.
