@@ -26,7 +26,7 @@ ${blocks.join("\n")}
 html = html.replace(/<h3/g, "<h4").replace(/<\/h3>/g, "</h4>").replace(/<h2/g, "<h3 class=\"h2\"").replace(/<\/h2>/g, "</h3>");
 html = html.replace(/<h4 class="h2">/, '<h3 class="h2">').replace(/<\/h4>\n  <p class="sub">Answer/, '</h3>\n  <p class="sub">Answer');
 js = js.replace(/<h3>/g, "<h4>").replace(/<\/h3>/g, "</h4>");
-css = css.replace(/\.sit h3/g, ".sit h4").replace(/\.checks h3/g, ".checks h4").replace(/\.disclaimer h2/g, ".disclaimer .h2");
+css = css.replace(/\.sit h3/g, ".sit h4").replace(/\.checks h3/g, ".checks h4").replace(/\.adv h3/g, ".adv h4").replace(/\.disclaimer h2/g, ".disclaimer .h2");
 
 // ---- CSS for a shadow root
 css = css.replace(/:root\{/g, ":host{").replace(/--sans:[^;]+;/, "--sans:inherit;");
