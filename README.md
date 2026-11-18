@@ -6,7 +6,7 @@ An interactive planner and blog article that help EASA ATPL(A) students organise
 
 ![Planner screenshot](assets/img/screenshot.png)
 
-The planner asks five questions (time available, comfort with calculations, hours and days a week, start month, strong subjects) and returns a dated plan of three or four sittings, with a warning when the plan runs close to the 18-month limit.
+The planner asks six questions (time available, comfort with calculations, modular or integrated course, hours and days a week, start month, strong subjects) and returns a dated plan of three or four sittings, with a warning when the plan runs close to the 18-month limit.
 
 Students can then make the plan their own: drag subjects between sittings (or tap a subject and tap **Move here** on a phone), add or remove sittings up to the limit of six. Live study-order checks flag anything that breaks the rules below, and the plan is saved in the student's own browser. One author's 5 + 5 + 3 split can be loaded as an example.
 
@@ -14,7 +14,9 @@ Students can then make the plan their own: drag subjects between sittings (or ta
 
 **Print / Save as PDF.** The button builds an A4 printable plan with the Aviationexam header: a cover page (student details, start date, pace, target exam months, 18-month deadline, overview of the sittings with a space for the booked exam dates) and one page per sitting with a week-by-week calendar in real dates, a checklist per subject (first pass, wrong answers retaken and timed tests above 90%, each with a target date; exam date, score, failed attempts, passed) and space for notes. The progress already entered is ticked on the sheet. It uses the browser's print dialog (choose *Save as PDF* to get a file), so it needs no library and also works in the blog embed. On phones and tablets it opens the sheet in a new tab first.
 
-The calendar of each sitting follows the 16-week template on the page: subjects heaviest first, but never before a subject they build on within the same sitting; weeks in proportion to hours (about two thirds first pass, one third retaking wrong answers), then weekly review, about two weeks in sixteen of timed exams, and the exam week.
+**Step 3, how to study each sitting.** Under the plan, a tab per sitting shows the same week-by-week calendar on screen, with the student's subjects and real dates. The exam timeline shows a month axis, the exam month and load of each sitting, the 18-month deadline and the months to spare. The advice under the plan is split into four short cards (booking, the 18-month clock, failing a subject, KSA100); the booking advice and the minimum instruction hours follow the modular or integrated answer.
+
+The calendar of each sitting follows one template: subjects heaviest first, but never before a subject they build on within the same sitting; weeks in proportion to hours (about two thirds first pass, one third retaking wrong answers), then weekly review, about two weeks in sixteen of timed exams, and the exam week.
 
 ## What's in the repository
 

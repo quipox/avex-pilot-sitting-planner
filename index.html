@@ -71,6 +71,7 @@ a{color:var(--accent)}
 .wrap{max-width:960px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px;padding-block:8px 56px}
 
 h2{font-size:clamp(24px,2.6vw,30px);font-weight:400;margin:0;color:var(--navy);text-align:center;text-wrap:balance}
+.stepn{display:block;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 h2::after{content:"";display:block;width:40px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));margin:14px auto 0}
 .sub{color:var(--muted);margin:16px auto 24px;max-width:62ch;text-align:center}
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
@@ -187,17 +188,29 @@ button.dropzone{cursor:pointer;color:var(--accent);border-color:var(--accent);fo
 .tl{margin-top:18px}
 .tl-title{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;margin:0 0 4px;font-weight:700;font-size:14px;color:var(--navy)}
 .tl-title span{font-weight:400;font-size:13px;color:var(--muted)}
-.tl-bar.has-today{margin-bottom:28px}
 .tl-done{background:var(--calc);opacity:.85;border-radius:6px 0 0 6px}
 .tl-today{width:0;border-left:2px dashed var(--orange,#FF7202);top:-4px!important;bottom:-4px!important}
-.tl-today span{position:absolute;bottom:-18px;left:0;transform:translateX(-50%);font-size:11px;font-weight:700;color:#FF7202;white-space:nowrap}
 .tl-exam.passed{background:var(--calc)} .tl-exam.passed span{color:var(--calc)}
 .tl-exam.book{background:var(--navy)} .tl-exam.book span{color:var(--navy)}
 .k-done{background:var(--calc)}
+.tl-key i.k-today{width:0;height:12px;border-radius:0;border-left:2px dashed #FF7202;margin-left:5px}
+.tl-key i.k-dead{width:3px;border-radius:0;background:var(--red);margin-left:4px}
+.tl-dead{width:3px;background:var(--red);top:-6px!important;bottom:-6px!important;transform:translateX(-3px)}
+.tl-axis{position:relative;height:20px;margin:0 0 10px;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.tl-axis span{position:absolute;top:0;padding:5px 0 0 4px;border-left:1px solid #b9c3d1;white-space:nowrap}
+.tl-axis i{position:absolute;top:0;height:5px;border-left:1px solid #d5dbe4}
+.tl-sits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,100%),1fr));gap:8px;margin:0 0 12px}
+.tl-chip{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;background:#fff;padding:7px 10px;font-size:13px;line-height:1.3}
+.tl-chip b{color:var(--navy);margin-right:6px;font-family:var(--mono)}
+.tl-chip small{display:block;font-size:12px;color:var(--muted)}
+.tl-chip.passed{border-left-color:var(--calc)} .tl-chip.passed b{color:var(--calc)}
+.tl-chip.book{border-left-color:var(--navy);background:var(--accent-soft)}
+.tl-chip.dead{border-left-color:var(--red)} .tl-chip.dead b{color:var(--red);font-family:var(--sans)}
+.tl-chip.dead.over{background:var(--red-soft)}
 .prog-meter{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin:8px 0 2px}
 .prog-meter i{height:8px;border-radius:2px;background:#e6eaf0}
 .prog-meter i.m1{background:#b9cdeb} .prog-meter i.m2{background:var(--navy)} .prog-meter i.m3{background:var(--calc)}
-.tl-bar{position:relative;height:30px;margin:22px 0 8px;border-radius:6px;background:#fff;border:1px solid var(--line)}
+.tl-bar{position:relative;height:30px;margin:22px 0 0;border-radius:6px;background:#fff;border:1px solid var(--line)}
 .tl-bar>div{position:absolute;top:0;bottom:0}
 .tl-prep{background:repeating-linear-gradient(45deg,#d6e7fa 0 6px,#f3f8fe 6px 12px);border-right:2px solid var(--concept)}
 .tl-window{background:var(--accent-soft)}
@@ -212,8 +225,16 @@ button.dropzone{cursor:pointer;color:var(--accent);border-color:var(--accent);fo
 .legend .m3{color:var(--calc)} .legend .m4{color:var(--red);font-family:var(--mono);font-size:11px}
 .tl-key i,.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .k-prep{background:repeating-linear-gradient(45deg,#c6dcf6 0 3px,#f3f8fe 3px 6px);border:1px solid var(--concept)} .k-used{background:var(--accent)} .k-window{background:var(--accent-soft);border:1px solid var(--line)}
-.note{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14px}
-.hours-note{margin:10px 0 0;font-size:12.5px;color:var(--muted);max-width:80ch}
+.advice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:10px;margin-top:16px}
+.adv{background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:12px 14px}
+.adv h3{margin:0 0 4px;font-size:14px;color:var(--navy)}
+.adv p{margin:0;font-size:13.5px;color:var(--fg)}
+.adv.ksa{border-top-color:var(--red)} .adv.ksa h3{color:var(--red)}
+.adv .tag{display:inline-block;margin-left:6px;font:700 10.5px/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;padding:3px 6px;border-radius:4px;background:var(--accent-soft);color:var(--navy);vertical-align:1px}
+.hours-d{margin:12px 0 0;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 14px}
+.hours-d summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--navy)}
+.hours-d summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hours-d p{margin:0 0 12px;max-width:80ch}
 /* subjects table */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
 table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
@@ -232,13 +253,26 @@ tfoot td{font-weight:700;background:var(--panel)}
 .chart{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto}
 svg{display:block;width:100%;height:auto}
 svg text{font-family:var(--mono)}
-.gantt{display:grid;grid-template-columns:160px 1fr;gap:6px 10px;align-items:center;font-size:13px;min-width:560px}
-.gantt .lbl{font-weight:600;min-width:0}
-.gantt .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11.5px}
-.gantt .track{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;height:30px}
-.gantt .track div{border-radius:3px}
-.gantt .axis{grid-column:2;display:grid;grid-template-columns:repeat(16,1fr);font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center}
-.p1{background:var(--concept)} .p2{background:var(--calc)} .p3{background:#dfe3e8} .p4{background:var(--red)} .p5{background:var(--navy)}
+.wk-scroll{overflow-x:auto;margin-top:14px}
+.wk{display:grid;grid-template-columns:minmax(104px,170px) minmax(0,1fr);gap:6px 10px;align-items:center;font-size:13px;min-width:calc(130px + var(--n)*22px)}
+.wk .lbl{font-weight:600;min-width:0}
+.wk .lbl small{display:block;font-weight:400;color:var(--muted);font-size:11.5px}
+.wk-k{font-size:11px;color:var(--muted)}
+.wk>.lbl,.wk>.wk-k,.wk>div:first-child{position:sticky;left:0;z-index:1;background:var(--panel);align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding-right:6px}
+.wk-swipe{display:none;margin:8px 0 0;font-size:12px;color:var(--muted)}
+@media (max-width:700px){.wk{grid-template-columns:104px minmax(0,1fr)}.wk-swipe{display:block}}
+.wk-row,.wk-months{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:2px}
+.wk-row div{height:28px;border-radius:3px;background:#eef1f5}
+.wk-row .p1{background:var(--concept)} .wk-row .p2{background:var(--calc)} .wk-row .p3{background:#cfd6e0} .wk-row .p4{background:var(--red)} .wk-row .p5{background:var(--navy)}
+.wk-months span{font-size:11px;font-weight:700;color:var(--navy);border-left:1px solid #b9c3d1;padding-left:4px;white-space:nowrap;overflow:hidden}
+.wk-days span{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center}
+.wk-meta{margin:14px 0 0;font-size:14px}
+.wk-meta b{color:var(--navy)}
+.tabs{justify-content:center}
+.tabs .opt small{display:block;font-size:11.5px;opacity:.8}
+.tip{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:13.5px}
+.tip.ksa{border-left-color:var(--red);background:var(--red-soft);color:#6e0f13}
+.p1{background:var(--concept)} .p2{background:var(--calc)} .p3{background:#cfd6e0} .p4{background:var(--red)} .p5{background:var(--navy)}
 .glegend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:12px;font-size:13px;color:var(--muted)}
 .glegend i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
 .gnote{margin:12px 0 0;font-size:13px;color:var(--muted)}
@@ -297,7 +331,7 @@ svg text{font-family:var(--mono)}
 </section>
 
 <section id="planner" data-embed>
-  <h2>Who are you?</h2>
+  <h2><span class="stepn">Step 1</span>Who are you?</h2>
   <p class="sub">The plan below updates as you go.</p>
   <div class="steps">
     <div class="q"><div class="n">Q1</div><div><p class="t">How much time can you give it?</p><div class="opts" data-key="time">
@@ -306,7 +340,11 @@ svg text{font-family:var(--mono)}
     <div class="q"><div class="n">Q2</div><div><p class="t">How do you feel about calculations?</p><div class="opts" data-key="maths">
       <button class="opt" data-val="easy" aria-pressed="true">They come easily (engineering, science)</button>
       <button class="opt" data-val="hard" aria-pressed="false">Not my strong side</button></div></div></div>
-    <div class="q"><div class="n">Q3</div><div><p class="t">How much can you study?</p>
+    <div class="q"><div class="n">Q3</div><div><p class="t">Which course are you on?</p><div class="opts" data-key="course">
+      <button class="opt" data-val="modular" aria-pressed="true">Modular</button>
+      <button class="opt" data-val="integrated" aria-pressed="false">Integrated</button></div>
+      <p class="hint">This does not change the sittings, only the advice on booking your exams.</p></div></div>
+    <div class="q"><div class="n">Q4</div><div><p class="t">How much can you study?</p>
       <div class="sliders">
         <label class="slider" for="hours"><span>Hours a day</span><output id="hoursOut" for="hours">6 h</output>
           <input type="range" id="hours" min="1" max="8" step="0.5" value="6"></label>
@@ -314,16 +352,22 @@ svg text{font-family:var(--mono)}
           <input type="range" id="days" min="3" max="7" step="1" value="5"></label>
       </div>
       <p class="hint" id="hoursHint"></p></div></div>
-    <div class="q"><div class="n">Q4</div><div><p class="t">When do you start studying?</p>
+    <div class="q"><div class="n">Q5</div><div><p class="t">When do you start studying?</p>
       <label class="month"><span class="sr">Start month</span><input type="month" id="start"></label></div></div>
-    <div class="q"><div class="n">Q5</div><div><p class="t">Any subjects you already know well? <span class="opt-note">Optional, up to 3</span></p><div class="opts subj" id="strongOpts"></div><p class="hint">Each one you pick gets 30% less study time.</p></div></div>
+    <div class="q"><div class="n">Q6</div><div><p class="t">Any subjects you already know well? <span class="opt-note">Optional, up to 3</span></p><div class="opts subj" id="strongOpts"></div><p class="hint">Each one you pick gets 30% less study time.</p></div></div>
   </div>
 </section>
 
 <section data-embed>
-  <h2>Your plan</h2>
+  <h2><span class="stepn">Step 2</span>Your plan</h2>
   <p class="sub">Start from the recommended plan, then move subjects between sittings, add or remove a sitting, and mark your progress. Your plan is saved in this browser.</p>
   <div class="result" id="result"></div>
+</section>
+
+<section data-embed>
+  <h2><span class="stepn">Step 3</span>How to study each sitting</h2>
+  <p class="sub">Every sitting follows the same five phases. Choose a sitting to see it week by week, with your subjects and your dates.</p>
+  <div class="result" id="study"></div>
 </section>
 
 <section id="subjects">
@@ -347,22 +391,6 @@ svg text{font-family:var(--mono)}
   <h2>Why the order matters</h2>
   <p class="sub">Arrows mean "study this first". Flight Planning uses almost everything, so it goes last in every plan.</p>
   <div class="chart" id="deps"></div>
-</section>
-
-<section>
-  <h2>One sitting, week by week</h2>
-  <p class="sub">A 16-week template for a sitting of two heavy and two light subjects. Stretch it to 20 weeks around a job, or compress it to 12 full time. The shape stays the same.</p>
-  <div class="chart">
-    <div class="gantt" id="gantt"></div>
-    <div class="glegend">
-      <span><i class="p1"></i>First pass, LO by LO + notes</span>
-      <span><i class="p2"></i>Retake wrong, flag &amp; read</span>
-      <span><i class="p3"></i>Weekly flagged review (30 min)</span>
-      <span><i class="p4"></i>Timed exams, no notes</span>
-      <span><i class="p5"></i>Exam week</span>
-    </div>
-    <p class="gnote">Heavy and light follow the <a href="#workload">workload definitions</a> above. A medium subject fits in either row.</p>
-  </div>
 </section>
 
 <aside class="disclaimer" aria-labelledby="disc-h" data-embed>
@@ -449,7 +477,7 @@ const GLYPH = ["","","","✓"];
 const MAX_ATTEMPTS = 4;
 const STORE_KEY = "avex-atpl-planner-v1";
 const nextMonth = (()=>{ const d=new Date(); const m=new Date(d.getFullYear(), d.getMonth()+1, 1); return `${m.getFullYear()}-${String(m.getMonth()+1).padStart(2,"0")}`; })();
-const state = {time:"full", maths:"easy", hours:6, days:5, start:nextMonth, strong:[], custom:null, track:{}, picked:null};
+const state = {time:"full", maths:"easy", course:"modular", tab:null, hours:6, days:5, start:nextMonth, strong:[], custom:null, track:{}, picked:null};
 const tr = k => state.track[k] || {s:0, f:0};
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const monthIdx = d => d.getFullYear()*12 + d.getMonth();
@@ -462,13 +490,14 @@ const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
 
 /* ---------- saving (per browser, optional) ---------- */
 function save(){
-  try{ localStorage.setItem(STORE_KEY, JSON.stringify({time:state.time,maths:state.maths,hours:state.hours,days:state.days,start:state.start,strong:state.strong,custom:state.custom,track:state.track})); }catch(e){}
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify({time:state.time,maths:state.maths,course:state.course,hours:state.hours,days:state.days,start:state.start,strong:state.strong,custom:state.custom,track:state.track})); }catch(e){}
 }
 function load(){
   let d; try{ d = JSON.parse(localStorage.getItem(STORE_KEY)||"null"); }catch(e){ return; }
   if(!d || typeof d!=="object") return;
   if(["full","job"].includes(d.time)) state.time=d.time;
   if(["easy","hard"].includes(d.maths)) state.maths=d.maths;
+  if(["modular","integrated"].includes(d.course)) state.course=d.course;
   if(d.hours>=1 && d.hours<=8) state.hours=Number(d.hours);
   if(d.days>=3 && d.days<=7) state.days=Number(d.days);
   if(/^\d{4}-\d{2}$/.test(d.start||"")) state.start=d.start;
@@ -571,7 +600,13 @@ function render(){
     tight:`This plan uses ${T.clockUsed} of 18 months, which leaves little room for a retake. Consider more hours a day, or more preparation before your first sitting.`,
     ok:""}[status];
   const checks = runChecks(sits);
-  const span = Math.max(T.last, T.first + 18*4.345), pct = w => (Math.min(w,span)/span*100).toFixed(2)+"%";
+  // weeks from the start of study to a date; the 18-month window ends on the last day of the deadline month
+  const wkOf = d => (d - weekDate(0))/864e5/7;
+  const deadW = wkOf(new Date(Math.floor(T.deadlineIdx/12), T.deadlineIdx%12+1, 0));
+  const span = Math.max(T.last, deadW), pct = w => (Math.max(0,Math.min(w,span))/span*100).toFixed(2)+"%";
+  const spare = 18 - T.clockUsed;
+  const endIdx = monthIdx(weekDate(Math.floor(span))), axisStep = Math.max(1, Math.ceil((endIdx-T.startIdx)/6));
+  const axis = []; for(let m=T.startIdx+1; m<=endIdx; m++) axis.push([wkOf(new Date(Math.floor(m/12), m%12, 1)), (m-T.startIdx)%axisStep===0 ? `${MON[m%12]} ${String(Math.floor(m/12)).slice(2)}` : ""]);
   // progress on the timeline: green up to the exam of the last sitting passed in order; "Today" when inside the window
   let doneW = null, doneN = 0;
   for(let i=0;i<sits.length;i++){ if(!sits[i].length) continue; if(sitState[i]!=="passed") break; doneW = T.realWk[i]; doneN++; }
@@ -579,10 +614,17 @@ function render(){
   const lastUsed = sits.map((s,i)=>s.length?i:-1).filter(i=>i>=0).at(-1);
   const picked = state.picked;
   const pickedAt = picked ? sits.findIndex(s=>s.includes(picked)) : -1;
-  const courseNote = "In an integrated course your school sets the exam dates, so use the plan to decide what to prioritise inside each block. In a modular course you choose the dates: book each sitting only when your timed tests sit above 90%.";
-  const clockNote = " The 18-month clock starts at your first exam, not your first class. Months spent preparing before sitting 1 are free, so use them: book sitting 1 only when its subjects pass timed tests above 90% and you have already started the first subject of sitting 2.";
-  const retakeNote = " If you fail a subject, re-sit it in your next planned sitting and move one planned subject to the end.";
-  const ksaNote = " Successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject. This deadline relates to the last subject you attempt for the first time, even if you still have resits remaining.";
+  const integ = state.course==="integrated";
+  const advice = [
+    ["Booking your exams", integ
+      ? "Your school sets the exam dates, so use the plan to decide what to prioritise inside each block."
+      : "You choose the dates. Book each sitting only when your timed tests sit above 90%.", "", integ?"Integrated":"Modular"],
+    ["The 18-month clock", "It starts at your first exam, not your first class. Months spent preparing before sitting 1 are free, so use them: " + (integ
+      ? "arrive at sitting 1 with its subjects passing timed tests above 90% and the first subject of sitting 2 already started."
+      : "book sitting 1 only when its subjects pass timed tests above 90% and you have already started the first subject of sitting 2."), ""],
+    ["If you fail a subject", "Re-sit it in your next planned sitting and move one planned subject to the end.", ""],
+    ["KSA100 and mental maths", "Successfully complete the applicable Area 100 KSA assessments and mental maths test at your ATO before receiving the ATO's recommendation for your first attempt at your final unattempted examination subject. This deadline relates to the last subject you attempt for the first time, even if you still have resits remaining.", "ksa"],
+  ];
   $("result").innerHTML = `
     <div class="result-head"><p class="name">${custom?"Your own plan":esc(plan.name)}</p><span class="meta">${T.used} sittings · ${T.totalH.toLocaleString("en")} h · ${label(T.startIdx)} to ${label(T.lastIdx)}</span></div>
     <p class="why">${custom?"You have changed the recommended plan. The checks below tell you if anything needs a second look.":esc(plan.why)}</p>
@@ -611,34 +653,66 @@ function render(){
         ${!s.length?`<button class="rm" data-act="remove" data-i="${i}">Remove sitting</button>`:""}
       </div>`).join("")}
     </div>
+    <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span><span class="mk"><b class="m1"></b>Studying</span><span class="mk"><b class="m2"></b>Ready: timed tests above 90%</span><span class="mk"><b class="m3">✓</b>Passed</span><span class="mk"><b class="m4">✗1</b>Failed attempts</span></div>
     <div class="checks" aria-live="polite">
       <h3>Study-order checks</h3>
       <ul>${checks.length?checks.map(([c,t])=>`<li class="${c}"><i aria-hidden="true">${c==="warn"?"!":"i"}</i><span>${esc(t)}</span></li>`).join(""):`<li class="ok"><i aria-hidden="true">✓</i><span>Every subject comes after the ones it builds on, your hardest subjects are in the first sitting, and Flight Planning closes the plan with a light subject.</span></li>`}</ul>
     </div>
-    <div class="tl" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock${doneW!==null?`; sittings passed up to sitting ${doneN}`:""}">
-      <p class="tl-title">Your exam timeline<span>${doneN?`${doneN} of ${T.used} sittings passed`:"Fills in green as you pass each sitting"}</span></p>
-      <div class="tl-bar${todayW!==null?" has-today":""}">
+    <div class="tl">
+      <p class="tl-title">Your exam timeline<span>${T.clockUsed} of 18 months used${spare>=0?`, ${spare} to spare`:`, ${-spare} over the limit`}${doneN?` · ${doneN} of ${T.used} sittings passed`:""}</span></p>
+      <div class="tl-bar" role="img" aria-label="Timeline: ${T.prepMo} months of free preparation, then ${T.clockUsed} of 18 months on the exam clock${doneW!==null?`; sittings passed up to sitting ${doneN}`:""}">
         <div class="tl-prep" style="left:0;width:${pct(T.first)}"></div>
-        <div class="tl-window" style="left:${pct(T.first)};width:${pct(18*4.345)}"></div>
+        <div class="tl-window" style="left:${pct(T.first)};width:${pct(deadW-T.first)}"></div>
         <div class="tl-used" style="left:${pct(T.first)};width:${pct(T.last-T.first)}"></div>
         ${doneW!==null?`<div class="tl-done" style="left:0;width:${pct(doneW)}"></div>`:""}
-        ${todayW!==null?`<div class="tl-today" style="left:${pct(todayW)}"><span>Today</span></div>`:""}
+        <div class="tl-dead" style="left:${pct(deadW)}"></div>
+        ${todayW!==null?`<div class="tl-today" style="left:${pct(todayW)}"></div>`:""}
         ${T.realWk.map((w,i)=>w===null?"":`<div class="tl-exam${sitState[i]==="passed"?" passed":sitState[i]==="book"?" book":""}" style="left:${pct(w)}"><span>S${i+1}${sitState[i]==="passed"?" ✓":""}</span></div>`).join("")}
+      </div>
+      <div class="tl-axis" aria-hidden="true"><span style="left:0">${MON[T.startIdx%12]} ${String(Math.floor(T.startIdx/12)).slice(2)}</span>${axis.map(([w,l])=>l?`<span style="left:${pct(w)}">${l}</span>`:`<i style="left:${pct(w)}"></i>`).join("")}</div>
+      <div class="tl-sits">
+        ${sits.map((x,i)=>!x.length?"":`<div class="tl-chip ${sitState[i]}"><b>S${i+1}</b>${label(T.examIdx[i])}${sitState[i]==="passed"?" ✓":""}<small>${x.length} subject${x.length>1?"s":""} · ${T.load[i].h} h${sitState[i]==="book"?" · ready to book":""}</small></div>`).join("")}
+        <div class="tl-chip dead${spare<0?" over":""}"><b>Deadline</b><small>end of ${label(T.deadlineIdx)} · ${spare>=0?`${spare} month${spare===1?"":"s"} to spare`:`${-spare} month${spare===-1?"":"s"} over`}</small></div>
       </div>
       <div class="tl-key">
         <span><i class="k-prep"></i>Preparation before sitting 1: no clock, take your time</span>
         <span><i class="k-used"></i>Exam clock in use</span>
         <span><i class="k-window"></i>Rest of the 18-month window</span>
         <span><i class="k-done"></i>Sittings passed</span>
+        <span><i class="k-dead"></i>18-month deadline</span>
+        ${todayW!==null?`<span><i class="k-today"></i>Today</span>`:""}
       </div>
     </div>
-    <div class="legend"><span><i style="background:var(--concept)"></i>Concept: understand the mechanism</span><span><i style="background:var(--calc)"></i>Calculation: practise with a timer</span><span><i style="background:var(--memory)"></i>Memory: short daily repetition</span><span class="mk"><b class="m1"></b>Studying</span><span class="mk"><b class="m2"></b>Ready: timed tests above 90%</span><span class="mk"><b class="m3">✓</b>Passed</span><span class="mk"><b class="m4">✗1</b>Failed attempts</span></div>
     ${trackPanel(sits, T, sitState, passedN, failedN)}
-    <p class="note">${courseNote}${clockNote}${retakeNote}${ksaNote}</p>
-    <p class="hours-note">Hours assume about 1,000 h in total: the EASA minimum of 650 h (modular) or 750 h (integrated) of theory instruction plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p>`;
-  if(refocus){ const el=$("result").querySelector(`[data-focus="${refocus}"]`); if(el && !el.disabled) el.focus(); }
+    <div class="advice">${advice.map(([h,t,c,tag])=>`<div class="adv ${c}"><h3>${h}${tag?`<span class="tag">${tag}</span>`:""}</h3><p>${esc(t)}</p></div>`).join("")}</div>
+    <details class="hours-d"><summary>How the hours are calculated</summary><p>Hours assume about 1,000 h in total: the EASA minimum of ${integ?"750 h of theory instruction for an integrated course":"650 h of theory instruction for a modular course"} plus question-bank practice, split as 100 h per heavy subject, 70 h per medium and 40 h per light, and 30% less for subjects you already know well. KSA100 is assessed by your ATO and is not counted here. Dates are estimates; your authority publishes the actual exam calendar.</p></details>`;
+  renderStudy(sits, T, sitState);
+  if(refocus){ const el=ROOT.querySelector(`[data-focus="${refocus}"]`); if(el && !el.disabled) el.focus(); }
   renderHeroCard(T, status, custom, passedN);
   save();
+}
+
+/* ---------- step 3: one sitting, week by week, with real dates ---------- */
+function renderStudy(sits, T, sitState){
+  const used = sits.map((s,i)=>s.length?i:-1).filter(i=>i>=0);
+  const cur = used.includes(state.tab) ? state.tab : (used.find(i=>sitState[i]!=="passed") ?? used[0]);
+  const w = sittingWeeks(T, sits, cur), pos = used.indexOf(cur), next = used[pos+1];
+  const months = [];
+  for(let j=0;j<w.n;j++){ const d=weekDate(w.a+j), id=monthIdx(d); if(months.length && months.at(-1)[0]===id) months.at(-1)[1]++; else months.push([id,1]); }
+  const dense = w.n>26;
+  $("study").innerHTML = `
+    <div class="opts tabs" role="group" aria-label="Choose a sitting">${used.map(i=>`<button class="opt" data-tab="${i}" data-focus="tab-${i}" aria-pressed="${i===cur}">Sitting ${i+1}<small>${label(T.examIdx[i])}${sitState[i]==="passed"?" ✓":""}</small></button>`).join("")}</div>
+    <p class="wk-meta"><b>${T.load[cur].h} h</b> of study from ${dfmt(weekDate(w.a),1)}: ${T.load[cur].weeks} weeks at ${T.load[cur].perDay.toFixed(1)} h a day. <b>Exam in the week of ${dfmt(weekDate(w.e),1)}.</b></p>
+    <div class="wk-scroll"><div class="wk" style="--n:${w.n}">
+      <div></div><div class="wk-months" aria-hidden="true">${months.map(([id,c])=>`<span style="grid-column:span ${c}">${c>=2?label(id):""}</span>`).join("")}</div>
+      <div class="wk-k">Week starting</div><div class="wk-row wk-days" aria-hidden="true">${Array.from({length:w.n},(_,j)=>`<span>${dense&&j%2?"":weekDate(w.a+j).getDate()}</span>`).join("")}</div>
+      ${w.rows.map(r=>`<div class="lbl">${esc(S[r.k].n)}<small>${subjHours(r.k)} h · first pass by ${dfmt(weekDate(r.fpBy,6))}</small></div><div class="wk-row" role="img" aria-label="${esc(S[r.k].n)}: first pass by ${dfmt(weekDate(r.fpBy,6))}, wrong answers retaken by ${dfmt(weekDate(r.rtBy,6))}, timed exams until ${dfmt(weekDate(r.timedBy,6))}">${r.cells.map(p=>`<div class="${p?"p"+p:""}"></div>`).join("")}</div>`).join("")}
+    </div></div>
+    <p class="wk-swipe">Swipe sideways to see every week.</p>
+    <div class="glegend">${PHASES.slice(1).map(([n],j)=>`<span><i class="p${j+1}"></i>${esc(n)}</span>`).join("")}</div>
+    ${pos===0 && next!==undefined?`<p class="tip">Start the first subject of sitting ${next+1} in the week of ${dfmt(weekDate(sittingWeeks(T, sits, next).a),1)}, while you take timed exams for this sitting.</p>`:""}
+    ${cur===used.at(-1)?`<p class="tip ksa"><b>Before this sitting:</b> complete the Area 100 KSA assessments and mental maths test at your ATO.</p>`:""}
+    <p class="hint">Heaviest subject first, but never before a subject it builds on. Each subject gets weeks in proportion to its hours. <b>Print / Save as PDF</b> in step 2 gives you this calendar for every sitting, with a checklist.</p>`;
 }
 
 function trackPanel(sits, T, sitState, passedN, failedN){
@@ -889,6 +963,10 @@ $("result").addEventListener("click", e=>{
   if(act==="example"){ state.custom = EXAMPLES.author553.sits.map(s=>s.slice()); state.picked=null; render(); return; }
   if(act==="reset"){ state.custom=null; state.picked=null; render(); return; }
 });
+$("study").addEventListener("click", e=>{
+  const b = e.target.closest("[data-tab]"); if(!b) return;
+  state.tab = Number(b.dataset.tab); render();
+});
 $("result").addEventListener("change", e=>{
   const sel = e.target.closest("select[data-trk]"); if(!sel) return;
   setTrack(sel.dataset.trk, {s:Number(sel.value)}); render();
@@ -990,18 +1068,5 @@ load(); renderControls(); render();
   $("subjTable").innerHTML = `<thead><tr><th>Code</th><th>Subject</th><th class="num">Questions</th><th class="num">Time (min)</th><th>Main type</th><th>Workload</th><th class="num">Study time</th></tr></thead>
   <tbody>${keys.map(k=>{ const [n,q,m,t,u]=INFO[k]; return `<tr><td class="num">${CODES[k]}</td><td>${u?`<a href="${u}">${esc(n)}</a>`:esc(n)}</td><td class="num">${q}</td><td class="num">${m}</td><td>${t}</td><td><span class="wl ${S[k].w}">${W[S[k].w]}</span></td><td class="num">~${HOURS[S[k].w]} h</td></tr>`; }).join("")}</tbody>
   <tfoot><tr><td></td><td>Total</td><td class="num">${tq}</td><td class="num">${tm.toLocaleString("en")}</td><td></td><td></td><td class="num">~${th.toLocaleString("en")} h</td></tr></tfoot>`;
-})();
-
-/* gantt */
-(function(){
-  // phases per week (1-16): 1 first pass, 2 retake/flag, 3 weekly review, 4 timed, 5 exam
-  const rows=[
-    ["Heavy subject 1","~100 h, e.g. Meteorology",[1,1,1,1,2,2,3,3,3,3,3,3,3,4,4,5]],
-    ["Heavy subject 2","~100 h, e.g. Performance",[0,0,0,0,1,1,1,1,2,2,3,3,3,4,4,5]],
-    ["Light subject 1","~40 h, e.g. Mass & Balance",[0,0,0,0,0,0,0,0,1,1,2,2,3,4,4,5]],
-    ["Light subject 2","~40 h, e.g. Communications",[0,0,0,0,0,0,0,0,0,0,1,1,2,4,4,5]],
-  ];
-  $("gantt").innerHTML=rows.map(([n,d,w])=>`<div class="lbl">${n}<small>${esc(d)}</small></div><div class="track" role="img" aria-label="${n} schedule">${w.map(p=>`<div class="${p?'p'+p:''}"></div>`).join("")}</div>`).join("")
-    +`<div></div><div class="axis">${Array.from({length:16},(_,i)=>`<span>${i+1}</span>`).join("")}</div>`;
 })();
 </script>
