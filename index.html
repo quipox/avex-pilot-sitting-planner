@@ -339,7 +339,8 @@ svg text{font-family:var(--mono)}
       <button class="opt" data-val="job" aria-pressed="false">Around a job or other commitments</button></div></div></div>
     <div class="q"><div class="n">Q2</div><div><p class="t">How do you feel about calculations?</p><div class="opts" data-key="maths">
       <button class="opt" data-val="easy" aria-pressed="true">They come easily (engineering, science)</button>
-      <button class="opt" data-val="hard" aria-pressed="false">Not my strong side</button></div></div></div>
+      <button class="opt" data-val="hard" aria-pressed="false">Not my strong side</button></div>
+      <p class="hint" id="mathsHint" aria-live="polite"></p></div></div>
     <div class="q"><div class="n">Q3</div><div><p class="t">Which course are you on?</p><div class="opts" data-key="course">
       <button class="opt" data-val="modular" aria-pressed="true">Modular</button>
       <button class="opt" data-val="integrated" aria-pressed="false">Integrated</button></div>
@@ -436,8 +437,8 @@ const PLANS = {
     why:"The heavy foundation subjects come first, while the 18-month clock is not yet running. Light subjects and Flight Planning close the plan.",
     sits:[["pof","agk","gnav","ins"],["perf","rnav","met","law"],["ops","hpl","mb","com","fp"]]},
   "full-hard": {name:"Plan B – Full time, four sittings",
-    why:"Four subjects in the first sitting, prepared before the 18-month clock starts, including General Navigation so you can practise calculations at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week.",
-    sits:[["pof","agk","gnav","hpl"],["ins","law","met"],["perf","rnav","ops"],["mb","com","fp"]]},
+    why:"Calculations are not your strong side, so General Navigation and Mass & Balance join Principles of Flight and AGK in the first sitting: you prepare all four before the 18-month clock starts and can practise at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week.",
+    sits:[["pof","agk","gnav","mb"],["hpl","law","met"],["perf","rnav","ops"],["fp","ins","com"]]},
   "job-easy": {name:"Plan C – Around a job, heavy foundations first",
     why:"Principles of Flight, AGK and General Navigation in the first sitting, while the clock is not running. Light subjects and Flight Planning close the plan.",
     sits:[["pof","agk","gnav"],["ins","rnav","perf"],["met","law","ops","hpl"],["mb","com","fp"]]},
@@ -548,6 +549,9 @@ function renderControls(){
   $("hoursHint").textContent = `${(state.hours*state.days).toFixed(1).replace(".0","")} hours a week. ` + (state.time==="full"
     ? "Typical full-time pace: 5–6 h a day, 5 days a week. Classes count towards these hours."
     : "Typical pace around a job: 2 h a day, 6 days a week (weekday evenings plus one weekend day).");
+  $("mathsHint").textContent = state.maths==="easy"
+    ? "Your plan starts with the heavy foundations: Principles of Flight, AGK and General Navigation."
+    : "Your plan puts General Navigation and Mass & Balance in the first sitting, so you practise calculations at your own pace before the 18-month clock starts. It never puts two heavy calculation subjects in the same sitting.";
   $("start").value = state.start;
   $("strongOpts").innerHTML = Object.keys(CODES).sort((a,b)=>CODES[a].localeCompare(CODES[b])).map(k=>{
     const on = state.strong.includes(k), full = state.strong.length>=STRONG_MAX && !on;

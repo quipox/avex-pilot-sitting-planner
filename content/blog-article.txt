@@ -185,12 +185,12 @@ The heavy foundation subjects come first, while the 18-month clock is not yet ru
 
 ### Plan B – Full time, four sittings
 
-Four subjects in the first sitting, prepared before the 18-month clock starts, including General Navigation so you can practise calculations at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week, ten minutes a day.
+Calculations are not your strong side, so General Navigation and Mass & Balance join Principles of Flight and AGK in the first sitting: you prepare all four before the 18-month clock starts and can practise at your own pace. Never more than one heavy calculation subject per sitting. Start using your flight computer from the first week, ten minutes a day.
 
-- **Sitting 1** (month 5): 081 Principles of Flight, 021 AGK, 061 General Navigation, 040 Human Performance
-- **Sitting 2** (month 6): 022 Instrumentation, 010 Air Law, 050 Meteorology
+- **Sitting 1** (month 5): 081 Principles of Flight, 021 AGK, 061 General Navigation, 031 Mass & Balance
+- **Sitting 2** (month 6): 040 Human Performance, 010 Air Law, 050 Meteorology
 - **Sitting 3** (month 8): 032 Performance, 062 Radio Navigation, 070 Operational Procedures
-- **Sitting 4** (month 10): 031 Mass & Balance, 090 Communications, 033 Flight Planning
+- **Sitting 4** (month 10): 033 Flight Planning, 022 Instrumentation, 090 Communications
 
 ### Plan C – Around a job, heavy foundations first
 
